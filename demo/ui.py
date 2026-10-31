@@ -213,10 +213,13 @@ def demo_photo():
     down = W.FloatSlider(min=-1, max=1, step=0.1, value=0, description="down")
     why = W.Dropdown(options=[("its answer", -1)] + [(n, i) for i, n in enumerate(sw.NAMES)], description="explain")
     box, apply = _box(W)
-    upload = W.FileUpload(accept="image/*", multiple=False, description="choose a photo")
+    upload = W.FileUpload(accept="image/*", multiple=False, description="another photo")
     out = W.Output()
+    busy = [False]
 
     def draw(*_):
+        if busy[0]:
+            return
         out.clear_output(wait=True)
         with out:
             if data["bytes"] is None:
@@ -230,12 +233,15 @@ def demo_photo():
         item = v[0] if isinstance(v, (tuple, list)) and v else next(iter(v.values())) if isinstance(v, dict) and v else None
         if item is not None:
             data["bytes"] = bytes(item["content"])
+            busy[0] = True                                         # a new photo starts unframed, drawn once
+            zoom.value, across.value, down.value = 1.0, 0.0, 0.0
+            busy[0] = False
             draw()
     upload.observe(picked, "value")
     for w_ in [model, zoom, across, down, why] + box:
         w_.observe(draw, "value")
-    rows = [W.HBox([model, why]), W.HBox([zoom, across, down]), W.HBox(box), out]
-    display(W.VBox(rows if data["bytes"] is not None else [upload] + rows))
+    again = W.HTML('<span style="color:#888">&nbsp;or run this cell again</span>')
+    display(W.VBox([W.HBox([upload, again]), W.HBox([model, why]), W.HBox([zoom, across, down]), W.HBox(box), out]))
     draw()
 
 
