@@ -297,7 +297,7 @@ def demo_train():
         return
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     recipe = W.Dropdown(options=list(RECIPES), description="model", layout=W.Layout(width="420px"))
-    epochs = W.IntSlider(min=1, max=50, value=10, description="epochs")
+    epochs = W.IntSlider(min=1, max=50, value=50 if dev == "cuda" else 10, description="epochs")  # the paper's 50 on a GPU
     seed = W.BoundedIntText(min=3, max=999, value=3, description="seed", layout=W.Layout(width="160px"))
     go = W.Button(description="train", button_style="warning", icon="play")
     stop = W.Button(description="stop", button_style="danger", icon="stop", disabled=True)
