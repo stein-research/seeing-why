@@ -35,7 +35,7 @@ Every class has the same ceiling of 1, whatever the size of its group. The **rea
 probabilities with no trained parameter; one chosen headroom $\varphi$ fixes the temperature:
 
 ```math
-\hat p = \operatorname{softmax}\big(\kappa\, \mathrm{LeakyReLU}(u)\big), \qquad
+\hat p = \mathrm{softmax}\left(\kappa\, \mathrm{LeakyReLU}(u)\right), \qquad
 \kappa = \frac{\ln\big[(1-\varepsilon)(G-1)/\varepsilon\big]}{\varphi}
 ```
 
