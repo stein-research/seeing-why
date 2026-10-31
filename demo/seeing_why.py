@@ -48,14 +48,6 @@ def test_pictures():
     return d["x_val"], d["y_val"]
 
 
-def from_photo(path_or_bytes):
-    """Any photo -> a 32 x 32 picture prepared as the test set was (4 % off every side, centre square, box filter)."""
-    import io
-    im = Image.open(io.BytesIO(path_or_bytes) if isinstance(path_or_bytes, (bytes, bytearray)) else path_or_bytes)
-    pc.TRIM = 0.04
-    return pc.centre_crop(im.convert("RGB"))
-
-
 def _setup(run):
     pf.DATASET, pf.ORDER, pf.N_QUBITS = run["dataset"], run.get("order", "morton"), len(run["weights"][0])
     s = pf.side()

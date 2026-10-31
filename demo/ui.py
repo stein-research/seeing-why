@@ -118,20 +118,21 @@ def chip(k):
 
 
 def demo(model=None):
-    """The controls: model, class and picture (or your own photo), the class to explain, deletion, layout. model: a
-    path to a trainer result (from the training notebook) to add to the list."""
+    """The controls: model, class and picture (prev / next step through the test set), the class to explain,
+    deletion, layout. model: a path to a trainer result (from the training notebook) to add to the list."""
     import ipywidgets as W
     from IPython.display import display
     x_all, y_all = sw.test_pictures()
-    state = {"photo": None}
+    busy = [False]
     options = list(sw.MODELS) + ([str(model)] if model else [])
     model = W.Dropdown(options=options, value=options[-1] if model else options[0], description="model", style={"description_width": "70px"},
                        layout=W.Layout(width="360px"))
     klass = W.Dropdown(options=[(n, i) for i, n in enumerate(sw.NAMES)], value=7, description="class",
                        style={"description_width": "70px"})
     pic = W.IntSlider(min=1, max=30, value=1, description="picture", style={"description_width": "70px"})
-    rand = W.Button(description="random", layout=W.Layout(width="90px"))
-    upload = W.FileUpload(accept="image/*", multiple=False, description="your photo")
+    prev = W.Button(description="\u25c0 prev", layout=W.Layout(width="80px"))
+    nxt = W.Button(description="next \u25b6", layout=W.Layout(width="80px"))
+    rand = W.Button(description="random", layout=W.Layout(width="80px"))
     why = W.Dropdown(options=[("predicted class", -1)] + [(n, i) for i, n in enumerate(sw.NAMES)],
                      description="explain", style={"description_width": "70px"})
     frac = W.SelectionSlider(options=[("none", 0.0), ("2 %", 0.02), ("5 %", 0.05), ("10 %", 0.1), ("20 %", 0.2)],
@@ -140,47 +141,39 @@ def demo(model=None):
     thumbs, out = W.Output(), W.Output()
 
     def picture():
-        if state["photo"] is not None:
-            return state["photo"], None
         idx = np.flatnonzero(y_all == klass.value)
         return x_all[idx[pic.value - 1]], int(klass.value)
 
     def draw(*_):
+        if busy[0]:
+            return
         x, true = picture()
         thumbs.clear_output(wait=True)
         out.clear_output(wait=True)
         with thumbs:
-            if state["photo"] is None:
-                f = strip(x_all[y_all == klass.value], pic.value - 1)
-                plt.show(f)
+            plt.show(strip(x_all[y_all == klass.value], pic.value - 1))
         with out:
             f = explain(sw.load(model.value), x, true, None if why.value < 0 else why.value, frac.value,
                         layout.value == "side by side")
             plt.show(f)
 
-    def on_rand(_):
-        state["photo"] = None
-        klass.value = int(np.random.randint(10))
-        pic.value = int(np.random.randint(1, 31))
+    def go(k, p):                                           # one redraw for a move that changes class and picture
+        busy[0] = True
+        klass.value, pic.value = k, p
+        busy[0] = False
+        draw()
 
-    def on_upload(change):
-        files = upload.value
-        if files:
-            f = files[0] if isinstance(files, (list, tuple)) else next(iter(files.values()))
-            state["photo"] = sw.from_photo(bytes(f["content"]))
-            draw()
+    def step(d):                                            # past the class's last picture: the next class
+        n = klass.value * 30 + pic.value - 1 + d
+        n %= 300
+        go(n // 30, n % 30 + 1)
 
-    def back_to_test(*_):
-        state["photo"] = None
-
-    for w in (model, why, frac, layout):
+    for w in (model, why, frac, layout, klass, pic):
         w.observe(draw, "value")
-    for w in (klass, pic):
-        w.observe(back_to_test, "value")
-        w.observe(draw, "value")
-    rand.on_click(on_rand)
-    upload.observe(on_upload, "value")
-    display(W.VBox([W.HBox([model, why]), W.HBox([klass, pic, rand, upload]), thumbs, W.HBox([frac, layout]), out]))
+    prev.on_click(lambda _: step(-1))
+    nxt.on_click(lambda _: step(1))
+    rand.on_click(lambda _: go(int(np.random.randint(10)), int(np.random.randint(1, 31))))
+    display(W.VBox([W.HBox([model, why]), W.HBox([klass, pic, prev, nxt, rand]), thumbs, W.HBox([frac, layout]), out]))
     draw()
 
 
@@ -190,15 +183,29 @@ def demo_compare():
     x_all, y_all = sw.test_pictures()
     klass = W.Dropdown(options=[(n, i) for i, n in enumerate(sw.NAMES)], value=7, description="class")
     pic = W.IntSlider(min=1, max=30, value=1, description="picture")
+    prev = W.Button(description="\u25c0 prev", layout=W.Layout(width="80px"))
+    nxt = W.Button(description="next \u25b6", layout=W.Layout(width="80px"))
     out = W.Output()
+    busy = [False]
 
     def draw(*_):
+        if busy[0]:
+            return
         out.clear_output(wait=True)
         with out:
             plt.show(compare(x_all[np.flatnonzero(y_all == klass.value)[pic.value - 1]]))
+
+    def step(d):
+        n = (klass.value * 30 + pic.value - 1 + d) % 300
+        busy[0] = True
+        klass.value, pic.value = n // 30, n % 30 + 1
+        busy[0] = False
+        draw()
     klass.observe(draw, "value")
     pic.observe(draw, "value")
-    display(W.VBox([W.HBox([klass, pic]), out]))
+    prev.on_click(lambda _: step(-1))
+    nxt.on_click(lambda _: step(1))
+    display(W.VBox([W.HBox([klass, pic, prev, nxt]), out]))
     draw()
 
 
