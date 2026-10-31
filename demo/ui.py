@@ -289,6 +289,7 @@ def demo_train():
     import re
     import subprocess
     import threading
+    import time
     import torch
     import ipywidgets as W
     from IPython.display import display
@@ -313,15 +314,25 @@ def demo_train():
         val = []
         proc = run["proc"] = subprocess.Popen(cmd, cwd=sw.ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                               text=True)
-        tail = []
+        tail, in_json, t0 = [], False, time.time()
+
+        def tick():                                         # elapsed time, so a slow first epoch never looks stuck
+            while proc.poll() is None:
+                if not val:
+                    status.value = f"starting on {dev} ... {time.time() - t0:.0f} s"
+                time.sleep(1)
+        threading.Thread(target=tick, daemon=True).start()
         for line in proc.stdout:
             tail = (tail + [line.rstrip()])[-20:]
+            in_json = in_json or line.startswith("{")       # the trainer ends by printing its result as JSON
+            if line.strip() and not in_json:
+                log.value = "\n".join((log.value.splitlines() + [line.rstrip()])[-200:])
             m = re.match(r"epoch (\d+): .* val ([0-9.]+) \((\d+) s\)", line)
             if m:
                 val.append(float(m.group(2)))
-                log.value += line
                 chart.value = _chart(val, n_epochs)
-                status.value = f"epoch {m.group(1)} of {n_epochs}, validation {100 * val[-1]:.1f} %"
+                status.value = (f"epoch {m.group(1)} of {n_epochs}, validation {100 * val[-1]:.1f} %, "
+                                f"{time.time() - t0:.0f} s")
         proc.wait()
         go.disabled, stop.disabled = False, True
         new = sorted(set((sw.ROOT / "results").glob("pilot_*.json")) - before, key=lambda f: f.stat().st_mtime)
