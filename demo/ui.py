@@ -627,16 +627,16 @@ def _brickwall(A, n=12, depth=11, measured=7):
     A.set_ylim(n - 0.4, -0.6)
     A.set_aspect("auto")
     for q in range(n):
-        A.plot([-0.6, depth + 0.9], [q, q], color=LINE, lw=0.6, zorder=0)
+        A.plot([-0.6, depth + 0.9], [q, q], color=LINE, lw=0.4, zorder=0)
     for k in range(depth + 1):
         for q in range(n):
-            A.add_patch(Rectangle((k - 0.22, q - 0.22), 0.44, 0.44, fc="white", ec="#7c6fd6", lw=0.6, zorder=2))
+            A.add_patch(Rectangle((k - 0.17, q - 0.17), 0.34, 0.34, fc="white", ec="#7c6fd6", lw=0.4, zorder=2))
         if k < depth:
             for q in range(k % 2, n - 1, 2):
-                A.plot([k + 0.5, k + 0.5], [q, q + 1], color="#7c6fd6", lw=0.7, zorder=1)
-                A.plot([k + 0.5], [q], "o", color="#7c6fd6", ms=1.6, zorder=3)
+                A.plot([k + 0.5, k + 0.5], [q, q + 1], color="#7c6fd6", lw=0.5, zorder=1)
+                A.plot([k + 0.5], [q], "o", color="#7c6fd6", ms=1.0, zorder=3)
     for q in range(measured):
-        A.plot([depth + 1.15], [q], "s", color=ACCENT, ms=2.4)
+        A.plot([depth + 1.15], [q], "s", color=ACCENT, ms=1.4)
     A.axis("off")
 
 
@@ -682,16 +682,16 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
                     f"{'\u00d7'.join(map(str, S['mask'].shape[-2:]))}, "
                     + ("shared" if S["optical"] else "post-selected")),
                    ("filtered" if S["optical"] else "QFT\u207b\u00b9", lambda A: _planes(A, _signed(S["filtered"])),
-                    f"4 \u00d7 {sz(S['filtered'])} \u00b7 {100 * S['passed']:.1f} % passes")]
+                    f"4 \u00d7 {sz(S['filtered'])}\n{100 * S['passed']:.1f} % passes")]
     if S["optical"]:
         panels.append(("phase plates", lambda A: _planes(A, _mapped(_tiles([ph % (2 * np.pi) for ph in S["plates"]]),
                                                                     "twilight", 0, 2 * np.pi), labels=("1", "2", "3", "4")),
                        f"4 \u00d7 {'\u00d7'.join(map(str, S['plates'][0].shape))}, in turn"))
         for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
             panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(np.abs(f_), cmap="magma"))(f),
-                           f"{'\u00d7'.join(map(str, f.shape))} \u00b7 {100 * k:.1f} % left"))
+                           f"{'\u00d7'.join(map(str, f.shape))}\n{100 * k:.1f} % left"))
         panels.append(("camera", lambda A: _camera(A, S["camera"], S["group_of"]),
-                       f"128 regions \u00b7 {100 * S['camera_kept']:.1f} % arrives"))
+                       f"128 regions\n{100 * S['camera_kept']:.1f} % arrives"))
     rows = (len(panels) + 1 + 5) // 6
     fig = plt.figure(figsize=(14, 2.75 * rows + 3.2))
     gs = fig.add_gridspec(rows + 1, 6, height_ratios=[1] * rows + [1.25], hspace=0.55, wspace=0.12)
@@ -709,8 +709,8 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
         B = A
     else:                                                            # qubits: the circuit above its outcomes
         A.axis("off")
-        _brickwall(A.inset_axes([0, 0.5, 1, 0.5]), depth=run.get("depth", 11))
-        B = A.inset_axes([0, 0, 1, 0.44])
+        _brickwall(A.inset_axes([0, 0.68, 1, 0.32]), depth=run.get("depth", 11))
+        B = A.inset_axes([0, 0, 1, 0.62])
     B.bar(range(len(o)), o, color=[CLASS_COLOURS[g] for g in S["group_of"]], width=1.0)
     B.axhline(1 / len(o), color=INK, lw=0.8, ls=(0, (2, 2)))
     B.set_xticks([])
@@ -720,8 +720,8 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
         A.set_xlabel("by class", fontsize=7.5, color=MUTED)
     else:
         A.set_title(f"{k}  brickwall circuit", loc="left", fontsize=9)
-        A.text(0.5, -0.1, f"12 qubits, depth {run.get('depth', 11)} \u2192 128 outcomes", transform=A.transAxes,
-               ha="center", va="top", fontsize=7.5, color=MUTED)
+        A.text(0.5, -0.04, f"12 qubits, depth {run.get('depth', 11)}\n\u2192 128 outcomes", transform=A.transAxes,
+               ha="center", va="top", fontsize=7.5, color=MUTED, linespacing=1.2)
     # the answer and the evidence over the colour picture
     unsure = p[pred] < 0.3      # on test pictures the plates' answers below 0.3 are right about one time in ten
     _ranking(fig.add_subplot(gs[rows, 0:2]), p, true, f"BHR answer: {sw.NAMES[pred]} ({p[pred]:.2f})"
