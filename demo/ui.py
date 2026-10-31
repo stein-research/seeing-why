@@ -41,7 +41,7 @@ def explain(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
         ax[1].imshow(e, cmap=cmap, vmin=-v, vmax=v)
     else:
         sw.overlay(ax[1], x, e)
-    ax[1].set_title(f"evidence for {sw.NAMES[cls]}\nred for, blue against", loc="left")
+    ax[1].set_title(f"evidence for {sw.NAMES[cls]}\nred for the class, blue against it", loc="left")
     for a in ax[:2]:
         a.set_xticks([])
         a.set_yticks([])
@@ -757,5 +757,5 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
         q = sw.delete(run, x[None], e[None], frac)[0]
         _ranking(fig.add_subplot(gs[rows, col + 1:]), q, true,
                  f"after deleting the top {100 * frac:.0f} % for {sw.NAMES[shown[0]]}")
-    fig.text(0.37, 0.02, "evidence: red for, blue against", fontsize=8, color=MUTED)
+    fig.text(0.37, 0.02, "evidence: red for the class, blue against it", fontsize=8, color=MUTED)
     return fig
