@@ -1,0 +1,301 @@
+picture,true_class,exact_pred,exact_p_true,loading_pred,loading_p_true,chip_pred,chip_p_true,loading_fidelity,job_folder
+0,airplane,car side,0.1542,car side,0.1882,car side,0.0849,0.8047,d994861694faf12e
+1,airplane,airplane,0.5658,hawksbill,0.1409,airplane,0.3360,0.7035,d994861694faf12e
+2,airplane,leopard,0.0581,hawksbill,0.0487,hawksbill,0.0795,0.7709,d994861694faf12e
+3,airplane,airplane,0.4044,airplane,0.5561,airplane,0.5482,0.8302,d15d55227ba8b2ce
+4,airplane,airplane,0.5396,airplane,0.4604,airplane,0.6865,0.8594,d15d55227ba8b2ce
+5,airplane,airplane,0.2737,chandelier,0.2288,airplane,0.4079,0.8093,d15d55227ba8b2ce
+6,airplane,car side,0.3329,car side,0.1838,chandelier,0.1340,0.7820,676892d880982866
+7,airplane,airplane,0.3833,car side,0.1179,airplane,0.4431,0.6660,676892d880982866
+8,airplane,airplane,0.5319,hawksbill,0.0986,watch,0.0529,0.6674,676892d880982866
+9,airplane,airplane,0.5532,airplane,0.6016,airplane,0.4164,0.7769,7dcf63da0ac0f42a
+10,airplane,airplane,0.5096,airplane,0.5656,airplane,0.7635,0.7938,7dcf63da0ac0f42a
+11,airplane,car side,0.1443,airplane,0.2591,airplane,0.6280,0.8000,7dcf63da0ac0f42a
+12,airplane,airplane,0.6194,airplane,0.6807,airplane,0.6731,0.7562,f6ed2964bf0a9582
+13,airplane,airplane,0.3938,bonsai,0.0785,chandelier,0.0757,0.7691,f6ed2964bf0a9582
+14,airplane,airplane,0.7444,airplane,0.7409,airplane,0.7454,0.8255,f6ed2964bf0a9582
+15,airplane,airplane,0.9359,airplane,0.9756,airplane,0.9247,0.7658,4ba18bde5b00ea75
+16,airplane,airplane,0.9413,airplane,0.8880,airplane,0.6359,0.7875,4ba18bde5b00ea75
+17,airplane,airplane,0.9222,airplane,0.9213,airplane,0.8072,0.8166,4ba18bde5b00ea75
+18,airplane,airplane,0.5899,airplane,0.6906,airplane,0.4210,0.7418,4a318dcaa61b327d
+19,airplane,airplane,0.7547,airplane,0.7362,airplane,0.9540,0.7672,4a318dcaa61b327d
+20,airplane,chandelier,0.1825,chandelier,0.1528,chandelier,0.2051,0.8633,4a318dcaa61b327d
+21,airplane,hawksbill,0.0334,hawksbill,0.0190,hawksbill,0.0340,0.8505,4c71724e7dae08a4
+22,airplane,airplane,0.4457,hawksbill,0.0942,hawksbill,0.1681,0.6869,4c71724e7dae08a4
+23,airplane,airplane,0.9000,airplane,0.8477,airplane,0.7973,0.8040,4c71724e7dae08a4
+24,airplane,leopard,0.0686,leopard,0.0367,motorbike,0.0677,0.7851,8add8db46c5f9e07
+25,airplane,airplane,0.7997,airplane,0.9534,airplane,0.8817,0.7972,8add8db46c5f9e07
+26,airplane,airplane,0.9688,airplane,0.9735,airplane,0.9613,0.9072,8add8db46c5f9e07
+27,airplane,airplane,0.9236,airplane,0.9463,airplane,0.7972,0.7951,112bcae203fb5551
+28,airplane,car side,0.1854,car side,0.0615,leopard,0.0464,0.8055,112bcae203fb5551
+29,airplane,ketch,0.2069,ketch,0.2175,ketch,0.4108,0.8198,112bcae203fb5551
+30,motorbike,motorbike,0.7442,motorbike,0.5670,watch,0.0781,0.8565,d994861694faf12e
+31,motorbike,motorbike,0.6776,motorbike,0.4699,watch,0.3252,0.8790,d994861694faf12e
+32,motorbike,motorbike,0.6152,motorbike,0.7574,motorbike,0.2948,0.7435,d994861694faf12e
+33,motorbike,motorbike,0.6654,motorbike,0.6045,watch,0.2341,0.7734,d15d55227ba8b2ce
+34,motorbike,motorbike,0.3163,leopard,0.1317,leopard,0.0706,0.6606,d15d55227ba8b2ce
+35,motorbike,motorbike,0.6409,motorbike,0.5866,motorbike,0.3870,0.8709,d15d55227ba8b2ce
+36,motorbike,leopard,0.0618,leopard,0.0138,leopard,0.0188,0.6791,676892d880982866
+37,motorbike,motorbike,0.6956,motorbike,0.5839,motorbike,0.4976,0.7740,676892d880982866
+38,motorbike,motorbike,0.6298,motorbike,0.3203,motorbike,0.2403,0.8029,676892d880982866
+39,motorbike,car side,0.0526,hawksbill,0.1110,leopard,0.0680,0.7278,7dcf63da0ac0f42a
+40,motorbike,motorbike,0.6544,hawksbill,0.0878,car side,0.1117,0.6141,7dcf63da0ac0f42a
+41,motorbike,motorbike,0.5220,motorbike,0.3959,motorbike,0.2659,0.8607,7dcf63da0ac0f42a
+42,motorbike,leopard,0.1415,leopard,0.0366,leopard,0.0215,0.7472,f6ed2964bf0a9582
+43,motorbike,watch,0.2389,watch,0.2241,watch,0.0800,0.8285,f6ed2964bf0a9582
+44,motorbike,motorbike,0.3169,motorbike,0.3587,leopard,0.0722,0.8081,f6ed2964bf0a9582
+45,motorbike,motorbike,0.2285,hawksbill,0.1317,motorbike,0.2383,0.8026,4ba18bde5b00ea75
+46,motorbike,motorbike,0.5918,motorbike,0.5053,watch,0.2218,0.7462,4ba18bde5b00ea75
+47,motorbike,watch,0.2306,leopard,0.1684,watch,0.1413,0.7006,4ba18bde5b00ea75
+48,motorbike,motorbike,0.7692,motorbike,0.6599,motorbike,0.2328,0.8970,4a318dcaa61b327d
+49,motorbike,hawksbill,0.0539,watch,0.0556,hawksbill,0.0651,0.6897,4a318dcaa61b327d
+50,motorbike,leopard,0.0915,leopard,0.0620,leopard,0.1595,0.8208,4a318dcaa61b327d
+51,motorbike,motorbike,0.3037,watch,0.1279,watch,0.1564,0.7871,4c71724e7dae08a4
+52,motorbike,motorbike,0.3296,leopard,0.0939,leopard,0.1013,0.7870,4c71724e7dae08a4
+53,motorbike,chandelier,0.0274,chandelier,0.0139,chandelier,0.0315,0.6674,4c71724e7dae08a4
+54,motorbike,motorbike,0.5800,motorbike,0.4409,watch,0.2402,0.7310,8add8db46c5f9e07
+55,motorbike,watch,0.2766,watch,0.1971,airplane,0.0753,0.8206,8add8db46c5f9e07
+56,motorbike,motorbike,0.5532,motorbike,0.5316,leopard,0.2192,0.8637,8add8db46c5f9e07
+57,motorbike,motorbike,0.7529,motorbike,0.8490,motorbike,0.3560,0.7887,112bcae203fb5551
+58,motorbike,motorbike,0.3154,motorbike,0.3588,leopard,0.0603,0.7809,112bcae203fb5551
+59,motorbike,leopard,0.1302,leopard,0.0396,leopard,0.0337,0.6716,112bcae203fb5551
+60,face,hawksbill,0.0524,hawksbill,0.0219,chandelier,0.0555,0.7117,d994861694faf12e
+61,face,face,0.2965,face,0.4295,ketch,0.0427,0.8413,d994861694faf12e
+62,face,face,0.3716,watch,0.2086,leopard,0.0793,0.7633,d994861694faf12e
+63,face,face,0.7021,leopard,0.1829,leopard,0.1927,0.7514,d15d55227ba8b2ce
+64,face,face,0.8143,face,0.4494,leopard,0.2399,0.7667,d15d55227ba8b2ce
+65,face,leopard,0.1656,leopard,0.0406,leopard,0.0514,0.7736,d15d55227ba8b2ce
+66,face,face,0.5755,chandelier,0.3431,face,0.5524,0.8244,676892d880982866
+67,face,face,0.7217,face,0.8659,leopard,0.1253,0.7760,676892d880982866
+68,face,face,0.6425,face,0.5298,leopard,0.1381,0.7752,676892d880982866
+69,face,face,0.8244,face,0.7580,face,0.5978,0.8352,7dcf63da0ac0f42a
+70,face,face,0.2432,face,0.5502,face,0.2269,0.7528,7dcf63da0ac0f42a
+71,face,face,0.7962,face,0.6759,face,0.5307,0.8085,7dcf63da0ac0f42a
+72,face,bonsai,0.1709,leopard,0.1381,face,0.3494,0.7746,f6ed2964bf0a9582
+73,face,face,0.4453,face,0.4096,face,0.3846,0.8219,f6ed2964bf0a9582
+74,face,face,0.7898,leopard,0.2749,face,0.1767,0.7450,f6ed2964bf0a9582
+75,face,hawksbill,0.0830,hawksbill,0.1180,hawksbill,0.1072,0.7748,4ba18bde5b00ea75
+76,face,face,0.3595,face,0.4907,face,0.2943,0.7539,4ba18bde5b00ea75
+77,face,face,0.3178,face,0.4207,airplane,0.1820,0.8251,4ba18bde5b00ea75
+78,face,face,0.4980,leopard,0.1031,chandelier,0.1975,0.7314,4a318dcaa61b327d
+79,face,face,0.5787,leopard,0.1014,leopard,0.0256,0.7275,4a318dcaa61b327d
+80,face,bonsai,0.0675,bonsai,0.0322,leopard,0.0519,0.7638,4a318dcaa61b327d
+81,face,chandelier,0.1178,chandelier,0.0425,chandelier,0.1188,0.7588,4c71724e7dae08a4
+82,face,leopard,0.1493,leopard,0.0641,hawksbill,0.0681,0.7575,4c71724e7dae08a4
+83,face,ketch,0.0108,ketch,0.0332,ketch,0.0763,0.8011,4c71724e7dae08a4
+84,face,face,0.8751,face,0.8003,face,0.3754,0.7417,8add8db46c5f9e07
+85,face,ketch,0.1288,ketch,0.2512,chandelier,0.0895,0.7984,8add8db46c5f9e07
+86,face,face,0.6785,leopard,0.0721,leopard,0.0557,0.7349,8add8db46c5f9e07
+87,face,face,0.8095,face,0.8483,face,0.7263,0.8281,112bcae203fb5551
+88,face,face,0.2943,leopard,0.2952,leopard,0.1907,0.7378,112bcae203fb5551
+89,face,ketch,0.0481,leopard,0.0443,bonsai,0.0562,0.7690,112bcae203fb5551
+90,watch,watch,0.7471,watch,0.8864,watch,0.7652,0.7985,d994861694faf12e
+91,watch,watch,0.6776,watch,0.6160,watch,0.2724,0.8161,d994861694faf12e
+92,watch,watch,0.2636,watch,0.3223,watch,0.3771,0.7575,d994861694faf12e
+93,watch,bonsai,0.1083,bonsai,0.1198,bonsai,0.1335,0.7623,d15d55227ba8b2ce
+94,watch,watch,0.2517,watch,0.3513,watch,0.3368,0.7717,d15d55227ba8b2ce
+95,watch,watch,0.3694,airplane,0.2686,watch,0.6165,0.7097,d15d55227ba8b2ce
+96,watch,chandelier,0.0822,bonsai,0.0328,chandelier,0.0258,0.7413,676892d880982866
+97,watch,hawksbill,0.0459,hawksbill,0.0732,leopard,0.1603,0.7869,676892d880982866
+98,watch,chandelier,0.0316,ketch,0.0189,ketch,0.0498,0.8031,676892d880982866
+99,watch,face,0.2267,face,0.2316,airplane,0.1580,0.7175,7dcf63da0ac0f42a
+100,watch,watch,0.5190,bonsai,0.1922,bonsai,0.2128,0.8208,7dcf63da0ac0f42a
+101,watch,hawksbill,0.0482,hawksbill,0.0598,hawksbill,0.1284,0.8531,7dcf63da0ac0f42a
+102,watch,watch,0.4965,watch,0.3664,watch,0.5747,0.7868,f6ed2964bf0a9582
+103,watch,bonsai,0.1340,watch,0.2394,watch,0.6635,0.7213,f6ed2964bf0a9582
+104,watch,watch,0.4605,watch,0.7869,watch,0.7820,0.7309,f6ed2964bf0a9582
+105,watch,hawksbill,0.1313,hawksbill,0.0836,leopard,0.0456,0.7338,4ba18bde5b00ea75
+106,watch,watch,0.2243,hawksbill,0.2538,watch,0.8481,0.8092,4ba18bde5b00ea75
+107,watch,watch,0.3605,watch,0.3259,watch,0.3567,0.8166,4ba18bde5b00ea75
+108,watch,watch,0.4280,watch,0.3545,watch,0.3244,0.7108,4a318dcaa61b327d
+109,watch,ketch,0.0209,chandelier,0.0195,airplane,0.0463,0.8456,4a318dcaa61b327d
+110,watch,watch,0.8286,watch,0.7402,watch,0.3768,0.7766,4a318dcaa61b327d
+111,watch,face,0.0329,face,0.0227,face,0.0398,0.8655,4c71724e7dae08a4
+112,watch,watch,0.3707,leopard,0.2283,car side,0.1134,0.7387,4c71724e7dae08a4
+113,watch,watch,0.5862,watch,0.7247,watch,0.6632,0.7690,4c71724e7dae08a4
+114,watch,face,0.1123,leopard,0.1094,face,0.1624,0.7302,8add8db46c5f9e07
+115,watch,hawksbill,0.0373,hawksbill,0.0263,leopard,0.0220,0.7363,8add8db46c5f9e07
+116,watch,watch,0.6125,watch,0.6169,watch,0.3109,0.7662,8add8db46c5f9e07
+117,watch,watch,0.4925,watch,0.4804,leopard,0.1080,0.8026,112bcae203fb5551
+118,watch,airplane,0.1024,airplane,0.0725,airplane,0.0187,0.7146,112bcae203fb5551
+119,watch,face,0.0304,face,0.0142,face,0.0728,0.8233,112bcae203fb5551
+120,leopard,leopard,0.7200,leopard,0.8456,leopard,0.5003,0.8089,d994861694faf12e
+121,leopard,chandelier,0.0911,leopard,0.5302,leopard,0.4859,0.6668,d994861694faf12e
+122,leopard,leopard,0.4847,leopard,0.7412,leopard,0.2978,0.7002,d994861694faf12e
+123,leopard,leopard,0.2698,leopard,0.4850,leopard,0.3542,0.7560,d15d55227ba8b2ce
+124,leopard,leopard,0.3691,leopard,0.3049,leopard,0.3953,0.7833,d15d55227ba8b2ce
+125,leopard,leopard,0.8232,leopard,0.6776,leopard,0.5137,0.8725,d15d55227ba8b2ce
+126,leopard,face,0.0685,face,0.0896,ketch,0.1847,0.7800,676892d880982866
+127,leopard,leopard,0.2013,leopard,0.3413,chandelier,0.2218,0.7418,676892d880982866
+128,leopard,bonsai,0.0390,bonsai,0.0515,watch,0.1673,0.7172,676892d880982866
+129,leopard,leopard,0.3062,leopard,0.3148,leopard,0.3439,0.7511,7dcf63da0ac0f42a
+130,leopard,leopard,0.7076,leopard,0.6903,leopard,0.7340,0.7409,7dcf63da0ac0f42a
+131,leopard,leopard,0.3921,leopard,0.3720,leopard,0.4213,0.7796,7dcf63da0ac0f42a
+132,leopard,car side,0.1263,car side,0.1581,airplane,0.1308,0.7670,f6ed2964bf0a9582
+133,leopard,airplane,0.0179,airplane,0.0197,airplane,0.0381,0.7571,f6ed2964bf0a9582
+134,leopard,leopard,0.5817,leopard,0.4295,leopard,0.3052,0.7566,f6ed2964bf0a9582
+135,leopard,leopard,0.6520,leopard,0.8837,leopard,0.7811,0.7435,4ba18bde5b00ea75
+136,leopard,ketch,0.0543,ketch,0.1725,leopard,0.4482,0.8047,4ba18bde5b00ea75
+137,leopard,chandelier,0.0614,face,0.0227,chandelier,0.0482,0.7418,4ba18bde5b00ea75
+138,leopard,leopard,0.5685,leopard,0.7654,leopard,0.3470,0.6944,4a318dcaa61b327d
+139,leopard,chandelier,0.1457,bonsai,0.1564,leopard,0.2150,0.6953,4a318dcaa61b327d
+140,leopard,leopard,0.4945,leopard,0.2550,watch,0.0804,0.7225,4a318dcaa61b327d
+141,leopard,car side,0.1287,car side,0.1018,hawksbill,0.0482,0.6579,4c71724e7dae08a4
+142,leopard,leopard,0.2295,leopard,0.3928,leopard,0.2889,0.7575,4c71724e7dae08a4
+143,leopard,face,0.0372,face,0.0244,face,0.0501,0.7555,4c71724e7dae08a4
+144,leopard,leopard,0.3335,leopard,0.5916,hawksbill,0.1281,0.7146,8add8db46c5f9e07
+145,leopard,face,0.0205,face,0.0102,airplane,0.0181,0.7857,8add8db46c5f9e07
+146,leopard,face,0.4127,leopard,0.5902,leopard,0.7072,0.7727,8add8db46c5f9e07
+147,leopard,bonsai,0.2779,leopard,0.3651,leopard,0.2442,0.7194,112bcae203fb5551
+148,leopard,leopard,0.5001,leopard,0.4362,leopard,0.3728,0.7241,112bcae203fb5551
+149,leopard,hawksbill,0.0669,hawksbill,0.0796,hawksbill,0.1152,0.7949,112bcae203fb5551
+150,bonsai,chandelier,0.0455,chandelier,0.0352,chandelier,0.0474,0.7434,d994861694faf12e
+151,bonsai,leopard,0.0502,leopard,0.0410,car side,0.0550,0.7787,d994861694faf12e
+152,bonsai,bonsai,0.3688,chandelier,0.1473,ketch,0.0708,0.7444,d994861694faf12e
+153,bonsai,bonsai,0.8542,bonsai,0.9736,bonsai,0.9161,0.7752,d15d55227ba8b2ce
+154,bonsai,chandelier,0.0399,leopard,0.0175,leopard,0.0418,0.6453,d15d55227ba8b2ce
+155,bonsai,bonsai,0.7243,bonsai,0.8823,watch,0.3245,0.7909,d15d55227ba8b2ce
+156,bonsai,hawksbill,0.0885,leopard,0.0305,leopard,0.0462,0.6707,676892d880982866
+157,bonsai,watch,0.0254,watch,0.0480,watch,0.0325,0.7671,676892d880982866
+158,bonsai,bonsai,0.4635,chandelier,0.2164,chandelier,0.2826,0.7486,676892d880982866
+159,bonsai,ketch,0.0740,leopard,0.0385,leopard,0.1211,0.7866,7dcf63da0ac0f42a
+160,bonsai,leopard,0.0209,leopard,0.0151,leopard,0.0397,0.7454,7dcf63da0ac0f42a
+161,bonsai,bonsai,0.7957,bonsai,0.6052,bonsai,0.6874,0.7564,7dcf63da0ac0f42a
+162,bonsai,bonsai,0.5620,bonsai,0.7835,bonsai,0.5906,0.7469,f6ed2964bf0a9582
+163,bonsai,ketch,0.0667,car side,0.0664,watch,0.0698,0.8054,f6ed2964bf0a9582
+164,bonsai,bonsai,0.3665,car side,0.2323,car side,0.0689,0.7881,f6ed2964bf0a9582
+165,bonsai,motorbike,0.0816,leopard,0.0730,leopard,0.0538,0.8033,4ba18bde5b00ea75
+166,bonsai,bonsai,0.7733,bonsai,0.7530,bonsai,0.4756,0.9131,4ba18bde5b00ea75
+167,bonsai,ketch,0.0375,ketch,0.0313,ketch,0.0458,0.8405,4ba18bde5b00ea75
+168,bonsai,bonsai,0.6719,bonsai,0.5724,chandelier,0.1824,0.7407,4a318dcaa61b327d
+169,bonsai,bonsai,0.5841,bonsai,0.7610,bonsai,0.5570,0.7459,4a318dcaa61b327d
+170,bonsai,bonsai,0.3664,ketch,0.2241,watch,0.0696,0.7581,4a318dcaa61b327d
+171,bonsai,bonsai,0.3237,bonsai,0.5995,chandelier,0.0611,0.8271,4c71724e7dae08a4
+172,bonsai,watch,0.1519,bonsai,0.3292,watch,0.0441,0.7500,4c71724e7dae08a4
+173,bonsai,car side,0.0559,car side,0.0419,car side,0.0569,0.6645,4c71724e7dae08a4
+174,bonsai,watch,0.2386,watch,0.2154,watch,0.2402,0.7377,8add8db46c5f9e07
+175,bonsai,chandelier,0.1640,chandelier,0.1103,bonsai,0.2286,0.7909,8add8db46c5f9e07
+176,bonsai,leopard,0.0327,chandelier,0.0197,leopard,0.0490,0.7428,8add8db46c5f9e07
+177,bonsai,bonsai,0.9616,bonsai,0.9848,bonsai,0.8438,0.7104,112bcae203fb5551
+178,bonsai,chandelier,0.1827,chandelier,0.0653,car side,0.0462,0.8436,112bcae203fb5551
+179,bonsai,bonsai,0.9082,bonsai,0.9141,bonsai,0.6498,0.8168,112bcae203fb5551
+180,car side,car side,0.3758,car side,0.3431,leopard,0.0533,0.8063,d994861694faf12e
+181,car side,car side,0.4436,airplane,0.2727,car side,0.4297,0.7541,d994861694faf12e
+182,car side,watch,0.1778,watch,0.1323,watch,0.0827,0.7212,d994861694faf12e
+183,car side,hawksbill,0.0493,hawksbill,0.0436,hawksbill,0.0344,0.8118,d15d55227ba8b2ce
+184,car side,hawksbill,0.1016,face,0.1208,car side,0.6053,0.6754,d15d55227ba8b2ce
+185,car side,car side,0.7605,car side,0.8933,car side,0.9267,0.8097,d15d55227ba8b2ce
+186,car side,motorbike,0.2944,motorbike,0.2605,motorbike,0.2007,0.8087,676892d880982866
+187,car side,car side,0.3186,watch,0.1215,airplane,0.0370,0.7192,676892d880982866
+188,car side,airplane,0.0441,airplane,0.1057,airplane,0.0686,0.8713,676892d880982866
+189,car side,car side,0.7547,car side,0.8832,car side,0.2294,0.7907,7dcf63da0ac0f42a
+190,car side,watch,0.1610,watch,0.1464,watch,0.1044,0.8304,7dcf63da0ac0f42a
+191,car side,leopard,0.0745,leopard,0.0306,car side,0.7213,0.8144,7dcf63da0ac0f42a
+192,car side,car side,0.5372,leopard,0.2977,leopard,0.1741,0.6691,f6ed2964bf0a9582
+193,car side,ketch,0.1415,motorbike,0.1288,car side,0.2542,0.8610,f6ed2964bf0a9582
+194,car side,car side,0.5607,airplane,0.0997,airplane,0.2301,0.7535,f6ed2964bf0a9582
+195,car side,watch,0.1024,watch,0.1178,leopard,0.1070,0.7506,4ba18bde5b00ea75
+196,car side,car side,0.2083,chandelier,0.1787,watch,0.2731,0.7866,4ba18bde5b00ea75
+197,car side,car side,0.4499,car side,0.3180,ketch,0.0719,0.7305,4ba18bde5b00ea75
+198,car side,car side,0.6772,car side,0.5426,car side,0.3149,0.7788,4a318dcaa61b327d
+199,car side,hawksbill,0.1321,hawksbill,0.0442,hawksbill,0.1285,0.6853,4a318dcaa61b327d
+200,car side,hawksbill,0.1114,hawksbill,0.2082,car side,0.5858,0.7472,4a318dcaa61b327d
+201,car side,car side,0.4803,car side,0.3531,car side,0.3434,0.8585,4c71724e7dae08a4
+202,car side,face,0.2083,chandelier,0.0912,chandelier,0.0616,0.7891,4c71724e7dae08a4
+203,car side,car side,0.3027,leopard,0.1426,leopard,0.1872,0.8195,4c71724e7dae08a4
+204,car side,car side,0.4002,car side,0.2557,car side,0.4162,0.8074,8add8db46c5f9e07
+205,car side,car side,0.3711,car side,0.4850,car side,0.3053,0.7865,8add8db46c5f9e07
+206,car side,watch,0.0506,watch,0.0367,leopard,0.0387,0.7157,8add8db46c5f9e07
+207,car side,car side,0.4083,hawksbill,0.1639,leopard,0.1861,0.7440,112bcae203fb5551
+208,car side,car side,0.4548,leopard,0.1944,leopard,0.0750,0.6939,112bcae203fb5551
+209,car side,airplane,0.3281,airplane,0.1645,airplane,0.0214,0.7591,112bcae203fb5551
+210,ketch,face,0.1936,chandelier,0.0827,chandelier,0.0758,0.7407,d994861694faf12e
+211,ketch,ketch,0.7126,ketch,0.3958,ketch,0.3647,0.7730,d994861694faf12e
+212,ketch,ketch,0.3896,hawksbill,0.1960,chandelier,0.1490,0.7378,d994861694faf12e
+213,ketch,car side,0.0987,car side,0.0284,car side,0.0636,0.7389,d15d55227ba8b2ce
+214,ketch,chandelier,0.2167,chandelier,0.1448,leopard,0.0537,0.8007,d15d55227ba8b2ce
+215,ketch,airplane,0.3048,airplane,0.1669,ketch,0.3512,0.8362,d15d55227ba8b2ce
+216,ketch,ketch,0.4662,leopard,0.1700,leopard,0.0855,0.7456,676892d880982866
+217,ketch,hawksbill,0.1222,hawksbill,0.0750,airplane,0.0383,0.7050,676892d880982866
+218,ketch,ketch,0.3917,leopard,0.1833,ketch,0.2503,0.7555,676892d880982866
+219,ketch,ketch,0.3008,hawksbill,0.2102,hawksbill,0.0546,0.8452,7dcf63da0ac0f42a
+220,ketch,ketch,0.3585,airplane,0.2471,airplane,0.2592,0.7841,7dcf63da0ac0f42a
+221,ketch,watch,0.0589,leopard,0.0208,leopard,0.0374,0.7350,7dcf63da0ac0f42a
+222,ketch,ketch,0.4428,ketch,0.4081,ketch,0.4004,0.7176,f6ed2964bf0a9582
+223,ketch,face,0.0679,face,0.0457,airplane,0.0708,0.7731,f6ed2964bf0a9582
+224,ketch,airplane,0.1713,airplane,0.1696,motorbike,0.1570,0.7817,f6ed2964bf0a9582
+225,ketch,ketch,0.9298,ketch,0.6945,ketch,0.3775,0.7957,4ba18bde5b00ea75
+226,ketch,ketch,0.5191,chandelier,0.2858,ketch,0.2643,0.7295,4ba18bde5b00ea75
+227,ketch,ketch,0.4692,ketch,0.3947,ketch,0.4624,0.7974,4ba18bde5b00ea75
+228,ketch,hawksbill,0.0658,leopard,0.1109,chandelier,0.0660,0.7956,4a318dcaa61b327d
+229,ketch,ketch,0.4311,leopard,0.0712,leopard,0.0353,0.7087,4a318dcaa61b327d
+230,ketch,chandelier,0.1837,car side,0.1024,car side,0.0899,0.7765,4a318dcaa61b327d
+231,ketch,bonsai,0.1626,bonsai,0.0232,bonsai,0.0787,0.7676,4c71724e7dae08a4
+232,ketch,ketch,0.2872,car side,0.1418,leopard,0.0372,0.7581,4c71724e7dae08a4
+233,ketch,bonsai,0.1138,chandelier,0.0446,chandelier,0.0723,0.7886,4c71724e7dae08a4
+234,ketch,leopard,0.0272,leopard,0.0194,leopard,0.0278,0.7432,8add8db46c5f9e07
+235,ketch,ketch,0.3974,chandelier,0.2211,leopard,0.1572,0.7769,8add8db46c5f9e07
+236,ketch,ketch,0.2879,hawksbill,0.2536,airplane,0.1037,0.8040,8add8db46c5f9e07
+237,ketch,ketch,0.9490,ketch,0.9659,chandelier,0.3744,0.7809,112bcae203fb5551
+238,ketch,ketch,0.4162,chandelier,0.2745,chandelier,0.0871,0.7533,112bcae203fb5551
+239,ketch,ketch,0.8234,ketch,0.7148,ketch,0.6171,0.8183,112bcae203fb5551
+240,chandelier,chandelier,0.3249,face,0.2740,ketch,0.0343,0.8482,d994861694faf12e
+241,chandelier,airplane,0.0360,airplane,0.0621,car side,0.1100,0.7113,d994861694faf12e
+242,chandelier,watch,0.1135,watch,0.0328,watch,0.0468,0.7681,d994861694faf12e
+243,chandelier,chandelier,0.6310,chandelier,0.7447,chandelier,0.6067,0.7754,d15d55227ba8b2ce
+244,chandelier,chandelier,0.2673,chandelier,0.5406,leopard,0.0789,0.7326,d15d55227ba8b2ce
+245,chandelier,chandelier,0.3105,chandelier,0.7200,chandelier,0.4124,0.7153,d15d55227ba8b2ce
+246,chandelier,chandelier,0.8300,chandelier,0.9716,chandelier,0.6731,0.7378,676892d880982866
+247,chandelier,chandelier,0.5109,chandelier,0.4273,bonsai,0.0756,0.8081,676892d880982866
+248,chandelier,chandelier,0.1660,leopard,0.1809,chandelier,0.3536,0.7127,676892d880982866
+249,chandelier,airplane,0.0344,airplane,0.0531,airplane,0.0553,0.8111,7dcf63da0ac0f42a
+250,chandelier,ketch,0.0649,ketch,0.0605,ketch,0.0679,0.7689,7dcf63da0ac0f42a
+251,chandelier,chandelier,0.4402,chandelier,0.7230,chandelier,0.4280,0.7398,7dcf63da0ac0f42a
+252,chandelier,leopard,0.0575,leopard,0.0303,leopard,0.0293,0.6862,f6ed2964bf0a9582
+253,chandelier,leopard,0.1309,leopard,0.0795,leopard,0.0549,0.7099,f6ed2964bf0a9582
+254,chandelier,chandelier,0.3601,chandelier,0.5553,watch,0.0626,0.8076,f6ed2964bf0a9582
+255,chandelier,chandelier,0.5936,chandelier,0.5062,chandelier,0.3961,0.7980,4ba18bde5b00ea75
+256,chandelier,leopard,0.0601,leopard,0.0330,car side,0.0445,0.6559,4ba18bde5b00ea75
+257,chandelier,face,0.2079,face,0.0642,leopard,0.0205,0.7056,4ba18bde5b00ea75
+258,chandelier,leopard,0.1523,leopard,0.2678,leopard,0.1643,0.7714,4a318dcaa61b327d
+259,chandelier,leopard,0.2025,leopard,0.2074,leopard,0.0789,0.7273,4a318dcaa61b327d
+260,chandelier,airplane,0.0403,ketch,0.0354,airplane,0.0700,0.6912,4a318dcaa61b327d
+261,chandelier,chandelier,0.4975,chandelier,0.5140,ketch,0.1458,0.8091,4c71724e7dae08a4
+262,chandelier,car side,0.0475,car side,0.0501,airplane,0.0562,0.7886,4c71724e7dae08a4
+263,chandelier,chandelier,0.2500,chandelier,0.3699,car side,0.0573,0.6778,4c71724e7dae08a4
+264,chandelier,chandelier,0.3160,chandelier,0.8358,chandelier,0.8398,0.7791,8add8db46c5f9e07
+265,chandelier,chandelier,0.4955,chandelier,0.4165,chandelier,0.4131,0.7604,8add8db46c5f9e07
+266,chandelier,watch,0.0581,watch,0.0355,watch,0.0305,0.7799,8add8db46c5f9e07
+267,chandelier,chandelier,0.2511,leopard,0.1396,leopard,0.1181,0.6830,112bcae203fb5551
+268,chandelier,airplane,0.0590,leopard,0.0407,leopard,0.0472,0.7304,112bcae203fb5551
+269,chandelier,bonsai,0.0563,leopard,0.0653,leopard,0.0974,0.6289,112bcae203fb5551
+270,hawksbill,chandelier,0.0575,chandelier,0.0811,chandelier,0.0506,0.7671,d994861694faf12e
+271,hawksbill,leopard,0.0822,face,0.0999,leopard,0.0414,0.8294,d994861694faf12e
+272,hawksbill,face,0.0666,leopard,0.0378,leopard,0.0286,0.7334,d994861694faf12e
+273,hawksbill,hawksbill,0.6824,hawksbill,0.5523,airplane,0.1679,0.7413,d15d55227ba8b2ce
+274,hawksbill,airplane,0.0520,airplane,0.0311,airplane,0.0673,0.7411,d15d55227ba8b2ce
+275,hawksbill,watch,0.1700,bonsai,0.2012,leopard,0.1400,0.7448,d15d55227ba8b2ce
+276,hawksbill,hawksbill,0.4350,ketch,0.2033,hawksbill,0.2988,0.7501,676892d880982866
+277,hawksbill,hawksbill,0.7017,hawksbill,0.9433,hawksbill,0.7017,0.7251,676892d880982866
+278,hawksbill,bonsai,0.0700,bonsai,0.1474,leopard,0.2091,0.7351,676892d880982866
+279,hawksbill,hawksbill,0.7240,hawksbill,0.3305,ketch,0.1831,0.7835,7dcf63da0ac0f42a
+280,hawksbill,chandelier,0.0406,leopard,0.0299,car side,0.0375,0.7867,7dcf63da0ac0f42a
+281,hawksbill,hawksbill,0.3805,airplane,0.3175,hawksbill,0.2744,0.7346,7dcf63da0ac0f42a
+282,hawksbill,face,0.1012,face,0.0368,face,0.0542,0.7303,f6ed2964bf0a9582
+283,hawksbill,hawksbill,0.6906,hawksbill,0.6698,hawksbill,0.5512,0.6989,f6ed2964bf0a9582
+284,hawksbill,hawksbill,0.3722,hawksbill,0.6203,watch,0.1686,0.8454,f6ed2964bf0a9582
+285,hawksbill,leopard,0.1199,leopard,0.1077,car side,0.0551,0.7535,4ba18bde5b00ea75
+286,hawksbill,leopard,0.0434,leopard,0.0653,leopard,0.0648,0.7974,4ba18bde5b00ea75
+287,hawksbill,hawksbill,0.6701,hawksbill,0.7674,watch,0.2421,0.7072,4ba18bde5b00ea75
+288,hawksbill,hawksbill,0.2984,hawksbill,0.5284,watch,0.1714,0.8060,4a318dcaa61b327d
+289,hawksbill,hawksbill,0.2935,hawksbill,0.4072,car side,0.1098,0.7930,4a318dcaa61b327d
+290,hawksbill,hawksbill,0.5926,hawksbill,0.4754,hawksbill,0.2927,0.6888,4a318dcaa61b327d
+291,hawksbill,hawksbill,0.4629,hawksbill,0.7307,hawksbill,0.4036,0.7294,4c71724e7dae08a4
+292,hawksbill,hawksbill,0.6284,hawksbill,0.5313,hawksbill,0.4353,0.7906,4c71724e7dae08a4
+293,hawksbill,hawksbill,0.5707,hawksbill,0.8803,hawksbill,0.4129,0.8038,4c71724e7dae08a4
+294,hawksbill,ketch,0.2328,ketch,0.0630,ketch,0.0353,0.7666,8add8db46c5f9e07
+295,hawksbill,watch,0.0719,watch,0.0264,watch,0.0297,0.8002,8add8db46c5f9e07
+296,hawksbill,watch,0.0438,watch,0.0162,bonsai,0.0524,0.7774,8add8db46c5f9e07
+297,hawksbill,leopard,0.0700,leopard,0.0493,watch,0.0449,0.7692,112bcae203fb5551
+298,hawksbill,leopard,0.1781,leopard,0.1114,watch,0.0492,0.8463,112bcae203fb5551
+299,hawksbill,car side,0.1493,leopard,0.1783,hawksbill,0.3193,0.7411,112bcae203fb5551
