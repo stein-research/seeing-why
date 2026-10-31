@@ -660,7 +660,7 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
     if S["optical"]:
         panels.append(("phase plates", lambda A: _planes(A, _mapped(_tiles([ph % (2 * np.pi) for ph in S["plates"]]),
                                                                     "twilight", 0, 2 * np.pi), labels=("1", "2", "3", "4")),
-                       "1 \u2192 4 in turn, each over all"))
+                       "1 \u2192 4 in turn"))
         for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
             panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(np.abs(f_), cmap="magma"))(f),
                            f"{100 * k:.1f} % left"))
