@@ -21,6 +21,38 @@ picture is amplitude-encoded, filtered by a learned mask in the Fourier plane, a
 Because the model is linear in the input amplitudes up to the measurement, the evidence of every pixel has a closed
 form and adds up to each class's probability above its share, and it can be measured on the hardware itself.
 
+## How it works
+
+The measurement has $N$ outcomes, split into one group $S_g$ per class; class $g$ collects the probability
+$P_g = \sum_{b \in S_g} P_b$. With no information about the input, a circuit gives each class only its share
+$b_g = |S_g|/N$. The **Born headroom** is how far the class rises above that share, in units of the room above it:
+
+```math
+u_g = \frac{P_g - b_g}{1 - b_g} \in \Big[-\frac{b_g}{1-b_g},\; 1\Big]
+```
+
+Every class has the same ceiling of 1, whatever the size of its group. The **readout** turns headrooms into class
+probabilities with no trained parameter; one chosen headroom $\varphi$ fixes the temperature:
+
+```math
+\hat p = \operatorname{softmax}\big(\kappa\, \mathrm{LeakyReLU}(u)\big), \qquad
+\kappa = \frac{\ln\big[(1-\varepsilon)(G-1)/\varepsilon\big]}{\varphi}
+```
+
+($G$ classes, $\varepsilon = 0.01$, $\varphi = 0.0556$: the true class is called with probability $1-\varepsilon$ once
+it holds 1.5 times its share.) Because the picture $a$ enters linearly up to the measurement ($A$: the mask and the
+circuit or plates), the **evidence** of every pixel $x$ has a closed form, and it adds up exactly:
+
+```math
+e_g(x) = \frac{a(x)\,\mathrm{Re}\big[M_g\, a\big](x)}{Z}, \qquad
+M_g = A^\dagger (\Pi_g - b_g) A, \qquad
+\sum_x e_g(x) = P_g - b_g
+```
+
+($Z$: the light that reaches the measurement.) Red pixels in the maps push a class above its share, blue ones pull it
+below. The same quantity is measured on the hardware: on a qubit chip from three class probabilities per block
+(polarization identity), on a lens bench from camera intensities alone.
+
 ## Contents
 
 | | |
