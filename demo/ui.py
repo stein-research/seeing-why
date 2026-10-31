@@ -542,14 +542,21 @@ CLASS_COLOURS = ["#4c8bf5", "#f2994a", "#5cc46e", "#eb5757", "#a98cf0", "#c49a6c
                  "#3cc6c6"]
 
 
-def _phase_rgb(f, gamma=0.6):
-    """A complex field as colour: hue = phase (amber 0, blue pi, the bench's convention), brightness = amplitude."""
+def _signed(f):
+    """A field's real part as Figure 1 draws it: red positive, blue negative, white zero (the evidence colours), each
+    of the 2 x 2 tiles scaled to its own 99th percentile."""
     import matplotlib.colors as mc
-    cyc = mc.LinearSegmentedColormap.from_list("phase", ["#f2b134", "#3fb6a8", "#3b7dd8", "#e57fa6", "#f2b134"])
-    amp = np.abs(f)
-    amp = (amp / max(amp.max(), 1e-12)) ** gamma
-    rgb = cyc((np.angle(f) % (2 * np.pi)) / (2 * np.pi))[..., :3]
-    return rgb * amp[..., None]
+    cmap = mc.LinearSegmentedColormap.from_list(
+        "signed", ["#08306b", "#1f78d1", "#9cc9f5", "#f7f7f7", "#f9a77e", "#e8431c", "#7f0d0d"])
+    f = np.real(f)
+    h, w = f.shape[0] // 2, f.shape[1] // 2
+    out = np.zeros(f.shape + (3,))
+    for r in (0, 1):
+        for c in (0, 1):
+            t = f[r * h:(r + 1) * h, c * w:(c + 1) * w]
+            v = np.percentile(np.abs(t), 99) or 1.0
+            out[r * h:(r + 1) * h, c * w:(c + 1) * w] = cmap(np.clip(t / v, -1, 1) * 0.5 + 0.5)[..., :3]
+    return out
 
 
 def _tiles(imgs):
@@ -611,20 +618,18 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
     pred = int(np.argmax(p))
     panels = [("picture", lambda A: A.imshow(x), sw.NAMES[true] if true is not None else ""),
               ("modulator field" if S["optical"] else "amplitudes",
-               lambda A: A.imshow(_phase_rgb(S["field"])), "R, G, B + means")]
+               lambda A: A.imshow(_signed(S["field"])), "R, G, B + means")]
     if "mask" in S:
         panels += [("Fourier plane", lambda A: A.imshow(_tiles(S["spectra"]), cmap="inferno"),
                     "spectra"),
-                   ("learned mask", lambda A: A.imshow(_phase_rgb(S["mask"])), "learned"),
-                   ("filtered", lambda A: A.imshow(_phase_rgb(S["filtered"])),
+                   ("learned mask", lambda A: A.imshow(np.abs(S["mask"]), cmap="magma", vmin=0), "magnitude"),
+                   ("filtered", lambda A: A.imshow(_signed(S["filtered"])),
                     f"{100 * S['passed']:.1f} % passes")]
     if S["optical"]:
-        panels.append(("phase plates", lambda A: A.imshow(_tiles([np.exp(1j * ph) for ph in S["plates"]]) if False else
-                       _phase_rgb(np.block([[np.exp(1j * S['plates'][0]), np.exp(1j * S['plates'][1])],
-                                            [np.exp(1j * S['plates'][2]), np.exp(1j * S['plates'][3])]]))),
-                       "4 plates"))
+        panels.append(("phase plates", lambda A: A.imshow(_tiles([ph % (2 * np.pi) for ph in S["plates"]]),
+                                                          cmap="twilight", vmin=0, vmax=2 * np.pi), "4 plates"))
         for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
-            panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(_phase_rgb(f_)))(f),
+            panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(np.abs(f_), cmap="magma"))(f),
                            f"{100 * k:.1f} % left"))
         panels.append(("camera", lambda A: _camera(A, S["camera"], S["group_of"]),
                        f"{100 * S['camera_kept']:.1f} % arrives"))

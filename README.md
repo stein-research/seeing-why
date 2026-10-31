@@ -18,8 +18,9 @@ Fourier transform, a brickwall circuit and 128 measured bit strings.*
 The classifiers have no trained classical network before or after the quantum or optical part: a 32 x 32 colour
 picture is amplitude-encoded, filtered by a learned mask in the Fourier plane, and passed through four phase plates
 (light) or a brickwall circuit on twelve qubits; the measured probabilities are read with the Born headroom readout.
-Because the model is linear in the input amplitudes up to the measurement, the evidence of every pixel has a closed
-form and adds up to each class's probability above its share, and it can be measured on the hardware itself.
+Because the model is linear in the input amplitudes up to the measurement, the evidence of every encoded amplitude has
+a closed form, shown as a **Born evidence map (BEM)**: it adds up to each class's probability above its share, and it
+can be measured on the hardware itself.
 
 ## How it works
 
