@@ -302,10 +302,10 @@ def demo_train():
     go = W.Button(description="train", button_style="warning", icon="play")
     stop = W.Button(description="stop", button_style="danger", icon="stop", disabled=True)
     status = W.HTML()
-    chart = W.Image(format="png", layout=W.Layout(width="480px"))
-    log = W.Textarea(layout=W.Layout(width="720px", height="110px"), disabled=True)
+    chart = W.Image(format="png", layout=W.Layout(width="480px", display="none"))   # hidden until it has a picture
+    log = W.Textarea(layout=W.Layout(width="720px", height="110px", display="none"), disabled=True)
     result = W.HTML()
-    result_img = W.Image(format="png", layout=W.Layout(width="900px"))
+    result_img = W.Image(format="png", layout=W.Layout(width="900px", display="none"))
     run = {"proc": None, "stopped": False}
 
     def work(cmd, n_epochs):
@@ -337,6 +337,7 @@ def demo_train():
         acc = (sw.classify(res, x).argmax(1) == y).mean()
         i = int(np.flatnonzero(y == 7)[0])
         result_img.value = _png(explain(res, x[i], int(y[i])))
+        result_img.layout.display = ""
         status.value = f"done: test accuracy {100 * acc:.1f} %"
         LAST["model"] = new[-1]
         result.value = (f"<p>Saved as <code>{new[-1].relative_to(sw.ROOT)}</code>. Run the next cell to explore it "
@@ -345,8 +346,11 @@ def demo_train():
     def start(_):
         run["stopped"] = False
         go.disabled, stop.disabled = True, False
-        log.value, result.value, result_img.value = "", "", b""
+        log.value, result.value = "", ""
+        result_img.layout.display = "none"
         chart.value = _chart([], epochs.value)
+        chart.layout.display = ""
+        log.layout.display = ""
         status.value = f"training {recipe.value} for {epochs.value} epochs on {dev} ..."
         cmd = train_command(recipe.value, epochs.value, seed.value, dev)
         threading.Thread(target=work, args=(cmd, epochs.value), daemon=True).start()
