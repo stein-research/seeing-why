@@ -689,7 +689,7 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
                        f"4 \u00d7 {'\u00d7'.join(map(str, S['plates'][0].shape))}, in turn"))
         for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
             panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(np.abs(f_), cmap="magma"))(f),
-                           f"{'\u00d7'.join(map(str, f.shape))}\n{100 * k:.1f} % left"))
+                           f"{'\u00d7'.join(map(str, f.shape))} field (2\u00d72)\n{100 * k:.1f} % left"))
         panels.append(("camera", lambda A: _camera(A, S["camera"], S["group_of"]),
                        f"128 regions\n{100 * S['camera_kept']:.1f} % arrives"))
     rows = (len(panels) + 1 + 5) // 6
