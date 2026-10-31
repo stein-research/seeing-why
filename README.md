@@ -12,7 +12,7 @@ Interactive companion to the paper by Teerawat Tongloy (KMITL) and Rangsan Jomta
 
 *(a) All-optical: the picture on a modulator (three contrast planes and a plane of the colour means), a 4f system
 with a learned mask in its Fourier plane, four phase plates and a camera of 128 regions, read with the Born headroom
-readout (BHR); the exact evidence for "ketch" lies on the dark hull. (b) Qubit chip: the same steps with a quantum
+readout (BHR); the evidence for "ketch", which a bench can measure from camera frames, lies on the dark hull. (b) Qubit chip: the same steps with a quantum
 Fourier transform, a brickwall circuit and 128 measured bit strings.*
 
 The classifiers have no trained classical network before or after the quantum or optical part: a 32 x 32 colour
@@ -41,7 +41,7 @@ probabilities with no trained parameter; one chosen headroom $\varphi$ fixes the
 
 ($G$ classes, $\varepsilon = 0.01$, $\varphi = 0.0556$: the true class is called with probability $1-\varepsilon$ once
 it holds 1.5 times its share.) Because the picture $a$ enters linearly up to the measurement ($A$: the mask and the
-circuit or plates), the **evidence** of every pixel $x$ has a closed form, and it adds up exactly:
+circuit or plates), the **evidence** of every encoded amplitude $x$ (one pixel of one plane) has a closed form, and it adds up exactly:
 
 ```math
 e_g(x) = \frac{a(x)\,\mathrm{Re}\big[M_g\, a\big](x)}{Z}, \qquad
