@@ -201,11 +201,8 @@ def demo_photo():
                   "large and centred, works best.</div>")
     display(note)                                               # before any upload box, so it is read first
     try:
-        from google.colab import files, output                  # Colab: its own upload box, in the cell
+        from google.colab import output                         # Colab: a page file chooser (below)
         colab = True
-        up = files.upload()
-        if up:
-            data["bytes"] = next(iter(up.values()))
     except ImportError:
         colab = False
     model = W.Dropdown(options=list(sw.MODELS), description="model", layout=W.Layout(width="360px"))
@@ -214,7 +211,7 @@ def demo_photo():
     down = W.FloatSlider(min=-1, max=1, step=0.1, value=0, description="down")
     why = W.Dropdown(options=[("its answer", -1)] + [(n, i) for i, n in enumerate(sw.NAMES)], description="explain")
     box, apply = _box(W)
-    upload = W.FileUpload(accept="image/*", multiple=False, description="another photo")
+    upload = W.FileUpload(accept="image/*", multiple=False, description="choose a photo")
     out = W.Output()
     busy = [False]
 
@@ -255,9 +252,9 @@ def demo_photo():
     draw()
 
 
-# A file chooser for Colab: the page reads the photo, draws it on white at most 1024 px a side (upright, as the
+# The file chooser in Colab, for the first photo and every next one: the page reads the photo, draws it on white at most 1024 px a side (upright, as the
 # browser shows it) and hands it to the kernel as a JPEG.
-_CHOOSER = """<label style="font:13px sans-serif">another photo:
+_CHOOSER = """<label style="font:13px sans-serif">photo:
 <input type="file" accept="image/*" id="sw-photo"></label>
 <script>
 document.getElementById("sw-photo").addEventListener("change", e => {
