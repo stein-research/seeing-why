@@ -242,63 +242,101 @@ def train_command(recipe, epochs, seed, device):
             f"--device {device} {RECIPES[recipe]}").split()
 
 
+def _png(fig):
+    import io
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", dpi=90, bbox_inches="tight")
+    plt.close(fig)
+    return buf.getvalue()
+
+
+def _chart(val, epochs):
+    fig, ax = plt.subplots(figsize=(5, 2.2))
+    ax.plot(range(1, len(val) + 1), [100 * v for v in val], "o-", color=ACCENT, ms=3)
+    ax.set_xlabel("epoch")
+    ax.set_ylabel("validation accuracy (%)")
+    ax.set_xlim(0.5, epochs + 0.5)
+    return _png(fig)
+
+
 def demo_train():
-    """Train one of the paper's models in the simulator, watch the validation accuracy, then explain its answers."""
+    """Train one of the paper's models in the simulator, watch the validation accuracy, stop it at any time, then
+    explain its answers. The training runs in a background thread so the stop button stays live."""
     import re
     import subprocess
+    import threading
     import torch
     import ipywidgets as W
     from IPython.display import display
     if not (sw.ROOT / "data" / "caltech10fct.npz").exists():
-        print("Prepare the data first (the cell above).")
+        print("data/caltech10fct.npz is missing.")
         return
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     recipe = W.Dropdown(options=list(RECIPES), description="model", layout=W.Layout(width="420px"))
     epochs = W.IntSlider(min=1, max=50, value=10, description="epochs")
-    seed = W.BoundedIntText(min=3, max=999, value=3, description="seed",
-                            tooltip="0-2 are the paper's runs, kept in results/")
-    go = W.Button(description="train", button_style="warning")
-    log, chart, after = W.Output(), W.Output(), W.Output()
+    seed = W.BoundedIntText(min=3, max=999, value=3, description="seed", layout=W.Layout(width="160px"))
+    go = W.Button(description="train", button_style="warning", icon="play")
+    stop = W.Button(description="stop", button_style="danger", icon="stop", disabled=True)
+    status = W.HTML()
+    chart = W.Image(format="png", layout=W.Layout(width="480px"))
+    log = W.Textarea(layout=W.Layout(width="720px", height="110px"), disabled=True)
+    result = W.HTML()
+    result_img = W.Image(format="png", layout=W.Layout(width="900px"))
+    run = {"proc": None, "stopped": False}
 
-    def run(_):
-        go.disabled = True
-        log.clear_output()
-        chart.clear_output()
-        after.clear_output()
-        val = []
-        cmd = train_command(recipe.value, epochs.value, seed.value, dev)
-        proc = subprocess.Popen(cmd, cwd=sw.ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    def work(cmd, n_epochs):
         before = set((sw.ROOT / "results").glob("pilot_*.json"))
+        val = []
+        proc = run["proc"] = subprocess.Popen(cmd, cwd=sw.ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                              text=True)
+        tail = []
         for line in proc.stdout:
+            tail = (tail + [line.rstrip()])[-20:]
             m = re.match(r"epoch (\d+): .* val ([0-9.]+) \((\d+) s\)", line)
             if m:
                 val.append(float(m.group(2)))
-                with log:
-                    print(line.rstrip())
-                chart.clear_output(wait=True)
-                with chart:
-                    fig, ax = plt.subplots(figsize=(5, 2.2))
-                    ax.plot(range(1, len(val) + 1), [100 * v for v in val], "o-", color=ACCENT, ms=3)
-                    ax.set_xlabel("epoch")
-                    ax.set_ylabel("validation accuracy (%)")
-                    ax.set_xlim(0.5, epochs.value + 0.5)
-                    plt.show(fig)
+                log.value += line
+                chart.value = _chart(val, n_epochs)
+                status.value = f"epoch {m.group(1)} of {n_epochs}, validation {100 * val[-1]:.1f} %"
         proc.wait()
-        go.disabled = False
+        go.disabled, stop.disabled = False, True
         new = sorted(set((sw.ROOT / "results").glob("pilot_*.json")) - before, key=lambda f: f.stat().st_mtime)
+        if run["stopped"]:
+            status.value = f"stopped after {len(val)} epochs (a stopped run saves no model)"
+            return
         if proc.returncode or not new:
-            with log:
-                print(f"training stopped (exit {proc.returncode})")
+            status.value = f"training failed (exit {proc.returncode})"
+            log.value += "\n".join(tail[-8:])
             return
         res = sw.load(new[-1])
         x, y = sw.test_pictures()
         acc = (sw.classify(res, x).argmax(1) == y).mean()
-        with after:
-            print(f"test accuracy {100 * acc:.1f} % ({new[-1].name})")
-            i = int(np.flatnonzero(y == 7)[0])
-            plt.show(explain(res, x[i], int(y[i])))
-            print("Explore this model in the demo: ui.demo(model=" + repr(str(new[-1])) + ")")
+        i = int(np.flatnonzero(y == 7)[0])
+        result_img.value = _png(explain(res, x[i], int(y[i])))
+        status.value = f"done: test accuracy {100 * acc:.1f} %"
+        result.value = (f"<p>Saved as <code>{new[-1].relative_to(sw.ROOT)}</code>. Explore it in the demo: "
+                        f"<code>ui.demo(model={str(new[-1])!r})</code></p>")
 
-    go.on_click(run)
-    print(f"device: {dev}" + ("" if dev == "cuda" else " (slow: in Colab choose Runtime > Change runtime type > GPU)"))
-    display(W.VBox([recipe, W.HBox([epochs, seed, go]), chart, log, after]))
+    def start(_):
+        run["stopped"] = False
+        go.disabled, stop.disabled = True, False
+        log.value, result.value, result_img.value = "", "", b""
+        chart.value = _chart([], epochs.value)
+        status.value = f"training {recipe.value} for {epochs.value} epochs on {dev} ..."
+        cmd = train_command(recipe.value, epochs.value, seed.value, dev)
+        threading.Thread(target=work, args=(cmd, epochs.value), daemon=True).start()
+
+    def halt(_):
+        if run["proc"] and run["proc"].poll() is None:
+            run["stopped"] = True
+            run["proc"].terminate()
+            stop.disabled = True
+            status.value = "stopping ..."
+
+    go.on_click(start)
+    stop.on_click(halt)
+    note = ("" if dev == "cuda" else
+            "<br><b>No GPU</b>: phase plates still train (~15 s per epoch); the qubit circuit is slow on a CPU. "
+            "For a GPU: Runtime &gt; Change runtime type &gt; T4 GPU, then run all cells again.")
+    display(W.VBox([W.HTML(f"device: <b>{dev}</b>{note}"), recipe, W.HBox([epochs, seed, go, stop]), status, chart,
+                    log, result, result_img]))
