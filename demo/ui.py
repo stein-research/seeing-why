@@ -304,7 +304,13 @@ def demo_train():
     stop = W.Button(description="stop", button_style="danger", icon="stop", disabled=True)
     status = W.HTML()
     chart = W.Image(format="png", layout=W.Layout(width="480px", display="none"))   # hidden until it has a picture
-    log = W.Textarea(layout=W.Layout(width="720px", height="110px", display="none"), disabled=True)
+    log = W.HTML(layout=W.Layout(width="720px", display="none"))   # an HTML block refreshes live in Colab
+    lines = []
+
+    def show_log():
+        import html
+        log.value = ('<pre style="max-height:9em;overflow:auto;margin:0;font-size:12px">'
+                     + html.escape("\n".join(lines[-200:])) + "</pre>")
     result = W.HTML()
     result_img = W.Image(format="png", layout=W.Layout(width="900px", display="none"))
     run = {"proc": None, "stopped": False}
@@ -326,7 +332,8 @@ def demo_train():
             tail = (tail + [line.rstrip()])[-20:]
             in_json = in_json or line.startswith("{")       # the trainer ends by printing its result as JSON
             if line.strip() and not in_json:
-                log.value = "\n".join((log.value.splitlines() + [line.rstrip()])[-200:])
+                lines.append(line.rstrip())
+                show_log()
             m = re.match(r"epoch (\d+): .* val ([0-9.]+) \((\d+) s\)", line)
             if m:
                 val.append(float(m.group(2)))
@@ -341,7 +348,8 @@ def demo_train():
             return
         if proc.returncode or not new:
             status.value = f"training failed (exit {proc.returncode})"
-            log.value += "\n".join(tail[-8:])
+            lines.extend(tail[-8:])
+            show_log()
             return
         res = sw.load(new[-1])
         x, y = sw.test_pictures()
@@ -357,6 +365,7 @@ def demo_train():
     def start(_):
         run["stopped"] = False
         go.disabled, stop.disabled = True, False
+        lines.clear()
         log.value, result.value = "", ""
         result_img.layout.display = "none"
         chart.value = _chart([], epochs.value)
