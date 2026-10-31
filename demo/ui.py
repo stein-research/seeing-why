@@ -195,6 +195,11 @@ def demo_photo():
     import ipywidgets as W
     from IPython.display import display
     data = {"bytes": None}
+    note = W.HTML('<div style="border-left:4px solid #c0392b;padding:4px 10px;margin:4px 0">'
+                  "<b>Use a photo of one of the ten classes:</b> " + ", ".join(sw.NAMES) + ". The models know nothing "
+                  "else: any other picture still gets one of the ten, and that answer means nothing. One object, "
+                  "large and centred, works best.</div>")
+    display(note)                                               # before any upload box, so it is read first
     try:
         from google.colab import files                          # Colab: its own upload box, in the cell
         up = files.upload()
@@ -229,11 +234,7 @@ def demo_photo():
     upload.observe(picked, "value")
     for w_ in [model, zoom, across, down, why] + box:
         w_.observe(draw, "value")
-    note = W.HTML('<div style="border-left:4px solid #c0392b;padding:4px 10px;margin:4px 0">'
-                  "<b>Use a photo of one of the ten classes:</b> " + ", ".join(sw.NAMES) + ". The models know nothing "
-                  "else: any other picture still gets one of the ten, and that answer means nothing. One object, "
-                  "large and centred, works best.</div>")
-    rows = [note, W.HBox([model, why]), W.HBox([zoom, across, down]), W.HBox(box), out]
+    rows = [W.HBox([model, why]), W.HBox([zoom, across, down]), W.HBox(box), out]
     display(W.VBox(rows if data["bytes"] is not None else [upload] + rows))
     draw()
 
