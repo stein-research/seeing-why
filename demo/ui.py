@@ -668,25 +668,30 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
     import matplotlib.pyplot as plt
     S = sw.planes(run, x)
     p = S["p"]
+    sz = lambda f: f"{f.shape[0] // 2}\u00d7{f.shape[1] // 2}"          # one plane of a 2 x 2 tiled field
     pred = int(np.argmax(p))
     panels = [("picture", lambda A: A.imshow(x), sw.NAMES[true] if true is not None else ""),
               ("modulator field" if S["optical"] else "amplitudes",
-               lambda A: _planes(A, _signed(S["field"])), "R, G, B + means")]
+               lambda A: _planes(A, _signed(S["field"])),
+               f"4 \u00d7 {sz(S['field'])}" + ("" if S["optical"] else " = 2\u00b9\u00b2"))]
     if "mask" in S:
-        panels += [("Fourier plane", lambda A: _planes(A, _mapped(_tiles(S["spectra"]), "inferno")),
-                    "spectra"),
-                   ("learned mask", lambda A: A.imshow(np.abs(S["mask"]), cmap="magma", vmin=0), "magnitude"),
-                   ("filtered", lambda A: _planes(A, _signed(S["filtered"])),
-                    f"{100 * S['passed']:.1f} % passes")]
+        panels += [("Fourier plane" if S["optical"] else "QFT", lambda A: _planes(A, _mapped(_tiles(S["spectra"]), "inferno")),
+                    f"4 \u00d7 {'\u00d7'.join(map(str, S['spectra'][0].shape))}"
+                    + (" (padded)" if S["spectra"][0].shape[0] > S["field"].shape[0] // 2 else "")),
+                   ("learned mask", lambda A: A.imshow(np.abs(S["mask"]), cmap="magma", vmin=0),
+                    f"{'\u00d7'.join(map(str, S['mask'].shape[-2:]))}, "
+                    + ("shared" if S["optical"] else "post-selected")),
+                   ("filtered" if S["optical"] else "QFT\u207b\u00b9", lambda A: _planes(A, _signed(S["filtered"])),
+                    f"4 \u00d7 {sz(S['filtered'])} \u00b7 {100 * S['passed']:.1f} % passes")]
     if S["optical"]:
         panels.append(("phase plates", lambda A: _planes(A, _mapped(_tiles([ph % (2 * np.pi) for ph in S["plates"]]),
                                                                     "twilight", 0, 2 * np.pi), labels=("1", "2", "3", "4")),
-                       "1 \u2192 4 in turn"))
+                       f"4 \u00d7 {'\u00d7'.join(map(str, S['plates'][0].shape))}, in turn"))
         for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
             panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(np.abs(f_), cmap="magma"))(f),
-                           f"{100 * k:.1f} % left"))
+                           f"{'\u00d7'.join(map(str, f.shape))} \u00b7 {100 * k:.1f} % left"))
         panels.append(("camera", lambda A: _camera(A, S["camera"], S["group_of"]),
-                       f"{100 * S['camera_kept']:.1f} % arrives"))
+                       f"128 regions \u00b7 {100 * S['camera_kept']:.1f} % arrives"))
     rows = (len(panels) + 1 + 5) // 6
     fig = plt.figure(figsize=(14, 2.75 * rows + 3.2))
     gs = fig.add_gridspec(rows + 1, 6, height_ratios=[1] * rows + [1.25], hspace=0.55, wspace=0.12)
