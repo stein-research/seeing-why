@@ -1,0 +1,1 @@
+{"run": "results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_cimp0.5_crop0.8_bal_fmp_o7_brickwall_i0.1_s0.json", "prep_depth": 8, "steps": 3000, "n": 300, "fid_median": 0.7680992263327194, "acc_exact": 0.5633333333333334, "acc_prep": 0.41333333333333333}

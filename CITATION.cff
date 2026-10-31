@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper."
+title: "Seeing Why: Exact Evidence Maps for Quantum and Optical Image Classifiers"
+type: software
+license: MIT
+repository-code: "https://github.com/stein-research/seeing-why"
+authors:
+  - family-names: Tongloy
+    given-names: Teerawat
+    email: teerawat.to@kmitl.ac.th
+    affiliation: "School of Integrated Innovative Technology, King Mongkut's Institute of Technology Ladkrabang"
+  - family-names: Jomtarak
+    given-names: Rangsan
+    affiliation: "Faculty of Science and Technology, Suan Dusit University"
+keywords:
+  - quantum machine learning
+  - optical computing
+  - diffractive neural networks
+  - explainable AI
+  - amplitude encoding
+preferred-citation:
+  type: article
+  title: "Seeing Why: Exact Evidence Maps for Quantum and Optical Image Classifiers"
+  authors:
+    - family-names: Tongloy
+      given-names: Teerawat
+    - family-names: Jomtarak
+      given-names: Rangsan
+  year: 2026
