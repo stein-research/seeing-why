@@ -579,7 +579,8 @@ def _planes(A, img, gap=2, labels=("R", "G", "B", "\u00b5")):
     h, w = img.shape[0] // 2, img.shape[1] // 2
     for k, name in enumerate(labels):
         r, c = divmod(k, 2)
-        A.text(c * (w + gap) + 1.5, r * (h + gap) + 1.5, name, fontsize=6.5, color=INK, ha="left", va="top",
+        A.text(c * (w + gap) + 1.5, r * (h + gap) + 1.5, name, fontsize=8.5 if name == "\u00b5" else 6.5,
+               color=INK, ha="left", va="top",                       # the lower-case mu as tall as the capitals
                bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85))
 
 
