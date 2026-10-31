@@ -572,7 +572,7 @@ def _gapped(img, gap=2):
     return rgba
 
 
-def _planes(A, img, gap=2, labels=("R", "G", "B", "\u03bc")):
+def _planes(A, img, gap=2, labels=("R", "G", "B", "\u00b5")):
     """Draw a 2 x 2 tiled picture with gaps, each tile labelled (default: the planes R, G, B and the means' mu)."""
     g = _gapped(img, gap)
     A.imshow(g)
