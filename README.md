@@ -57,11 +57,11 @@ below. The same quantity is measured on the hardware: on a qubit chip from three
 
 | | |
 |---|---|
-| `demo/` | the two notebooks and their helpers (`seeing_why.py`, `ui.py`) |
-| `src/` | the simulator, the optics, the readout, the evidence maps, the trainer, and the scripts that ran the IBM jobs |
-| `results/` | the four trained models of the demo (weights inside each JSON) and the IBM test-set and map results |
-| `data/` | Caltech-10 (32 x 32, from Caltech-101, CC BY 4.0); see `data/README.md` |
-| `ibm_jobs/` | the record of every job run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed) |
+| [`demo/`](demo/) | the two notebooks and their helpers ([`seeing_why.py`](demo/seeing_why.py), [`ui.py`](demo/ui.py)) |
+| [`src/`](src/) | the simulator, the optics, the readout, the evidence maps, the trainer, and the scripts that ran the IBM jobs |
+| [`results/`](results/) | the four trained models of the demo (weights inside each JSON) and the IBM test-set and map results |
+| [`data/`](data/) | Caltech-10 (32 x 32, from Caltech-101, CC BY 4.0); see [`data/README.md`](data/README.md) |
+| [`ibm_jobs/`](ibm_jobs/) | the record of every job run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed) |
 
 ## Use of AI tools
 
@@ -71,5 +71,5 @@ decisions and claims are the authors'.
 
 ## Licence and citation
 
-Code: MIT (`LICENSE`). Caltech-10 is derived from Caltech-101 (CC BY 4.0, see `data/README.md`). Please cite the
-paper (`CITATION.cff`).
+Code: MIT ([`LICENSE`](LICENSE)). Caltech-10 is derived from Caltech-101 (CC BY 4.0, see [`data/README.md`](data/README.md)).
+Please cite the paper ([`CITATION.cff`](CITATION.cff)).
