@@ -4,7 +4,6 @@ they also work without widgets; demo() wires them to controls.
     import ui; ui.demo()
 """
 import sys
-from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -134,7 +133,7 @@ def demo(model=None):
     prev = W.Button(description="\u25c0 prev", layout=W.Layout(width="80px"))
     nxt = W.Button(description="next \u25b6", layout=W.Layout(width="80px"))
     rand = W.Button(description="random", layout=W.Layout(width="80px"))
-    why = W.Dropdown(options=[("predicted class", -1)] + [(n, i) for i, n in enumerate(sw.NAMES)],
+    why = W.Dropdown(options=[("true class", -1)] + [(n, i) for i, n in enumerate(sw.NAMES)],
                      description="explain", style={"description_width": "70px"})
     frac = W.SelectionSlider(options=[("none", 0.0), ("2 %", 0.02), ("5 %", 0.05), ("10 %", 0.1), ("20 %", 0.2)],
                              description="delete top", style={"description_width": "70px"})
@@ -154,8 +153,8 @@ def demo(model=None):
         with thumbs:
             plt.show(strip(x_all[y_all == klass.value], pic.value - 1))
         with out:
-            f = explain(sw.load(model.value), x, true, None if why.value < 0 else why.value, frac.value,
-                        layout.value == "side by side")
+            f = inside(sw.load(model.value), x, true, None if why.value < 0 else why.value, frac.value,
+                       layout.value == "side by side")
             plt.show(f)
 
     def go(k, p):                                           # one redraw for a move that changes class and picture
@@ -187,14 +186,11 @@ def demo_compare():
     prev = W.Button(description="\u25c0 prev", layout=W.Layout(width="80px"))
     nxt = W.Button(description="next \u25b6", layout=W.Layout(width="80px"))
     out = W.Output()
-    side = W.Image(format="png", layout=W.Layout(width="100%", max_width="1000px"))
     busy = [False]
 
     def draw(*_):
         if busy[0]:
             return
-        optical = bool(sw.load(model.value).get("optical"))
-        side.value = (Path(__file__).parent / ("side_optical.png" if optical else "side_qubit.png")).read_bytes()
         out.clear_output(wait=True)
         with out:
             plt.show(compare(x_all[np.flatnonzero(y_all == klass.value)[pic.value - 1]]))
@@ -417,8 +413,42 @@ def _tiles(imgs):
     return np.concatenate([top, bottom], 0)
 
 
-def inside(run, x, true=None):
-    """The picture through the model, plane by plane, then its answer and the evidence over the colour picture."""
+def _ranking(A, p, true, title, bold=False):
+    """Class probabilities, highest on top, each bar in its class's colour."""
+    order = np.argsort(p)
+    A.barh(range(len(p)), p[order], color=[CLASS_COLOURS[i] for i in order], height=0.7)
+    A.set_yticks(range(len(p)))
+    A.set_yticklabels([sw.NAMES[i] + ("  (true)" if i == true else "") for i in order], fontsize=8)
+    A.set_xlim(0, max(0.5, p.max() * 1.1))
+    A.tick_params(axis="y", length=0)
+    A.set_title(title, loc="left", fontsize=10 if bold else 9, weight="bold" if bold else "normal", color=INK)
+
+
+def _evidence(A, x, e, side_by_side):
+    if side_by_side:
+        v = max(np.percentile(np.abs(e), 98), 1e-12)
+        cmap = sw.overlay(plt.figure().add_subplot(), x, e)
+        plt.close()
+        A.imshow(e, cmap=cmap, vmin=-v, vmax=v)
+    else:
+        sw.overlay(A, x, e)
+
+
+def _camera(A, cam, group_of, rows=16, cols=8):
+    """The camera with its detector regions outlined in their class's colour (region o = row * cols + column)."""
+    from matplotlib.patches import Rectangle
+    A.imshow(np.sqrt(cam), cmap="magma")
+    h, w = cam.shape[0] / rows, cam.shape[1] / cols
+    d = 0.12 * h                                                     # inset, so neighbours' outlines do not touch
+    for o, g in enumerate(group_of):
+        A.add_patch(Rectangle(((o % cols) * w - 0.5 + d, (o // cols) * h - 0.5 + d), w - 2 * d, h - 2 * d,
+                              fill=False, edgecolor=CLASS_COLOURS[g], lw=1.0))
+
+
+def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
+    """The picture through the model, plane by plane, then its answer and the evidence over the colour picture.
+    cls: the class to explain (default: the true class, and the answer when it is wrong); frac: also the class
+    probabilities after deleting that fraction of pixels with the highest evidence."""
     import matplotlib.pyplot as plt
     S = sw.planes(run, x)
     p = S["p"]
@@ -440,7 +470,7 @@ def inside(run, x, true=None):
         for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
             panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(_phase_rgb(f_)))(f),
                            f"{100 * k:.1f} % left"))
-        panels.append(("camera", lambda A: A.imshow(np.sqrt(S["camera"]), cmap="magma"),
+        panels.append(("camera", lambda A: _camera(A, S["camera"], S["group_of"]),
                        f"{100 * S['camera_kept']:.1f} % arrives"))
     rows = (len(panels) + 1 + 5) // 6
     fig = plt.figure(figsize=(14, 2.75 * rows + 3.2))
@@ -462,73 +492,35 @@ def inside(run, x, true=None):
     A.set_title(f"{k}  {'detectors' if S['optical'] else 'outcomes'}", loc="left", fontsize=9)
     A.set_xlabel("by class", fontsize=7.5, color=MUTED)
     # the answer and the evidence over the colour picture
-    A = fig.add_subplot(gs[rows, 0:2])
-    order = np.argsort(p)
-    A.barh(range(10), p[order], color=[CLASS_COLOURS[i] for i in order], height=0.7)
-    A.set_yticks(range(10))
-    A.set_yticklabels([sw.NAMES[i] + ("  (true)" if i == true else "") for i in order], fontsize=8)
-    A.set_xlim(0, max(0.5, p.max() * 1.1))
-    A.tick_params(axis="y", length=0)
-    A.set_title(f"BHR answer: {sw.NAMES[pred]} ({p[pred]:.2f})" + ("" if true is None or pred == true else "   (wrong)"),
-                loc="left", fontsize=10, weight="bold", color=INK)
-    maps = []
-    if true is not None:
-        maps.append((f"evidence: {sw.NAMES[true]}", sw.evidence(run, x[None], [true])[0]))
-    if true is None or pred != true:
-        maps.append((f"evidence: {sw.NAMES[pred]} (answer)", sw.evidence(run, x[None], [pred])[0]))
-    for j, (title, e) in enumerate(maps[:2]):
-        A = fig.add_subplot(gs[rows, 2 + j])
-        sw.overlay(A, x, e)
+    _ranking(fig.add_subplot(gs[rows, 0:2]), p, true, f"BHR answer: {sw.NAMES[pred]} ({p[pred]:.2f})"
+             + ("" if true is None or pred == true else "   (wrong)"), bold=True)
+    if cls is not None:
+        shown = [int(cls)]
+    else:
+        shown = ([true] if true is not None else []) + ([pred] if true is None or pred != true else [])
+    col = 2
+    for c in shown:
+        e = sw.evidence(run, x[None], [c])[0]
+        A = fig.add_subplot(gs[rows, col])
+        _evidence(A, x, e, side_by_side)
         A.set_xticks([])
         A.set_yticks([])
-        A.set_title(title, loc="left", fontsize=9)
+        A.set_title(f"evidence: {sw.NAMES[c]}" + (" (answer)" if c == pred and c != true else ""), loc="left", fontsize=9)
+        col += 1
     att = sw.aib.maps(run, x[None], np.array([pred]), signed=True)[1][0]   # each pixel's share of the light
     att = np.clip(att / max(np.percentile(att, 99), 1e-12), 0, 1)
     rgba = plt.cm.magma(att)
     rgba[..., 3] = np.clip(1.5 * (att - 0.15), 0, 0.9)
-    A = fig.add_subplot(gs[rows, 2 + len(maps[:2])])
+    A = fig.add_subplot(gs[rows, col])
     A.imshow(x)
     A.imshow(rgba)
     A.set_xticks([])
     A.set_yticks([])
     A.set_title("attention", loc="left", fontsize=9)
+    if frac:                                                         # delete the pixels that most support the first map
+        e = sw.evidence(run, x[None], [shown[0]])[0]
+        q = sw.delete(run, x[None], e[None], frac)[0]
+        _ranking(fig.add_subplot(gs[rows, col + 1:]), q, true,
+                 f"after deleting the top {100 * frac:.0f} % for {sw.NAMES[shown[0]]}")
     fig.text(0.37, 0.02, "evidence: red for, blue against", fontsize=8, color=MUTED)
     return fig
-
-
-def demo_inside():
-    """Pick a model and a picture; see it pass through the model plane by plane."""
-    import ipywidgets as W
-    from IPython.display import display
-    x_all, y_all = sw.test_pictures()
-    model = W.Dropdown(options=list(sw.MODELS), description="model", layout=W.Layout(width="360px"))
-    klass = W.Dropdown(options=[(n, i) for i, n in enumerate(sw.NAMES)], value=7, description="class")
-    pic = W.IntSlider(min=1, max=30, value=1, description="picture")
-    prev = W.Button(description="◀ prev", layout=W.Layout(width="80px"))
-    nxt = W.Button(description="next ▶", layout=W.Layout(width="80px"))
-    out = W.Output()
-    side = W.Image(format="png", layout=W.Layout(width="100%", max_width="1000px"))
-    busy = [False]
-
-    def draw(*_):
-        if busy[0]:
-            return
-        optical = bool(sw.load(model.value).get("optical"))
-        side.value = (Path(__file__).parent / ("side_optical.png" if optical else "side_qubit.png")).read_bytes()
-        out.clear_output(wait=True)
-        with out:
-            i = int(np.flatnonzero(y_all == klass.value)[pic.value - 1])
-            plt.show(inside(sw.load(model.value), x_all[i], int(y_all[i])))
-
-    def step(d):
-        n_ = (klass.value * 30 + pic.value - 1 + d) % 300
-        busy[0] = True
-        klass.value, pic.value = n_ // 30, n_ % 30 + 1
-        busy[0] = False
-        draw()
-    for w_ in (model, klass, pic):
-        w_.observe(draw, "value")
-    prev.on_click(lambda _: step(-1))
-    nxt.on_click(lambda _: step(1))
-    display(W.VBox([W.HBox([model, klass, pic, prev, nxt]), side, out]))
-    draw()
