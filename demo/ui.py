@@ -201,12 +201,13 @@ def demo_photo():
                   "large and centred, works best.</div>")
     display(note)                                               # before any upload box, so it is read first
     try:
-        from google.colab import files                          # Colab: its own upload box, in the cell
+        from google.colab import files, output                  # Colab: its own upload box, in the cell
+        colab = True
         up = files.upload()
         if up:
             data["bytes"] = next(iter(up.values()))
     except ImportError:
-        pass
+        colab = False
     model = W.Dropdown(options=list(sw.MODELS), description="model", layout=W.Layout(width="360px"))
     zoom = W.FloatSlider(min=0.8, max=1.0, step=0.02, value=1.0, description="zoom", readout_format=".2f")
     across = W.FloatSlider(min=-1, max=1, step=0.1, value=0, description="across")
@@ -240,9 +241,40 @@ def demo_photo():
     upload.observe(picked, "value")
     for w_ in [model, zoom, across, down, why] + box:
         w_.observe(draw, "value")
-    again = W.HTML('<span style="color:#888">&nbsp;or run this cell again</span>')
-    display(W.VBox([W.HBox([upload, again]), W.HBox([model, why]), W.HBox([zoom, across, down]), W.HBox(box), out]))
+    if colab:                                                   # Colab has no file chooser widget: a page one
+        import base64
+        from IPython.display import HTML
+        output.register_callback("seeing_why.photo", lambda b64: picked(
+            {"new": ({"content": base64.b64decode(b64)},)}))
+        display(HTML(_CHOOSER))
+        top = []
+    else:
+        top = [upload]
+    display(W.VBox(([W.HBox(top)] if top else []) + [W.HBox([model, why]), W.HBox([zoom, across, down]),
+                                                     W.HBox(box), out]))
     draw()
+
+
+# A file chooser for Colab: the page reads the photo, draws it on white at most 1024 px a side (upright, as the
+# browser shows it) and hands it to the kernel as a JPEG.
+_CHOOSER = """<label style="font:13px sans-serif">another photo:
+<input type="file" accept="image/*" id="sw-photo"></label>
+<script>
+document.getElementById("sw-photo").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  const img = new Image();
+  img.onload = () => {
+    const k = Math.min(1, 1024 / Math.max(img.naturalWidth, img.naturalHeight));
+    const c = document.createElement("canvas");
+    c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+    const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height);
+    g.drawImage(img, 0, 0, c.width, c.height);
+    google.colab.kernel.invokeFunction("seeing_why.photo", [c.toDataURL("image/jpeg", 0.95).split(",")[1]], {});
+    URL.revokeObjectURL(img.src);
+  };
+  img.src = URL.createObjectURL(f);
+});
+</script>"""
 
 
 def demo_compare():
