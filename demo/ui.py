@@ -7,6 +7,7 @@ import sys
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.figure import Figure
 
 import seeing_why as sw
 
@@ -30,14 +31,13 @@ def explain(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
     p = sw.classify(run, x[None])[0]
     cls = int(np.argmax(p)) if cls is None else int(cls)
     e = sw.evidence(run, x[None], [cls])[0]
-    fig, ax = plt.subplots(1, 4 if frac else 3, figsize=(13 if frac else 10, 3.2),
-                           gridspec_kw=dict(width_ratios=[1, 1, 1.1, 1.1] if frac else [1, 1, 1.1]))
+    fig = Figure(figsize=(13 if frac else 10, 3.2))             # not pyplot: drawn on the training thread too
+    ax = fig.subplots(1, 4 if frac else 3, gridspec_kw=dict(width_ratios=[1, 1, 1.1, 1.1] if frac else [1, 1, 1.1]))
     ax[0].imshow(x)
     ax[0].set_title("picture" + (f" (true: {sw.NAMES[true]})" if true is not None else ""), loc="left")
     if side_by_side:
         v = max(np.percentile(np.abs(e), 98), 1e-12)
-        cmap = sw.overlay(plt.figure().add_subplot(), x, e)
-        plt.close()
+        cmap = sw.overlay(Figure().add_subplot(), x, e)
         ax[1].imshow(e, cmap=cmap, vmin=-v, vmax=v)
     else:
         sw.overlay(ax[1], x, e)
@@ -251,7 +251,8 @@ def _png(fig):
 
 
 def _chart(val, epochs):
-    fig, ax = plt.subplots(figsize=(5, 2.2))
+    fig = Figure(figsize=(5, 2.2))                              # not pyplot: Colab shows every open pyplot figure
+    ax = fig.add_subplot()
     ax.plot(range(1, len(val) + 1), [100 * v for v in val], "o-", color=ACCENT, ms=3)
     ax.set_xlabel("epoch")
     ax.set_ylabel("validation accuracy (%)")
