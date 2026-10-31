@@ -41,7 +41,7 @@ probabilities with no trained parameter; one chosen headroom $\varphi$ fixes the
 
 ($G$ classes, $\varepsilon = 0.01$, $\varphi = 0.0556$: the true class is called with probability $1-\varepsilon$ once
 it holds 1.5 times its share.) Because the picture $a$ enters linearly up to the measurement ($A$: the mask and the
-circuit or plates), the **evidence** of every encoded amplitude $x$ (one pixel of one plane) has a closed form, and it adds up exactly:
+circuit or plates), the **evidence** of every encoded amplitude $x$ (one pixel of one plane) has a closed form, shown as a **Born evidence map (BEM)**, and it adds up exactly:
 
 ```math
 e_g(x) = \frac{a(x)\,\mathrm{Re}\big[M_g\, a\big](x)}{Z}, \qquad
