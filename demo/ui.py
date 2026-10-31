@@ -259,6 +259,30 @@ def _chart(val, epochs):
     return _png(fig)
 
 
+LAST = {"model": None}                                         # the last model trained in this session
+
+
+def last_trained():
+    """The model trained last: from this session, else the newest of your own runs in results/ (seed 3 and up; seeds
+    0-2 are the paper's)."""
+    if LAST["model"] is not None:
+        return LAST["model"]
+    import re
+    own = [f for f in (sw.ROOT / "results").glob("pilot_*.json")
+           if (m := re.search(r"_s(\d+)\.json$", f.name)) and int(m.group(1)) >= 3]
+    return max(own, key=lambda f: f.stat().st_mtime) if own else None
+
+
+def demo_last():
+    """The demo with the model trained last (see last_trained)."""
+    f = last_trained()
+    if f is None:
+        print("Train a model first (the cell above); when it finishes, run this cell again.")
+        return
+    print(f"model: {f.name}")
+    demo(model=f)
+
+
 def demo_train():
     """Train one of the paper's models in the simulator, watch the validation accuracy, stop it at any time, then
     explain its answers. The training runs in a background thread so the stop button stays live."""
@@ -314,8 +338,9 @@ def demo_train():
         i = int(np.flatnonzero(y == 7)[0])
         result_img.value = _png(explain(res, x[i], int(y[i])))
         status.value = f"done: test accuracy {100 * acc:.1f} %"
-        result.value = (f"<p>Saved as <code>{new[-1].relative_to(sw.ROOT)}</code>. Explore it in the demo: "
-                        f"<code>ui.demo(model={str(new[-1])!r})</code></p>")
+        LAST["model"] = new[-1]
+        result.value = (f"<p>Saved as <code>{new[-1].relative_to(sw.ROOT)}</code>. Run the next cell to explore it "
+                        f"in the demo.</p>")
 
     def start(_):
         run["stopped"] = False
