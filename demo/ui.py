@@ -283,6 +283,54 @@ def demo_last():
     demo(model=f)
 
 
+class _Pump:
+    """Colab passes on a widget change only while the kernel answers a message from the page; a change made on the
+    training thread would be dropped. Such changes wait here, and a hidden button the page presses every second sends
+    them while its press is answered. Changes made on the kernel's own thread go out at once (the queue first)."""
+
+    def __init__(self, comm_cls):
+        import threading
+        self.lock, self.queue = threading.Lock(), []
+        self.name = "publish_msg" if hasattr(comm_cls, "publish_msg") else "_publish_msg"
+        send = self.send = getattr(comm_cls, self.name)
+        main = threading.main_thread()
+        pump = self
+
+        def publish(comm, *args, **kwargs):
+            if threading.current_thread() is main:
+                pump.flush()
+                return send(comm, *args, **kwargs)
+            with pump.lock:
+                pump.queue.append((comm, args, kwargs))
+        setattr(comm_cls, self.name, publish)
+
+    def flush(self, *_):
+        with self.lock:
+            items, self.queue = self.queue, []
+        for comm, args, kwargs in items:
+            self.send(comm, *args, **kwargs)
+
+
+_PUMP = []
+
+
+def _live(W):
+    """In Colab: a hidden button that, pressed by the page every second, delivers the training thread's changes."""
+    try:
+        import google.colab  # noqa: F401
+    except ImportError:
+        return []                                               # Jupyter delivers them by itself
+    from IPython.display import Javascript, display
+    tick = W.Button(layout=W.Layout(display="none"))
+    tick.add_class("sw-tick")
+    if not _PUMP:
+        _PUMP.append(_Pump(type(tick.comm)))
+    tick.on_click(_PUMP[0].flush)
+    display(Javascript("if (!window.__swTick) window.__swTick = setInterval(() => "
+                       "document.querySelectorAll('.sw-tick').forEach(e => e.click()), 1000);"))
+    return [tick]
+
+
 def demo_train():
     """Train one of the paper's models in the simulator, watch the validation accuracy, stop it at any time, then
     explain its answers. The training runs in a background thread so the stop button stays live."""
@@ -388,7 +436,7 @@ def demo_train():
             "<br><b>No GPU</b>: phase plates still train (~15 s per epoch); the qubit circuit is slow on a CPU. "
             "For a GPU: Runtime &gt; Change runtime type &gt; T4 GPU, then run all cells again.")
     display(W.VBox([W.HTML(f"device: <b>{dev}</b>{note}"), recipe, W.HBox([epochs, seed, go, stop]), status, chart,
-                    log, result, result_img]))
+                    log, result, result_img] + _live(W)))
 
 
 # ------------------------------------------------------------------------------------------- inside the model
