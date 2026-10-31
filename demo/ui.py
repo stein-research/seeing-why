@@ -619,6 +619,27 @@ def _evidence(A, x, e, side_by_side):
         sw.overlay(A, x, e)
 
 
+def _brickwall(A, n=12, depth=11, measured=7):
+    """A small sketch of the brickwall circuit: n wires, depth + 1 layers of rotations (boxes), CNOTs on alternating
+    pairs between layers, the measured wires marked at the end."""
+    from matplotlib.patches import Rectangle
+    A.set_xlim(-0.8, depth + 1.6)
+    A.set_ylim(n - 0.4, -0.6)
+    A.set_aspect("auto")
+    for q in range(n):
+        A.plot([-0.6, depth + 0.9], [q, q], color=LINE, lw=0.6, zorder=0)
+    for k in range(depth + 1):
+        for q in range(n):
+            A.add_patch(Rectangle((k - 0.22, q - 0.22), 0.44, 0.44, fc="white", ec="#7c6fd6", lw=0.6, zorder=2))
+        if k < depth:
+            for q in range(k % 2, n - 1, 2):
+                A.plot([k + 0.5, k + 0.5], [q, q + 1], color="#7c6fd6", lw=0.7, zorder=1)
+                A.plot([k + 0.5], [q], "o", color="#7c6fd6", ms=1.6, zorder=3)
+    for q in range(measured):
+        A.plot([depth + 1.15], [q], "s", color=ACCENT, ms=2.4)
+    A.axis("off")
+
+
 def _camera(A, cam, group_of, rows=16, cols=8):
     """The camera with one thin line where the detector regions of two classes meet (region o = row * cols +
     column), and a strip on the right in the colour of each row's last region."""
@@ -677,14 +698,25 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
         A.set_title(f"{k}  {title}", loc="left", fontsize=9, color=INK)
         A.set_xlabel(note, fontsize=7.5, color=MUTED)
     k = len(panels)                                                  # the outcomes, coloured by class group
-    A = fig.add_subplot(gs[k // 6, k % 6:] if k % 6 < 5 else gs[k // 6, 5])
+    A = fig.add_subplot(gs[k // 6, k % 6])
     o = S["outcomes"]
-    A.bar(range(len(o)), o, color=[CLASS_COLOURS[g] for g in S["group_of"]], width=1.0)
-    A.axhline(1 / len(o), color=INK, lw=0.8, ls=(0, (2, 2)))
-    A.set_xticks([])
-    A.set_yticks([])
-    A.set_title(f"{k}  {'detectors' if S['optical'] else 'outcomes'}", loc="left", fontsize=9)
-    A.set_xlabel("by class", fontsize=7.5, color=MUTED)
+    if S["optical"]:
+        B = A
+    else:                                                            # qubits: the circuit above its outcomes
+        A.axis("off")
+        _brickwall(A.inset_axes([0, 0.5, 1, 0.5]), depth=run.get("depth", 11))
+        B = A.inset_axes([0, 0, 1, 0.44])
+    B.bar(range(len(o)), o, color=[CLASS_COLOURS[g] for g in S["group_of"]], width=1.0)
+    B.axhline(1 / len(o), color=INK, lw=0.8, ls=(0, (2, 2)))
+    B.set_xticks([])
+    B.set_yticks([])
+    if S["optical"]:
+        A.set_title(f"{k}  detectors", loc="left", fontsize=9)
+        A.set_xlabel("by class", fontsize=7.5, color=MUTED)
+    else:
+        A.set_title(f"{k}  brickwall circuit", loc="left", fontsize=9)
+        A.text(0.5, -0.1, f"12 qubits, depth {run.get('depth', 11)} \u2192 128 outcomes", transform=A.transAxes,
+               ha="center", va="top", fontsize=7.5, color=MUTED)
     # the answer and the evidence over the colour picture
     unsure = p[pred] < 0.3      # on test pictures the plates' answers below 0.3 are right about one time in ten
     _ranking(fig.add_subplot(gs[rows, 0:2]), p, true, f"BHR answer: {sw.NAMES[pred]} ({p[pred]:.2f})"
