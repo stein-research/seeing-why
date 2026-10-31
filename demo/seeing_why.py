@@ -119,6 +119,41 @@ def delete(run, x, ev, frac):
     return classify_amplitudes(run, enc)[0]
 
 
+def photo(source, zoom=1.0, across=0.0, down=0.0):
+    """Any photograph -> a 32 x 32 colour picture made as Caltech-10's were: turned upright (EXIF), on white where it
+    is transparent, 4 % trimmed off every side, a square crop, area-averaged down to 32 x 32. zoom (0.8-1): the crop's
+    side against the shorter side, as the random crops of training; across / down (-1..1): where the crop sits when
+    zoomed in or when the photo is not square. source: a path, bytes or a PIL image."""
+    import io
+    from PIL import ImageOps
+    im = source if isinstance(source, Image.Image) else Image.open(io.BytesIO(source) if isinstance(source, (bytes, bytearray, memoryview)) else source)
+    im = ImageOps.exif_transpose(im)
+    if im.mode in ("RGBA", "LA", "P"):
+        im = im.convert("RGBA")
+        bg = Image.new("RGBA", im.size, (255, 255, 255, 255))
+        im = Image.alpha_composite(bg, im)
+    im = im.convert("RGB")
+    if min(im.size) > 1024:                                      # a large photo: reduce first, the same averaging
+        im = im.reduce(min(im.size) // 512)
+    w, h = im.size
+    dx, dy = round(w * 0.04), round(h * 0.04)
+    im = im.crop((dx, dy, w - dx, h - dy))
+    w, h = im.size
+    k = max(1, round(min(w, h) * min(1.0, max(0.5, zoom))))
+    x0 = round((w - k) / 2 * (1 + max(-1.0, min(1.0, across))))
+    y0 = round((h - k) / 2 * (1 + max(-1.0, min(1.0, down))))
+    im = im.crop((x0, y0, x0 + k, y0 + k))
+    return np.asarray(im.resize((32, 32), Image.BOX), dtype=np.uint8)
+
+
+def block(x, row, col, size):
+    """The picture with a size x size square at (row, col) set to the picture's own mean colour: zero contrast there,
+    the colour means unchanged - the deletion of the paper, for a square chosen by hand."""
+    y = x.copy()
+    y[row:row + size, col:col + size] = np.round(x.reshape(-1, 3).mean(0)).astype(x.dtype)
+    return y
+
+
 def overlay(ax, x, e, clip=98):
     """Evidence over the colour picture, opacity following |e| (as Figure 1 of the paper)."""
     import matplotlib

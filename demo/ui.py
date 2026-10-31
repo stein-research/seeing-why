@@ -138,6 +138,7 @@ def demo(model=None):
     frac = W.SelectionSlider(options=[("none", 0.0), ("2 %", 0.02), ("5 %", 0.05), ("10 %", 0.1), ("20 %", 0.2)],
                              description="delete top", style={"description_width": "70px"})
     layout = W.ToggleButtons(options=["over the picture", "side by side"])
+    box, apply_box = _box(W)
     thumbs, out = W.Output(), W.Output()
 
     def picture():
@@ -153,7 +154,7 @@ def demo(model=None):
         with thumbs:
             plt.show(strip(x_all[y_all == klass.value], pic.value - 1))
         with out:
-            f = inside(sw.load(model.value), x, true, None if why.value < 0 else why.value, frac.value,
+            f = inside(sw.load(model.value), apply_box(x), true, None if why.value < 0 else why.value, frac.value,
                        layout.value == "side by side")
             plt.show(f)
 
@@ -168,12 +169,72 @@ def demo(model=None):
         n %= 300
         go(n // 30, n % 30 + 1)
 
-    for w in (model, why, frac, layout, klass, pic):
+    for w in (model, why, frac, layout, klass, pic, *box):
         w.observe(draw, "value")
     prev.on_click(lambda _: step(-1))
     nxt.on_click(lambda _: step(1))
     rand.on_click(lambda _: go(int(np.random.randint(10)), int(np.random.randint(1, 31))))
-    display(W.VBox([W.HBox([model, why]), W.HBox([klass, pic, prev, nxt, rand]), thumbs, W.HBox([frac, layout]), out]))
+    display(W.VBox([W.HBox([model, why]), W.HBox([klass, pic, prev, nxt, rand]), thumbs, W.HBox([frac, layout]),
+                    W.HBox(box), out]))
+    draw()
+
+
+def _box(W):
+    """Controls for a square blocked by hand: on/off, row, column, size (picture pixels)."""
+    on = W.Checkbox(value=False, description="block a square", indent=False, layout=W.Layout(width="130px"))
+    row = W.IntSlider(min=0, max=31, value=12, description="row", layout=W.Layout(width="230px"))
+    col = W.IntSlider(min=0, max=31, value=12, description="column", layout=W.Layout(width="230px"))
+    size = W.IntSlider(min=1, max=16, value=8, description="size", layout=W.Layout(width="230px"))
+    apply = lambda x: sw.block(x, row.value, col.value, size.value) if on.value else x
+    return [on, row, col, size], apply
+
+
+def demo_photo():
+    """Your own photograph through the model: upload one, frame it, block a square, see the answer and why. The models
+    know only the ten classes; a photo of anything else still gets one of them, and a weak answer says so."""
+    import ipywidgets as W
+    from IPython.display import display
+    data = {"bytes": None}
+    try:
+        from google.colab import files                          # Colab: its own upload box, in the cell
+        up = files.upload()
+        if up:
+            data["bytes"] = next(iter(up.values()))
+    except ImportError:
+        pass
+    model = W.Dropdown(options=list(sw.MODELS), description="model", layout=W.Layout(width="360px"))
+    zoom = W.FloatSlider(min=0.8, max=1.0, step=0.02, value=1.0, description="zoom", readout_format=".2f")
+    across = W.FloatSlider(min=-1, max=1, step=0.1, value=0, description="across")
+    down = W.FloatSlider(min=-1, max=1, step=0.1, value=0, description="down")
+    why = W.Dropdown(options=[("its answer", -1)] + [(n, i) for i, n in enumerate(sw.NAMES)], description="explain")
+    box, apply = _box(W)
+    upload = W.FileUpload(accept="image/*", multiple=False, description="choose a photo")
+    out = W.Output()
+
+    def draw(*_):
+        out.clear_output(wait=True)
+        with out:
+            if data["bytes"] is None:
+                print("Choose a photo (jpg or png).")
+                return
+            x = apply(sw.photo(data["bytes"], zoom.value, across.value, down.value))
+            plt.show(inside(sw.load(model.value), x, None, None if why.value < 0 else why.value))
+
+    def picked(change):
+        v = change["new"]
+        item = v[0] if isinstance(v, (tuple, list)) and v else next(iter(v.values())) if isinstance(v, dict) and v else None
+        if item is not None:
+            data["bytes"] = bytes(item["content"])
+            draw()
+    upload.observe(picked, "value")
+    for w_ in [model, zoom, across, down, why] + box:
+        w_.observe(draw, "value")
+    note = W.HTML('<div style="border-left:4px solid #c0392b;padding:4px 10px;margin:4px 0">'
+                  "<b>Use a photo of one of the ten classes:</b> " + ", ".join(sw.NAMES) + ". The models know nothing "
+                  "else: any other picture still gets one of the ten, and that answer means nothing. One object, "
+                  "large and centred, works best.</div>")
+    rows = [note, W.HBox([model, why]), W.HBox([zoom, across, down]), W.HBox(box), out]
+    display(W.VBox(rows if data["bytes"] is not None else [upload] + rows))
     draw()
 
 
@@ -551,8 +612,12 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
     A.set_title(f"{k}  {'detectors' if S['optical'] else 'outcomes'}", loc="left", fontsize=9)
     A.set_xlabel("by class", fontsize=7.5, color=MUTED)
     # the answer and the evidence over the colour picture
+    unsure = p[pred] < 0.3      # on test pictures the plates' answers below 0.3 are right about one time in ten
     _ranking(fig.add_subplot(gs[rows, 0:2]), p, true, f"BHR answer: {sw.NAMES[pred]} ({p[pred]:.2f})"
              + ("" if true is None or pred == true else "   (wrong)"), bold=True)
+    if unsure:
+        fig.text(0.13, 0.005, "not sure: the answer has less than 0.30 - such answers are seldom right, "
+                 "and the picture may show none of the ten classes", fontsize=9, color="#c0392b")
     if cls is not None:
         shown = [int(cls)]
     else:
@@ -564,7 +629,7 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
         _evidence(A, x, e, side_by_side)
         A.set_xticks([])
         A.set_yticks([])
-        A.set_title(f"evidence: {sw.NAMES[c]}" + (" (answer)" if c == pred and c != true else ""), loc="left", fontsize=9)
+        A.set_title(f"evidence: {sw.NAMES[c]}" + (" (answer)" if true is not None and c == pred and c != true else ""), loc="left", fontsize=9)
         col += 1
     att = sw.aib.maps(run, x[None], np.array([pred]), signed=True)[1][0]   # each pixel's share of the light
     att = np.clip(att / max(np.percentile(att, 99), 1e-12), 0, 1)
