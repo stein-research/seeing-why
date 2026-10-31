@@ -435,14 +435,24 @@ def _evidence(A, x, e, side_by_side):
 
 
 def _camera(A, cam, group_of, rows=16, cols=8):
-    """The camera with its detector regions outlined in their class's colour (region o = row * cols + column)."""
+    """The camera with one thin line where the detector regions of two classes meet (region o = row * cols +
+    column), and a strip on the right in the colour of each row's last region."""
     from matplotlib.patches import Rectangle
     A.imshow(np.sqrt(cam), cmap="magma")
-    h, w = cam.shape[0] / rows, cam.shape[1] / cols
-    d = 0.12 * h                                                     # inset, so neighbours' outlines do not touch
-    for o, g in enumerate(group_of):
-        A.add_patch(Rectangle(((o % cols) * w - 0.5 + d, (o // cols) * h - 0.5 + d), w - 2 * d, h - 2 * d,
-                              fill=False, edgecolor=CLASS_COLOURS[g], lw=1.0))
+    H, Wd = cam.shape
+    h, w = H / rows, Wd / cols
+    g = np.asarray(group_of).reshape(rows, cols)
+    for r in range(rows):
+        for c in range(cols):
+            x0, y0 = c * w - 0.5, r * h - 0.5
+            if c + 1 < cols and g[r, c] != g[r, c + 1]:
+                A.plot([x0 + w, x0 + w], [y0, y0 + h], color="white", lw=0.9)
+            if r + 1 < rows and g[r, c] != g[r + 1, c]:
+                A.plot([x0, x0 + w], [y0 + h, y0 + h], color="white", lw=0.9)
+        A.add_patch(Rectangle((Wd - 0.5 + 0.03 * Wd, r * h - 0.5), 0.06 * Wd, h, color=CLASS_COLOURS[g[r, -1]],
+                              clip_on=False))
+    A.set_xlim(-0.5, Wd - 0.5)
+    A.set_ylim(H - 0.5, -0.5)
 
 
 def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
