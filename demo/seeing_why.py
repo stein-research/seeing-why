@@ -179,3 +179,69 @@ def prepare_caltech10(zip_path=None):
     print(f"Caltech-10: {len(new['x_train'])} training and {len(new['x_val'])} test pictures; "
           f"{'identical to' if same else 'DIFFERENT from'} the shipped set")
     return same
+
+
+def planes(run, x):
+    """One picture through the model, step by step: a dict of the fields and numbers the plane-by-plane view draws.
+    Phase plates: modulator field, each plane's spectrum, the learned mask, the filtered field, the plates, the field
+    after each plate with the share of light still in the aperture, the camera, the light per region. Qubits: the
+    amplitudes, spectra, mask, filtered amplitudes and the 128 outcome probabilities. Both: class probabilities."""
+    s, perm = _setup(run)
+    n = pf.N_QUBITS
+    pix = torch.as_tensor(perm)
+    n_planes = 2 ** n // (s * s)
+    v = encode(run, x[None])
+    a = torch.tensor(v / np.linalg.norm(v), dtype=torch.complex128)
+    out = {"x": x, "optical": bool(run.get("optical")), "planes": n_planes}
+    out["field"] = optnet.tile(a, pix, s, n_planes)[0].numpy()
+    linear = bool(run.get("fourier_linear"))
+    if run.get("fourier_mask"):
+        w = torch.tensor(run["weights"], dtype=torch.float64)
+        _, kw = fastsim.split_masks(w, 0, 0, -1, (pix, s, n_planes, run.get("fourier_phase", False), linear))
+        D = kw["fmask"][1]
+        out["mask"] = np.fft.fftshift(D.numpy()[0], axes=(-2, -1))
+        st = fastsim.fourier_filter(a, D, pix, linear)
+    else:
+        st = a
+    out["passed"] = float((st.abs() ** 2).sum())                    # share of the light through the mask
+    out["filtered"] = optnet.tile(st, pix, s, n_planes)[0].numpy()
+    spec = []                                                        # each plane's spectrum, as the first lens sees it
+    for p_ in range(n_planes):
+        ch = out["field"][(p_ // 2) * s:(p_ // 2 + 1) * s, (p_ % 2) * s:(p_ % 2 + 1) * s]
+        z = np.zeros((2 * s, 2 * s), complex) if linear else np.zeros((s, s), complex)
+        z[:s, :s] = ch
+        spec.append(np.fft.fftshift(np.log10(np.abs(np.fft.fft2(z)) + 1e-4)))
+    out["spectra"] = spec
+    no = run["n_out"]
+    if run.get("optical"):
+        N, r, L, os_ = 2 * s, run["opt_res"], run["optical"], run.get("opt_os", 1)
+        w = torch.tensor(run["weights"], dtype=torch.float64)
+        fr = fastsim.fourier_rows(n, w.shape[2], s, n_planes, run.get("fourier_phase", False)) if run.get("fourier_mask") else 0
+        phi = w[1 + fr:].reshape(-1)[:L * (N // r) ** 2].reshape(L, N // r, N // r)
+        out["plates"] = phi.numpy()
+        P = optnet.plate_phase(phi, r * os_).to(torch.complex128)
+        g = optnet.tile(st, pix, s, n_planes)
+        g = g.repeat_interleave(os_, -2).repeat_interleave(os_, -1) if os_ > 1 else g
+        e0 = float((g.abs() ** 2).sum())
+        after, kept = [], []
+        for l in range(L):
+            g = optnet.propagate(g, run["opt_z"] * os_ * os_, run["opt_pad"]) * P[l]
+            after.append(g[0].numpy())
+            kept.append(float((g.abs() ** 2).sum()) / e0)
+        cam = optnet.propagate(g, run["opt_z"] * os_ * os_, run["opt_pad"])
+        out["after"], out["kept"] = after, kept
+        out["camera"] = optnet.camera_pixels(cam, os_)[0].numpy()
+        out["camera_kept"] = float(out["camera"].sum()) / e0
+        P_out = optnet.outcome_probs(cam, optnet.detector_index(N), os=os_)[0].numpy()
+    else:
+        w = torch.tensor(run["weights"], dtype=torch.float64)
+        fourier = (pix, s, n_planes, run.get("fourier_phase", False), linear) if run.get("fourier_mask") else None
+        wc, kw = fastsim.split_masks(w, run["depth"], 0, -1, fourier)
+        P_out = fastsim.probs(fastsim.run(a, wc, run["depth"], torch.complex128, **kw), no)[0].numpy()
+    out["outcomes"] = P_out / P_out.sum()
+    groups = class_groups(run["mode"], 2 ** no, len(NAMES))
+    out["group_of"] = np.zeros(2 ** no, int)
+    for gi, members in enumerate(groups):
+        out["group_of"][list(members)] = gi
+    out["p"] = classify(run, x[None])[0]
+    return out

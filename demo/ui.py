@@ -389,3 +389,139 @@ def demo_train():
             "For a GPU: Runtime &gt; Change runtime type &gt; T4 GPU, then run all cells again.")
     display(W.VBox([W.HTML(f"device: <b>{dev}</b>{note}"), recipe, W.HBox([epochs, seed, go, stop]), status, chart,
                     log, result, result_img]))
+
+
+# ------------------------------------------------------------------------------------------- inside the model
+CLASS_COLOURS = ["#4c8bf5", "#f2994a", "#5cc46e", "#eb5757", "#a98cf0", "#c49a6c", "#f28cc3", "#9aa3ad", "#e2c84a",
+                 "#3cc6c6"]
+
+
+def _phase_rgb(f, gamma=0.6):
+    """A complex field as colour: hue = phase (amber 0, blue pi, the bench's convention), brightness = amplitude."""
+    import matplotlib.colors as mc
+    cyc = mc.LinearSegmentedColormap.from_list("phase", ["#f2b134", "#3fb6a8", "#3b7dd8", "#e57fa6", "#f2b134"])
+    amp = np.abs(f)
+    amp = (amp / max(amp.max(), 1e-12)) ** gamma
+    rgb = cyc((np.angle(f) % (2 * np.pi)) / (2 * np.pi))[..., :3]
+    return rgb * amp[..., None]
+
+
+def _tiles(imgs):
+    """Four planes as a 2 x 2 tile picture."""
+    top = np.concatenate(imgs[:2], 1)
+    bottom = np.concatenate(imgs[2:4], 1) if len(imgs) > 2 else np.zeros_like(top)
+    return np.concatenate([top, bottom], 0)
+
+
+def inside(run, x, true=None):
+    """The picture through the model, plane by plane, then its answer and the evidence over the colour picture."""
+    import matplotlib.pyplot as plt
+    S = sw.planes(run, x)
+    p = S["p"]
+    pred = int(np.argmax(p))
+    panels = [("picture", lambda A: A.imshow(x), sw.NAMES[true] if true is not None else ""),
+              ("modulator field" if S["optical"] else "amplitudes",
+               lambda A: A.imshow(_phase_rgb(S["field"])), "R, G, B + means")]
+    if "mask" in S:
+        panels += [("Fourier plane", lambda A: A.imshow(_tiles(S["spectra"]), cmap="inferno"),
+                    "spectra"),
+                   ("learned mask", lambda A: A.imshow(_phase_rgb(S["mask"])), "learned"),
+                   ("filtered", lambda A: A.imshow(_phase_rgb(S["filtered"])),
+                    f"{100 * S['passed']:.1f} % passes")]
+    if S["optical"]:
+        panels.append(("phase plates", lambda A: A.imshow(_tiles([np.exp(1j * ph) for ph in S["plates"]]) if False else
+                       _phase_rgb(np.block([[np.exp(1j * S['plates'][0]), np.exp(1j * S['plates'][1])],
+                                            [np.exp(1j * S['plates'][2]), np.exp(1j * S['plates'][3])]]))),
+                       "4 plates"))
+        for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
+            panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(_phase_rgb(f_)))(f),
+                           f"{100 * k:.1f} % left"))
+        panels.append(("camera", lambda A: A.imshow(np.sqrt(S["camera"]), cmap="magma"),
+                       f"{100 * S['camera_kept']:.1f} % arrives"))
+    rows = (len(panels) + 1 + 5) // 6
+    fig = plt.figure(figsize=(14, 2.75 * rows + 3.2))
+    gs = fig.add_gridspec(rows + 1, 6, height_ratios=[1] * rows + [1.25], hspace=0.55, wspace=0.12)
+    for k, (title, draw, note) in enumerate(panels):
+        A = fig.add_subplot(gs[k // 6, k % 6])
+        draw(A)
+        A.set_xticks([])
+        A.set_yticks([])
+        A.set_title(f"{k}  {title}", loc="left", fontsize=9, color=INK)
+        A.set_xlabel(note, fontsize=7.5, color=MUTED)
+    k = len(panels)                                                  # the outcomes, coloured by class group
+    A = fig.add_subplot(gs[k // 6, k % 6:] if k % 6 < 5 else gs[k // 6, 5])
+    o = S["outcomes"]
+    A.bar(range(len(o)), o, color=[CLASS_COLOURS[g] for g in S["group_of"]], width=1.0)
+    A.axhline(1 / len(o), color=INK, lw=0.8, ls=(0, (2, 2)))
+    A.set_xticks([])
+    A.set_yticks([])
+    A.set_title(f"{k}  {'detectors' if S['optical'] else 'outcomes'}", loc="left", fontsize=9)
+    A.set_xlabel("by class", fontsize=7.5, color=MUTED)
+    # the answer and the evidence over the colour picture
+    A = fig.add_subplot(gs[rows, 0:2])
+    order = np.argsort(p)
+    A.barh(range(10), p[order], color=[CLASS_COLOURS[i] for i in order], height=0.7)
+    A.set_yticks(range(10))
+    A.set_yticklabels([sw.NAMES[i] + ("  (true)" if i == true else "") for i in order], fontsize=8)
+    A.set_xlim(0, max(0.5, p.max() * 1.1))
+    A.tick_params(axis="y", length=0)
+    A.set_title(f"BHR answer: {sw.NAMES[pred]} ({p[pred]:.2f})" + ("" if true is None or pred == true else "   (wrong)"),
+                loc="left", fontsize=10, weight="bold", color=INK)
+    maps = []
+    if true is not None:
+        maps.append((f"evidence: {sw.NAMES[true]}", sw.evidence(run, x[None], [true])[0]))
+    if true is None or pred != true:
+        maps.append((f"evidence: {sw.NAMES[pred]} (answer)", sw.evidence(run, x[None], [pred])[0]))
+    for j, (title, e) in enumerate(maps[:2]):
+        A = fig.add_subplot(gs[rows, 2 + j])
+        sw.overlay(A, x, e)
+        A.set_xticks([])
+        A.set_yticks([])
+        A.set_title(title, loc="left", fontsize=9)
+    att = sw.aib.maps(run, x[None], np.array([pred]), signed=True)[1][0]   # each pixel's share of the light
+    att = np.clip(att / max(np.percentile(att, 99), 1e-12), 0, 1)
+    rgba = plt.cm.magma(att)
+    rgba[..., 3] = np.clip(1.5 * (att - 0.15), 0, 0.9)
+    A = fig.add_subplot(gs[rows, 2 + len(maps[:2])])
+    A.imshow(x)
+    A.imshow(rgba)
+    A.set_xticks([])
+    A.set_yticks([])
+    A.set_title("attention", loc="left", fontsize=9)
+    fig.text(0.37, 0.02, "evidence: red for, blue against", fontsize=8, color=MUTED)
+    return fig
+
+
+def demo_inside():
+    """Pick a model and a picture; see it pass through the model plane by plane."""
+    import ipywidgets as W
+    from IPython.display import display
+    x_all, y_all = sw.test_pictures()
+    model = W.Dropdown(options=list(sw.MODELS), description="model", layout=W.Layout(width="360px"))
+    klass = W.Dropdown(options=[(n, i) for i, n in enumerate(sw.NAMES)], value=7, description="class")
+    pic = W.IntSlider(min=1, max=30, value=1, description="picture")
+    prev = W.Button(description="◀ prev", layout=W.Layout(width="80px"))
+    nxt = W.Button(description="next ▶", layout=W.Layout(width="80px"))
+    out = W.Output()
+    busy = [False]
+
+    def draw(*_):
+        if busy[0]:
+            return
+        out.clear_output(wait=True)
+        with out:
+            i = int(np.flatnonzero(y_all == klass.value)[pic.value - 1])
+            plt.show(inside(sw.load(model.value), x_all[i], int(y_all[i])))
+
+    def step(d):
+        n_ = (klass.value * 30 + pic.value - 1 + d) % 300
+        busy[0] = True
+        klass.value, pic.value = n_ // 30, n_ % 30 + 1
+        busy[0] = False
+        draw()
+    for w_ in (model, klass, pic):
+        w_.observe(draw, "value")
+    prev.on_click(lambda _: step(-1))
+    nxt.on_click(lambda _: step(1))
+    display(W.VBox([W.HBox([model, klass, pic, prev, nxt]), out]))
+    draw()
