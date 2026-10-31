@@ -572,12 +572,12 @@ def _gapped(img, gap=2):
     return rgba
 
 
-def _planes(A, img, gap=2):
-    """Draw a 2 x 2 tiled picture of the four planes with gaps, each labelled R, G, B or the means' mu."""
+def _planes(A, img, gap=2, labels=("R", "G", "B", "\u03bc")):
+    """Draw a 2 x 2 tiled picture with gaps, each tile labelled (default: the planes R, G, B and the means' mu)."""
     g = _gapped(img, gap)
     A.imshow(g)
     h, w = img.shape[0] // 2, img.shape[1] // 2
-    for k, name in enumerate(("R", "G", "B", "\u03bc")):
+    for k, name in enumerate(labels):
         r, c = divmod(k, 2)
         A.text(c * (w + gap) + 1.5, r * (h + gap) + 1.5, name, fontsize=6.5, color=INK, ha="left", va="top",
                bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85))
@@ -658,8 +658,9 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
                    ("filtered", lambda A: _planes(A, _signed(S["filtered"])),
                     f"{100 * S['passed']:.1f} % passes")]
     if S["optical"]:
-        panels.append(("phase plates", lambda A: A.imshow(_gapped(_mapped(_tiles([ph % (2 * np.pi) for ph in S["plates"]]),
-                                                                          "twilight", 0, 2 * np.pi))), "4 plates"))
+        panels.append(("phase plates", lambda A: _planes(A, _mapped(_tiles([ph % (2 * np.pi) for ph in S["plates"]]),
+                                                                    "twilight", 0, 2 * np.pi), labels=("1", "2", "3", "4")),
+                       "1 \u2192 4 in turn, each over all"))
         for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
             panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(np.abs(f_), cmap="magma"))(f),
                            f"{100 * k:.1f} % left"))
