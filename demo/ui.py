@@ -559,6 +559,38 @@ def _signed(f):
     return out
 
 
+def _gapped(img, gap=2):
+    """A 2 x 2 tiled picture (H, W) or (H, W, 3) -> RGBA with a clear gap between the tiles, so the four planes read as
+    separate planes. A plain array is drawn on its own colour scale first (cmap, vmin, vmax via _gapped_cmap)."""
+    h, w = img.shape[0] // 2, img.shape[1] // 2
+    rgba = np.zeros((2 * h + gap, 2 * w + gap, 4))
+    if img.shape[-1] == 3 and img.ndim == 3:
+        img = np.concatenate([img, np.ones(img.shape[:2] + (1,))], 2)
+    for r in (0, 1):
+        for c in (0, 1):
+            rgba[r * (h + gap):r * (h + gap) + h, c * (w + gap):c * (w + gap) + w] = img[r * h:(r + 1) * h, c * w:(c + 1) * w]
+    return rgba
+
+
+def _planes(A, img, gap=2):
+    """Draw a 2 x 2 tiled picture of the four planes with gaps, each labelled R, G, B or the means' mu."""
+    g = _gapped(img, gap)
+    A.imshow(g)
+    h, w = img.shape[0] // 2, img.shape[1] // 2
+    for k, name in enumerate(("R", "G", "B", "\u03bc")):
+        r, c = divmod(k, 2)
+        A.text(c * (w + gap) + 1.5, r * (h + gap) + 1.5, name, fontsize=6.5, color=INK, ha="left", va="top",
+               bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85))
+
+
+def _mapped(a, cmap, vmin=None, vmax=None):
+    """A plain array as RGBA on one colour scale."""
+    import matplotlib.pyplot as plt
+    lo = np.nanmin(a) if vmin is None else vmin
+    hi = np.nanmax(a) if vmax is None else vmax
+    return plt.get_cmap(cmap)(np.clip((a - lo) / max(hi - lo, 1e-12), 0, 1))
+
+
 def _tiles(imgs):
     """Four planes as a 2 x 2 tile picture."""
     top = np.concatenate(imgs[:2], 1)
@@ -618,16 +650,16 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
     pred = int(np.argmax(p))
     panels = [("picture", lambda A: A.imshow(x), sw.NAMES[true] if true is not None else ""),
               ("modulator field" if S["optical"] else "amplitudes",
-               lambda A: A.imshow(_signed(S["field"])), "R, G, B + means")]
+               lambda A: _planes(A, _signed(S["field"])), "R, G, B + means")]
     if "mask" in S:
-        panels += [("Fourier plane", lambda A: A.imshow(_tiles(S["spectra"]), cmap="inferno"),
+        panels += [("Fourier plane", lambda A: _planes(A, _mapped(_tiles(S["spectra"]), "inferno")),
                     "spectra"),
                    ("learned mask", lambda A: A.imshow(np.abs(S["mask"]), cmap="magma", vmin=0), "magnitude"),
-                   ("filtered", lambda A: A.imshow(_signed(S["filtered"])),
+                   ("filtered", lambda A: _planes(A, _signed(S["filtered"])),
                     f"{100 * S['passed']:.1f} % passes")]
     if S["optical"]:
-        panels.append(("phase plates", lambda A: A.imshow(_tiles([ph % (2 * np.pi) for ph in S["plates"]]),
-                                                          cmap="twilight", vmin=0, vmax=2 * np.pi), "4 plates"))
+        panels.append(("phase plates", lambda A: A.imshow(_gapped(_mapped(_tiles([ph % (2 * np.pi) for ph in S["plates"]]),
+                                                                          "twilight", 0, 2 * np.pi))), "4 plates"))
         for l, (f, k) in enumerate(zip(S["after"], S["kept"])):
             panels.append((f"after plate {l + 1}", (lambda f_: lambda A: A.imshow(np.abs(f_), cmap="magma"))(f),
                            f"{100 * k:.1f} % left"))
