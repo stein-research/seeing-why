@@ -232,7 +232,8 @@ def planes(run, x):
     linear = bool(run.get("fourier_linear"))
     if run.get("fourier_mask"):
         w = torch.tensor(run["weights"], dtype=torch.float64)
-        _, kw = fastsim.split_masks(w, 0, 0, -1, (pix, s, n_planes, run.get("fourier_phase", False), linear))
+        depth = 0 if run.get("optical") else run["depth"]           # the mask rows follow the circuit's rows
+        _, kw = fastsim.split_masks(w, depth, 0, -1, (pix, s, n_planes, run.get("fourier_phase", False), linear))
         D = kw["fmask"][1]
         out["mask"] = np.fft.fftshift(D.numpy()[0], axes=(-2, -1))
         st = fastsim.fourier_filter(a, D, pix, linear)
