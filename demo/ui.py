@@ -4,6 +4,7 @@ they also work without widgets; demo() wires them to controls.
     import ui; ui.demo()
 """
 import sys
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -186,11 +187,14 @@ def demo_compare():
     prev = W.Button(description="\u25c0 prev", layout=W.Layout(width="80px"))
     nxt = W.Button(description="next \u25b6", layout=W.Layout(width="80px"))
     out = W.Output()
+    side = W.Image(format="png", layout=W.Layout(width="100%", max_width="1000px"))
     busy = [False]
 
     def draw(*_):
         if busy[0]:
             return
+        optical = bool(sw.load(model.value).get("optical"))
+        side.value = (Path(__file__).parent / ("side_optical.png" if optical else "side_qubit.png")).read_bytes()
         out.clear_output(wait=True)
         with out:
             plt.show(compare(x_all[np.flatnonzero(y_all == klass.value)[pic.value - 1]]))
@@ -503,11 +507,14 @@ def demo_inside():
     prev = W.Button(description="◀ prev", layout=W.Layout(width="80px"))
     nxt = W.Button(description="next ▶", layout=W.Layout(width="80px"))
     out = W.Output()
+    side = W.Image(format="png", layout=W.Layout(width="100%", max_width="1000px"))
     busy = [False]
 
     def draw(*_):
         if busy[0]:
             return
+        optical = bool(sw.load(model.value).get("optical"))
+        side.value = (Path(__file__).parent / ("side_optical.png" if optical else "side_qubit.png")).read_bytes()
         out.clear_output(wait=True)
         with out:
             i = int(np.flatnonzero(y_all == klass.value)[pic.value - 1])
@@ -523,5 +530,5 @@ def demo_inside():
         w_.observe(draw, "value")
     prev.on_click(lambda _: step(-1))
     nxt.on_click(lambda _: step(1))
-    display(W.VBox([W.HBox([model, klass, pic, prev, nxt]), out]))
+    display(W.VBox([W.HBox([model, klass, pic, prev, nxt]), side, out]))
     draw()
