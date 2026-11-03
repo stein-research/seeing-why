@@ -290,7 +290,9 @@ def _finish(folder, rec, job, n):
             pass
         _save(folder, rec)
         raise
-    counts = [result[i].data.meas.get_counts() for i in range(n)]
+    # the classical register's name: "meas" from measure_all (Seeing Why), "c" from QuantumCircuit(n, m)
+    counts = [(getattr(result[i].data, "meas", None) or next(iter(result[i].data.values()))).get_counts()
+              for i in range(n)]
     (folder / "counts.json").write_text(json.dumps(counts))
     rec["status"] = "done"
     if not rec.get("shots") and counts:                         # a fetched job whose inputs did not say
