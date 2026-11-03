@@ -63,26 +63,33 @@ def encode(run, x):
     return np.pad(v, ((0, 0), (0, 2 ** pf.N_QUBITS - v.shape[1])))
 
 
-def classify_amplitudes(run, enc):
-    """Encoded inputs -> (BHR class probabilities (B, 10), class masses P_g (B, 10))."""
+def _forward(run, v):
+    """Encoded inputs as a real torch tensor (B, 2^n) -> (BHR class probabilities, class masses P_g), both (B, 10),
+    differentiable in v."""
     s, perm = _setup(run)
     no = run["n_out"]
-    a = torch.tensor(enc / np.linalg.norm(enc, axis=1, keepdims=True), dtype=torch.complex64)
+    a = (v / v.norm(dim=1, keepdim=True)).to(torch.complex64)
+    if run.get("optical"):
+        cam, _, det, os_ = optnet.from_run(run, perm, "cpu", torch.complex64)
+        P = optnet.outcome_probs(cam(a), det, os=os_).float()
+    else:
+        w = torch.tensor(run["weights"], dtype=torch.float32)
+        fourier = (torch.tensor(perm), s, 2 ** pf.N_QUBITS // (s * s), run.get("fourier_phase", False),
+                   run.get("fourier_linear", False)) if run.get("fourier_mask") else None
+        wc, kw = fastsim.split_masks(w, run["depth"], 0, -1, fourier)
+        P = fastsim.probs(fastsim.run(a, wc, run["depth"], **kw), no).float()
+    P = P / P.sum(1, keepdim=True)                            # conditional on the light that arrives
+    groups = class_groups(run["mode"], 2 ** no, len(NAMES))
+    G = torch.tensor(np.stack([np.isin(np.arange(2 ** no), g) for g in groups]), dtype=torch.float32)
+    q = Readout(run["mode"], 2 ** no, len(groups), pt_ratio=run["pt_ratio"])(P)
+    return q, P @ G.T
+
+
+def classify_amplitudes(run, enc):
+    """Encoded inputs -> (BHR class probabilities (B, 10), class masses P_g (B, 10))."""
     with torch.no_grad():
-        if run.get("optical"):
-            cam, _, det, os_ = optnet.from_run(run, perm, "cpu", torch.complex64)
-            P = optnet.outcome_probs(cam(a), det, os=os_).float()
-        else:
-            w = torch.tensor(run["weights"], dtype=torch.float32)
-            fourier = (torch.tensor(perm), s, 2 ** pf.N_QUBITS // (s * s), run.get("fourier_phase", False),
-                       run.get("fourier_linear", False)) if run.get("fourier_mask") else None
-            wc, kw = fastsim.split_masks(w, run["depth"], 0, -1, fourier)
-            P = fastsim.probs(fastsim.run(a, wc, run["depth"], **kw), no).float()
-        P = P / P.sum(1, keepdim=True)                        # conditional on the light that arrives
-        groups = class_groups(run["mode"], 2 ** no, len(NAMES))
-        G = torch.tensor(np.stack([np.isin(np.arange(2 ** no), g) for g in groups]), dtype=torch.float32)
-        q = Readout(run["mode"], 2 ** no, len(groups), pt_ratio=run["pt_ratio"])(P)
-    return q.numpy(), (P @ G.T).numpy()
+        q, Pg = _forward(run, torch.tensor(enc, dtype=torch.float32))
+    return q.numpy(), Pg.numpy()
 
 
 def classify(run, x):
@@ -96,9 +103,48 @@ def evidence(run, x, classes):
     return aib.maps(run, x, np.asarray(classes), signed=True)[2]
 
 
+RANKINGS = ["evidence", "gradient x input", "gradient", "random", "evidence, reversed"]
+
+
+def ranking(run, x, cls, kind, seed=0):
+    """A 32 x 32 score per pixel of one picture x for class cls; deletion removes the highest first.
+    evidence: the exact evidence (the paper's maps); gradient x input: the pixel's amplitudes times the gradient of
+    the class mass P_g, colour planes summed (with the transmission held fixed it is twice the evidence); gradient:
+    the gradient alone, the classic saliency; random: a random order; evidence, reversed: the most negative evidence
+    first (the pixels that speak against the class)."""
+    s, perm = _setup(run)
+    if kind in ("evidence", "evidence, reversed"):
+        e = evidence(run, x[None], [cls])[0]
+        return e if kind == "evidence" else -e
+    if kind == "random":
+        return np.random.default_rng(seed).random((s, s))
+    v = torch.tensor(encode(run, x[None]), dtype=torch.float32, requires_grad=True)
+    _forward(run, v)[1][0, cls].backward()
+    g = v.grad[0, :3 * s * s].reshape(3, s * s)
+    if kind == "gradient x input":
+        g = g * v.detach()[0, :3 * s * s].reshape(3, s * s)
+    out = np.zeros(s * s)
+    out[np.asarray(perm)] = g.sum(0).numpy()                  # wire order -> pixel order
+    return out.reshape(s, s)
+
+
+def deleted(x, score, frac):
+    """What the deletion does to the picture, to show it: the top fraction frac of pixels by score take the
+    picture's own mean colour (zero contrast). Returns the picture and the mask of deleted pixels."""
+    k = int(round(frac * score.size))
+    dead = np.zeros(score.size, bool)
+    if k:
+        dead[np.argsort(-score.ravel())[:k]] = True
+    dead = dead.reshape(score.shape)
+    y = x.copy()
+    y[dead] = np.round(x.reshape(-1, 3).mean(0)).astype(x.dtype)
+    return y, dead
+
+
 def delete(run, x, ev, frac):
-    """The deletion test: the fraction frac of pixels with the highest evidence get zero contrast in R, G, B (each
-    becomes the picture's own mean colour), then the model is run again. Returns the new BHR probabilities."""
+    """The deletion test: the fraction frac of pixels with the highest score (default: the evidence) get zero contrast
+    in R, G, B (each becomes the picture's own mean colour), then the model is run again. Returns the new BHR
+    probabilities."""
     s, perm = _setup(run)
     enc = encode(run, x)
     k = int(round(frac * s * s))
@@ -117,6 +163,25 @@ def delete(run, x, ev, frac):
             x[i, r, c] = x[i].reshape(-1, 3).mean(0)
         enc = encode(run, x)
     return classify_amplitudes(run, enc)[0]
+
+
+def deletion_curves(name):
+    """The deletion test over all 300 test pictures, as in the paper (results/deletion_baselines.json): for a model
+    of MODELS, {ranking: (fractions, test accuracies)}, or None when it was not run for that model."""
+    f = ROOT / "results" / "deletion_baselines.json"
+    key = {"phase plates (row D)": "plates (row D)", "qubit circuit (row D')": "qubits (row D')"}.get(name)
+    if key is None or not f.exists():
+        return None
+    d = json.loads(f.read_text())[key]
+    names = {"evidence": "evidence", "grad x input": "gradient x input", "gradient": "gradient", "random": "random"}
+    out = {names[k]: (d["fracs"], d[k]) for k in names if k in d}
+    rev = next((g for g in (ROOT / "results").glob("deletion_mp_*.json")
+                if MODELS[name].startswith(g.name[len("deletion_mp_"):-5])), None)
+    if rev is not None:                                       # the most negative evidence first (reversed)
+        r = json.loads(rev.read_text())
+        keep = [i for i, fr in enumerate(r["fracs"]) if fr <= max(d["fracs"])]
+        out["evidence, reversed"] = ([r["fracs"][i] for i in keep], [r["lowest"]["acc"][i] for i in keep])
+    return out
 
 
 def photo(source, zoom=1.0, across=0.0, down=0.0):

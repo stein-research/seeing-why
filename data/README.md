@@ -1,8 +1,8 @@
 # Data
 
 `caltech10fct.npz` - **Caltech-10** as used in the paper: the ten largest object classes of Caltech-101 (airplanes,
-Motorbikes, Faces, watch, Leopards, bonsai, car_side, ketch, chandelier, hawksbill), every picture (2,744 training,
-300 test = 30 per class), 4 % cut off every side, centre square, resized to 32 x 32 colour (box filter). Made by
+Motorbikes, Faces, watch, Leopards, bonsai, car_side, ketch, chandelier, hawksbill), every picture (2,744 training, of which the
+trainer keeps 100 for validation, so 2,644 train; 300 test = 30 per class), 4 % cut off every side, centre square, resized to 32 x 32 colour (box filter). Made by
 `src/prepare_caltech101.py --all --crop --trim 0.04`.
 
 Derived from **Caltech-101** (Li Fei-Fei, M. Andreeto, M. Ranzato, P. Perona; CaltechDATA record mzrjq-6wc02,

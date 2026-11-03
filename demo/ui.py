@@ -323,6 +323,100 @@ def demo_chip():
     draw()
 
 
+# ---------------------------------------------------------------------------------------------------------- deletion
+RANK_COLOURS = {"evidence": ACCENT, "gradient x input": "#7048e8", "gradient": "#868e96", "random": "#adb5bd",
+                "evidence, reversed": "#1f78d1"}
+
+
+def deletion(run, x, true, cls=None, kind="evidence", frac=0.05, name=None):
+    """The deletion test on one picture: rank its pixels (sw.RANKINGS), take the top fraction frac away (each becomes
+    the picture's mean colour), classify again. Panels: the ranking's map, the picture after deletion, the class
+    probabilities before and after, and, for the paper's models, the same test over all 300 test pictures."""
+    p = sw.classify(run, x[None])[0]
+    cls = int(np.argmax(p)) if cls is None else int(cls)
+    score = sw.ranking(run, x, cls, kind)
+    y, dead = sw.deleted(x, score, frac)
+    q = sw.delete(run, x[None], score[None], frac)[0]
+    curves = sw.deletion_curves(name) if name else None
+    fig, ax = plt.subplots(1, 5 if curves else 4, figsize=(15 if curves else 12, 3.3),
+                           gridspec_kw=dict(width_ratios=[1, 1, 1.1, 1.1] + ([1.4] if curves else [])))
+    if kind in ("evidence", "evidence, reversed"):
+        sw.overlay(ax[0], x, score if kind == "evidence" else -score)
+    else:
+        v = max(np.percentile(np.abs(score), 98), 1e-12)
+        ax[0].imshow(score, cmap="RdBu_r" if kind != "random" else "Greys", vmin=-v if kind != "random" else 0, vmax=v)
+    ax[0].set_title(f"{kind} for {sw.NAMES[cls]}" + ("\n(blue: deleted first)" if kind == "evidence, reversed" else ""),
+                    loc="left")
+    ax[1].imshow(y)
+    edge = np.zeros((*dead.shape, 4))
+    edge[dead] = (0.12, 0.47, 0.82, 0.55) if kind == "evidence, reversed" else (0.85, 0.28, 0.06, 0.55)
+    ax[1].imshow(edge)
+    ax[1].set_title(f"{100 * frac:.0f} % deleted ({int(dead.sum())} pixels)", loc="left")
+    for a in ax[:2]:
+        a.set_xticks([])
+        a.set_yticks([])
+    _bars(ax[2], p, "before", true)
+    _bars(ax[3], q, f"after: {sw.NAMES[int(np.argmax(q))]}", true, RANK_COLOURS[kind])
+    if curves:
+        A = ax[4]
+        for k, (f, acc) in curves.items():
+            A.plot(100 * np.asarray(f), 100 * np.asarray(acc), "-o", ms=3, lw=2.2 if k == kind else 1.2,
+                   color=RANK_COLOURS[k], label=k, alpha=1 if k == kind else 0.75)
+        A.axvline(100 * frac, color=LINE, lw=1)
+        A.set_xlabel("pixels deleted (%)")
+        A.set_ylabel("test accuracy (%)")
+        A.set_ylim(0, 100)
+        A.set_title("all 300 test pictures", loc="left")
+        A.legend(fontsize=7, frameon=False)
+    fig.tight_layout()
+    return fig
+
+
+def demo_deletion():
+    """The deletion test, interactive: pick a picture and a way to rank its pixels, slide how many to delete, and see
+    the answer change. Deleting by the evidence (or by gradient x input, which carries the same amplitude factor)
+    changes most answers with a few percent of the pixels; the plain gradient and a random order barely do; deleting
+    the most negative evidence first makes the model surer of the class."""
+    import ipywidgets as W
+    from IPython.display import display
+    x_all, y_all = sw.test_pictures()
+    st = {"description_width": "70px"}
+    model = W.Dropdown(options=list(sw.MODELS), description="model", style=st, layout=W.Layout(width="360px"))
+    klass = W.Dropdown(options=[(n, i) for i, n in enumerate(sw.NAMES)], value=7, description="class", style=st)
+    pic = W.IntSlider(min=1, max=30, value=1, description="picture", style=st)
+    prev = W.Button(description="\u25c0 prev", layout=W.Layout(width="80px"))
+    nxt = W.Button(description="next \u25b6", layout=W.Layout(width="80px"))
+    why = W.Dropdown(options=[("true class", -1)] + [(n, i) for i, n in enumerate(sw.NAMES)], description="for",
+                     style=st)
+    kind = W.ToggleButtons(options=sw.RANKINGS, description="rank by", style=st)
+    frac = W.IntSlider(min=0, max=20, value=5, description="delete %", style=st)
+    out = W.Output()
+    busy = [False]
+
+    def draw(*_):
+        if busy[0]:
+            return
+        x = x_all[np.flatnonzero(y_all == klass.value)[pic.value - 1]]
+        out.clear_output(wait=True)
+        with out:
+            plt.show(deletion(sw.load(model.value), x, int(klass.value),
+                              int(klass.value) if why.value < 0 else why.value, kind.value, frac.value / 100,
+                              model.value))
+
+    def step(d):
+        n = (klass.value * 30 + pic.value - 1 + d) % 300
+        busy[0] = True
+        klass.value, pic.value = n // 30, n % 30 + 1
+        busy[0] = False
+        draw()
+    for w_ in (model, klass, pic, why, kind, frac):
+        w_.observe(draw, "value")
+    prev.on_click(lambda _: step(-1))
+    nxt.on_click(lambda _: step(1))
+    display(W.VBox([W.HBox([model, why]), W.HBox([klass, pic, prev, nxt]), kind, frac, out]))
+    draw()
+
+
 # ---------------------------------------------------------------------------------------------------------- training
 COMMON = "--mode bhr --pt_ratio 0.0556 --rot rzryrx --order morton --n_out 7 --sim fast --ent brickwall"
 CAL = "--dataset caltech10fct --n_qubits 12 --n_train 2644 --balanced --aug_crop 0.8"
