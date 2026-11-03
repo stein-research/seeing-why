@@ -61,6 +61,7 @@ below. The same quantity is measured on the hardware: on a qubit chip from three
 | | |
 |---|---|
 | [`demo/`](demo/) | the two notebooks and their helpers ([`seeing_why.py`](demo/seeing_why.py), [`ui.py`](demo/ui.py)) |
+| [`examples/`](examples/) | [`quickstart.py`](examples/quickstart.py): the model in plain Python, one evidence map and the deletion test; how to run everything from a clone: [`docs/run-locally.md`](docs/run-locally.md) |
 | [`src/`](src/) | the simulator, the optics, the readout, the evidence maps, the trainer, the scripts that ran the IBM jobs, the checks of the hardware maps (`map_errors.py`, `map_shots_all.py`, `map_nulls.py`), and the paper's Caltech-10 analyses: deletion tests (`deletion_*.py`), the quadratic and classical baselines (`quad_baseline.py`, `classical_refs.py`), the bench tolerances (`robustness.py`) and the LightPipes bench (`optics_check*.py`, needs `pip install LightPipes`) |
 | [`results/`](results/) | every trained Caltech-10 model of the paper, all seeds (weights inside each JSON; the demo uses four), the IBM test-set and map results, and the outputs of the analyses |
 | [`data/`](data/) | Caltech-10 (32 x 32, from Caltech-101, CC BY 4.0); see [`data/README.md`](data/README.md) |

@@ -35,7 +35,14 @@ kernel and run the setup cell again.
 
 ## In plain Python
 
-From the repository's top folder:
+[`examples/quickstart.py`](../examples/quickstart.py) does the following and a little more (one evidence map saved as a
+picture, and the deletion test by every ranking); run it from anywhere in the clone:
+
+```bash
+python examples/quickstart.py
+```
+
+The core of it, from the repository's top folder:
 
 ```python
 import sys; sys.path.insert(0, "demo")

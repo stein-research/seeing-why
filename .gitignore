@@ -5,3 +5,4 @@ data/caltech101/caltech-101.zip
 data/caltech101/x/
 results/checkpoint_*
 logs/
+examples/quickstart.png
