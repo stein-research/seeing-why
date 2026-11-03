@@ -1,0 +1,428 @@
+{
+ "plates (row D)": {
+  "base": 0.73,
+  "n_right": 219,
+  "n_wrong": 81,
+  "predicted, highest": [
+   {
+    "frac": 0.0,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.73,
+    "margin": 0.01570749808191836,
+    "margin | right": 0.019145327309430766,
+    "margin | wrong": 0.006412626466792228
+   },
+   {
+    "frac": 0.02,
+    "same answer": 0.3933333333333333,
+    "same answer | right": 0.4977168949771689,
+    "same answer | wrong": 0.1111111111111111,
+    "accuracy": 0.4633333333333333,
+    "margin": -0.0010355316621550674,
+    "margin | right": 0.001594939661170613,
+    "margin | wrong": -0.008147546721517091
+   },
+   {
+    "frac": 0.05,
+    "same answer": 0.09333333333333334,
+    "same answer | right": 0.1187214611872146,
+    "same answer | wrong": 0.024691358024691357,
+    "accuracy": 0.19,
+    "margin": -0.017558855055332896,
+    "margin | right": -0.015963382121869027,
+    "margin | wrong": -0.02187254113469818
+   },
+   {
+    "frac": 0.1,
+    "same answer": 0.01,
+    "same answer | right": 0.0136986301369863,
+    "same answer | wrong": 0.0,
+    "accuracy": 0.10333333333333333,
+    "margin": -0.036117670930903414,
+    "margin | right": -0.03582134737657709,
+    "margin | wrong": -0.03691884202223014
+   },
+   {
+    "frac": 0.2,
+    "same answer": 0.0033333333333333335,
+    "same answer | right": 0.0045662100456621,
+    "same answer | wrong": 0.0,
+    "accuracy": 0.08,
+    "margin": -0.0588324297018971,
+    "margin | right": -0.06012407635248241,
+    "margin | wrong": -0.0553401998688331
+   }
+  ],
+  "predicted, reversed": [
+   {
+    "frac": 0.0,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.73,
+    "margin": 0.015707497725899012,
+    "margin | right": 0.01914532697026213,
+    "margin | wrong": 0.00641262606521356
+   },
+   {
+    "frac": 0.02,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.73,
+    "margin": 0.02962887853982745,
+    "margin | right": 0.03277065134080779,
+    "margin | wrong": 0.021134455781621347
+   },
+   {
+    "frac": 0.05,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.73,
+    "margin": 0.04267001471693428,
+    "margin | right": 0.04550829147891513,
+    "margin | wrong": 0.03499615532343053
+   },
+   {
+    "frac": 0.1,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.73,
+    "margin": 0.057573586894535275,
+    "margin | right": 0.06013287381540944,
+    "margin | wrong": 0.05065403336772742
+   },
+   {
+    "frac": 0.2,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.73,
+    "margin": 0.07606498232964931,
+    "margin | right": 0.0781910164806895,
+    "margin | wrong": 0.07031681592128136
+   }
+  ],
+  "true, highest": [
+   {
+    "frac": 0.0,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.73,
+    "margin": 0.010496555988696858,
+    "margin | right": 0.019145327189954615,
+    "margin | wrong": -0.012887158740629661
+   },
+   {
+    "frac": 0.02,
+    "same answer": 0.6033333333333334,
+    "same answer | right": 0.4977168949771689,
+    "same answer | wrong": 0.8888888888888888,
+    "accuracy": 0.36333333333333334,
+    "margin": -0.006493960936387618,
+    "margin | right": 0.001594939356277918,
+    "margin | wrong": -0.0283639506165574
+   },
+   {
+    "frac": 0.05,
+    "same answer": 0.2833333333333333,
+    "same answer | right": 0.1187214611872146,
+    "same answer | wrong": 0.7283950617283951,
+    "accuracy": 0.08666666666666667,
+    "margin": -0.023031690446452344,
+    "margin | right": -0.01596338301761373,
+    "margin | wrong": -0.042142299420719696
+   },
+   {
+    "frac": 0.1,
+    "same answer": 0.18333333333333332,
+    "same answer | right": 0.0136986301369863,
+    "same answer | wrong": 0.6419753086419753,
+    "accuracy": 0.01,
+    "margin": -0.04140313393363114,
+    "margin | right": -0.035821348950332635,
+    "margin | wrong": -0.05649462666625301
+   },
+   {
+    "frac": 0.2,
+    "same answer": 0.13333333333333333,
+    "same answer | right": 0.0045662100456621,
+    "same answer | wrong": 0.48148148148148145,
+    "accuracy": 0.0033333333333333335,
+    "margin": -0.06365204016105466,
+    "margin | right": -0.060124075958145826,
+    "margin | wrong": -0.07319061004299333
+   }
+  ],
+  "true, reversed": [
+   {
+    "frac": 0.0,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.73,
+    "margin": 0.01049655618553219,
+    "margin | right": 0.01914532753761063,
+    "margin | wrong": -0.012887158951568788
+   },
+   {
+    "frac": 0.02,
+    "same answer": 0.82,
+    "same answer | right": 1.0,
+    "same answer | wrong": 0.3333333333333333,
+    "accuracy": 0.8966666666666666,
+    "margin": 0.024171384495416327,
+    "margin | right": 0.03277065020480503,
+    "margin | wrong": 0.0009215179478098134
+   },
+   {
+    "frac": 0.05,
+    "same answer": 0.75,
+    "same answer | right": 1.0,
+    "same answer | wrong": 0.07407407407407407,
+    "accuracy": 0.9733333333333334,
+    "margin": 0.036831687835500816,
+    "margin | right": 0.04550828944129178,
+    "margin | wrong": 0.01337272793836225
+   },
+   {
+    "frac": 0.1,
+    "same answer": 0.7366666666666667,
+    "same answer | right": 1.0,
+    "same answer | wrong": 0.024691358024691357,
+    "accuracy": 0.9866666666666667,
+    "margin": 0.05162348097101085,
+    "margin | right": 0.06013287551680207,
+    "margin | wrong": 0.02861659942127901
+   },
+   {
+    "frac": 0.2,
+    "same answer": 0.7333333333333333,
+    "same answer | right": 1.0,
+    "same answer | wrong": 0.012345679012345678,
+    "accuracy": 0.9966666666666667,
+    "margin": 0.06977561373117266,
+    "margin | right": 0.07819101727523857,
+    "margin | wrong": 0.04702285600092043
+   }
+  ]
+ },
+ "qubits (row D')": {
+  "base": 0.5633333333333334,
+  "n_right": 169,
+  "n_wrong": 131,
+  "predicted, highest": [
+   {
+    "frac": 0.0,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.5633333333333334,
+    "margin": 0.009059479452025468,
+    "margin | right": 0.01137125060470818,
+    "margin | wrong": 0.0060771181939844095
+   },
+   {
+    "frac": 0.02,
+    "same answer": 0.26,
+    "same answer | right": 0.3668639053254438,
+    "same answer | wrong": 0.12213740458015267,
+    "accuracy": 0.34,
+    "margin": -0.003824642825043244,
+    "margin | right": -0.0017742759865877668,
+    "margin | wrong": -0.006469772563203362
+   },
+   {
+    "frac": 0.05,
+    "same answer": 0.04666666666666667,
+    "same answer | right": 0.08284023668639054,
+    "same answer | wrong": 0.0,
+    "accuracy": 0.18333333333333332,
+    "margin": -0.015581065828236623,
+    "margin | right": -0.014048276070626368,
+    "margin | wrong": -0.017558481622405576
+   },
+   {
+    "frac": 0.1,
+    "same answer": 0.0,
+    "same answer | right": 0.0,
+    "same answer | wrong": 0.0,
+    "accuracy": 0.13333333333333333,
+    "margin": -0.028239908420700004,
+    "margin | right": -0.027362382594594267,
+    "margin | wrong": -0.02937198372308069
+   },
+   {
+    "frac": 0.2,
+    "same answer": 0.0,
+    "same answer | right": 0.0,
+    "same answer | wrong": 0.0,
+    "accuracy": 0.11,
+    "margin": -0.042304399164124526,
+    "margin | right": -0.04193006274484913,
+    "margin | wrong": -0.04278732172028897
+   }
+  ],
+  "predicted, reversed": [
+   {
+    "frac": 0.0,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.5633333333333334,
+    "margin": 0.009059479452025468,
+    "margin | right": 0.01137125060470818,
+    "margin | wrong": 0.0060771181939844095
+   },
+   {
+    "frac": 0.02,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.5633333333333334,
+    "margin": 0.02023796471210195,
+    "margin | right": 0.02262367026265241,
+    "margin | wrong": 0.017160222436964346
+   },
+   {
+    "frac": 0.05,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.5633333333333334,
+    "margin": 0.030537233101016935,
+    "margin | right": 0.03288911620454013,
+    "margin | wrong": 0.027503124364410676
+   },
+   {
+    "frac": 0.1,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.5633333333333334,
+    "margin": 0.04256451641232416,
+    "margin | right": 0.044815934055585864,
+    "margin | wrong": 0.039660015788574324
+   },
+   {
+    "frac": 0.2,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.5633333333333334,
+    "margin": 0.057272145476477083,
+    "margin | right": 0.0591199213745069,
+    "margin | wrong": 0.05488837351642334
+   }
+  ],
+  "true, highest": [
+   {
+    "frac": 0.0,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.5633333333333334,
+    "margin": 0.0005095489857972471,
+    "margin | right": 0.01137125060470818,
+    "margin | wrong": -0.013502875240126019
+   },
+   {
+    "frac": 0.02,
+    "same answer": 0.5966666666666667,
+    "same answer | right": 0.3668639053254438,
+    "same answer | wrong": 0.8931297709923665,
+    "accuracy": 0.20666666666666667,
+    "margin": -0.011457536091153948,
+    "margin | right": -0.0017742759865877668,
+    "margin | wrong": -0.023949680806204975
+   },
+   {
+    "frac": 0.05,
+    "same answer": 0.39666666666666667,
+    "same answer | right": 0.08284023668639054,
+    "same answer | wrong": 0.8015267175572519,
+    "accuracy": 0.04666666666666667,
+    "margin": -0.022495844245254845,
+    "margin | right": -0.014048276070626368,
+    "margin | wrong": -0.03339385204305799
+   },
+   {
+    "frac": 0.1,
+    "same answer": 0.3233333333333333,
+    "same answer | right": 0.0,
+    "same answer | wrong": 0.7404580152671756,
+    "accuracy": 0.0,
+    "margin": -0.034275146503915555,
+    "margin | right": -0.027362382594594267,
+    "margin | wrong": -0.0431931396388415
+   },
+   {
+    "frac": 0.2,
+    "same answer": 0.27666666666666667,
+    "same answer | right": 0.0,
+    "same answer | wrong": 0.6335877862595419,
+    "accuracy": 0.0,
+    "margin": -0.047247611627883754,
+    "margin | right": -0.04193006274484913,
+    "margin | wrong": -0.0541076556067605
+   }
+  ],
+  "true, reversed": [
+   {
+    "frac": 0.0,
+    "same answer": 1.0,
+    "same answer | right": 1.0,
+    "same answer | wrong": 1.0,
+    "accuracy": 0.5633333333333334,
+    "margin": 0.0005095489857972471,
+    "margin | right": 0.01137125060470818,
+    "margin | wrong": -0.013502875240126019
+   },
+   {
+    "frac": 0.02,
+    "same answer": 0.7733333333333333,
+    "same answer | right": 1.0,
+    "same answer | wrong": 0.48091603053435117,
+    "accuracy": 0.7733333333333333,
+    "margin": 0.012232871790995066,
+    "margin | right": 0.02262367026265241,
+    "margin | wrong": -0.0011720514281659362
+   },
+   {
+    "frac": 0.05,
+    "same answer": 0.6166666666666667,
+    "same answer | right": 1.0,
+    "same answer | wrong": 0.12213740458015267,
+    "accuracy": 0.94,
+    "margin": 0.022969142818736885,
+    "margin | right": 0.03288911620454013,
+    "margin | wrong": 0.01017161990117392
+   },
+   {
+    "frac": 0.1,
+    "same answer": 0.5766666666666667,
+    "same answer | right": 1.0,
+    "same answer | wrong": 0.030534351145038167,
+    "accuracy": 0.9833333333333333,
+    "margin": 0.0354938027700265,
+    "margin | right": 0.044815934055585864,
+    "margin | wrong": 0.023467541798579683
+   },
+   {
+    "frac": 0.2,
+    "same answer": 0.5633333333333334,
+    "same answer | right": 1.0,
+    "same answer | wrong": 0.0,
+    "accuracy": 1.0,
+    "margin": 0.050928415615638455,
+    "margin | right": 0.0591199213745069,
+    "margin | wrong": 0.04036074788091504
+   }
+  ]
+ }
+}

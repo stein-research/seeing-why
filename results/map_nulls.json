@@ -1,0 +1,18 @@
+{
+ "sign_baseline": 0.825,
+ "uniform_split_corr": 0.44899689354874533,
+ "chip_ibm_kingston": {
+  "corr": 0.625804549102366,
+  "within_perm_null_95": 0.2380408377598088,
+  "p_within_perm": 0.0,
+  "centred_corr": 0.8592483640852755,
+  "signs": 0.825
+ },
+ "chip_ibm_kingston_r1": {
+  "corr": 0.7706165384387317,
+  "within_perm_null_95": 0.44988385145024484,
+  "p_within_perm": 0.0,
+  "centred_corr": 0.8506112734073865,
+  "signs": 0.875
+ }
+}
