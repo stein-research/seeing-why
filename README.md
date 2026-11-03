@@ -7,6 +7,7 @@ Interactive companion to the paper by Teerawat Tongloy (KMITL) and Rangsan Jomta
 | Try it: pick a picture and see why the model decides (CPU, no install) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/seeing-why/blob/main/demo/demo.ipynb) |
 | Train a model in the simulator (GPU) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/seeing-why/blob/main/demo/train.ipynb) |
 | Paper | [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) |
+| Archived copy (v1.0) | [doi:10.5281/zenodo.23906357](https://doi.org/10.5281/zenodo.23906357) |
 
 ![The two classifiers, step by step: (a) all-optical, (b) qubit chip](docs/overview.png)
 

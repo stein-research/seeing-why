@@ -4,6 +4,8 @@ title: "Seeing Why: Exact Evidence Maps for Quantum and Optical Image Classifier
 type: software
 license: MIT
 repository-code: "https://github.com/stein-research/seeing-why"
+doi: "10.5281/zenodo.23906357"
+version: "1.0"
 authors:
   - family-names: Tongloy
     given-names: Teerawat
@@ -12,6 +14,7 @@ authors:
     affiliation: "School of Integrated Innovative Technology, King Mongkut's Institute of Technology Ladkrabang"
   - family-names: Jomtarak
     given-names: Rangsan
+    orcid: "https://orcid.org/0009-0009-5417-5571"
     affiliation: "Faculty of Science and Technology, Suan Dusit University"
 keywords:
   - quantum machine learning
@@ -28,6 +31,7 @@ preferred-citation:
       orcid: "https://orcid.org/0009-0001-0670-3124"
     - family-names: Jomtarak
       given-names: Rangsan
+      orcid: "https://orcid.org/0009-0009-5417-5571"
   year: 2026
   journal: "arXiv preprint"
   doi: "10.48550/arXiv.2611.01993"
