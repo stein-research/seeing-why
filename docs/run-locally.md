@@ -84,10 +84,25 @@ Each script prints its numbers and writes them to `results/`; the outputs alread
 The row E run is
 `results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d0rzmo_cimp0.5_crop0.8_bal_opt4z32r2os2_fmLp_o7_brickwall_i0.1_s0.json`.
 
-`src/attention_in_box.py`, which measures where the maps sit against the hand-drawn object outlines (3.5), needs the
-original Caltech-101 archive with its annotations: download `caltech-101.zip` from
-[CaltechDATA](https://doi.org/10.22002/D1.20086) (CC BY 4.0), check it against `data/caltech101/MD5SUMS`, and put it at
-`data/caltech101/caltech-101.zip`.
+## Data
+
+Caltech-10 as the paper used it is in the repository (`data/caltech10fct.npz`, 7.7 MB), so the notebooks, training
+and every script above need no download. The original Caltech-101 archive (about 130 MB, CC BY 4.0) is needed only
+for two optional things, and one call fetches it into `data/caltech101/` with its MD5 checked:
+
+```python
+import sys; sys.path.insert(0, "demo")
+import seeing_why as sw
+sw.prepare_caltech10()        # downloads Caltech-101, rebuilds Caltech-10 and compares it with the shipped set
+```
+
+The hand-drawn object outlines also come with the archive. To measure where the maps sit against them (3.5), take
+them out once, then run `src/attention_in_box.py`:
+
+```python
+import zipfile
+zipfile.ZipFile("data/caltech101/caltech-101.zip").extract("caltech-101/Annotations.tar", "data/caltech101/x")
+```
 
 ## The IBM scripts
 
