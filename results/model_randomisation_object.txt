@@ -1,0 +1,12 @@
+Table object for the models of model_randomisation.py "all permuted" (default_rng(0), the same draw), 2026-11-04:
+  weights written by model_randomisation.parts/permuted, then
+  CUDA_VISIBLE_DEVICES="" python attention_in_box.py <row D permuted>.json <row D' permuted>.json
+300 test pictures replayed and matched; area share: box 0.708, contour 0.408
+run | map | box: share, /area, pointing | contour: share, /area, pointing
+row D permuted  | light     | 0.749 1.10 0.81 | 0.522 1.42 0.66
+row D permuted  | attention | 0.753 1.10 0.80 | 0.521 1.42 0.64
+row D permuted  | evidence+ | 0.736 1.07 0.79 | 0.456 1.18 0.61
+row D' permuted | light     | 0.749 1.10 0.81 | 0.522 1.42 0.66
+row D' permuted | attention | 0.750 1.10 0.80 | 0.527 1.44 0.67
+row D' permuted | evidence+ | 0.730 1.06 0.79 | 0.456 1.18 0.59
+(trained, Table object, contour: row D 1.37 / 0.71, row D' 1.26 / 0.62; input intensity 1.42)

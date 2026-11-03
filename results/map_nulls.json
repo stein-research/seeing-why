@@ -1,6 +1,8 @@
 {
  "sign_baseline": 0.825,
  "uniform_split_corr": 0.44899689354874533,
+ "energy_split_corr": 0.5458138005171953,
+ "energy_split_centred": 0.38013997480868167,
  "chip_ibm_kingston": {
   "corr": 0.625804549102366,
   "within_perm_null_95": 0.2380408377598088,

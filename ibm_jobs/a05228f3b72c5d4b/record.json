@@ -1,0 +1,2174 @@
+{
+ "purpose": "pre-registered random pictures: 2x2 block maps of test pictures [59, 62, 73, 77, 94], pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_cimp0.5_crop0.8_bal_fmp_o7_brickwall_i0.1_s0.json",
+ "backend": "ibm_kingston",
+ "shots": 4000,
+ "n_circuits": 65,
+ "repeat": 2,
+ "circuit_keys": [
+  "6b073d2d35f6870f",
+  "d7bee9004405a5a0",
+  "05bfbfc366d3ccd2",
+  "889637b224c9013d",
+  "f32874f4a36e065b",
+  "25e782453686e115",
+  "3c7dbd9233ea0117",
+  "79f4ed4e95a95de0",
+  "799ebfe99cf5ef30",
+  "e3101b5c2e312c72",
+  "8b05ff9e272a56a9",
+  "456d50979e9bb704",
+  "45442130b1c89a67",
+  "bca734a444ffa568",
+  "39703038eb5115e5",
+  "4796979f34823791",
+  "a0ab9621c53f2ddd",
+  "a92c9df582a7f061",
+  "00712b126997c94f",
+  "5cac3ddab0616881",
+  "4b11a7fc7b7dfe9c",
+  "82707a56ce49b1a7",
+  "49c9133e72eb6b6a",
+  "c0b47788bc5a89e1",
+  "58ba4d2ede4cd2e9",
+  "ff27e2c1f3944186",
+  "b201ac1584a18e18",
+  "d5b25abec8c047d4",
+  "dd6da949fa93c926",
+  "5708bebb5750aed4",
+  "07afb194698e3601",
+  "7a2efdef2fdb6b02",
+  "668e53041b82560c",
+  "ef3fd677977ab799",
+  "448b11596f5b047b",
+  "8b65bd0b8c821ef7",
+  "c624c2f1d2fe7119",
+  "c91af662bf80f7e3",
+  "a437746cc6a394a6",
+  "a8ad4e2b18909808",
+  "4585b8de75aa2c54",
+  "b88d71536f1aa449",
+  "63a2c3158eba1a05",
+  "bd85b2afc6944aee",
+  "63020478185db502",
+  "c7758cf4755d1f01",
+  "e4d29317c16ee1b5",
+  "de215976c585ac39",
+  "9cf0d1509e6022b7",
+  "65293838686afb4d",
+  "a7e3b95699044b60",
+  "fcf35f482d4cfb81",
+  "80ca49d6163d32a7",
+  "18f319bea8e6babd",
+  "0e972f10b0276717",
+  "0d3b852481d4eef6",
+  "11e33a0185b75465",
+  "cbd85e0df75c5a03",
+  "1e88bcad17b7c42a",
+  "ac9296a8cb0cdfd0",
+  "3c772dd15ef51261",
+  "e9b87ee1198a7b08",
+  "fdae1764eae0b2b0",
+  "e612a4e759f66113",
+  "767838626160b6b8"
+ ],
+ "command": "ibm_maps_random.py chip --keys <keys file> --accounts <n>",
+ "code": {
+  "note": "run from the research repository this release was made from"
+ },
+ "versions": {
+  "python": "3.12.3",
+  "qiskit": "2.6.1",
+  "qiskit_ibm_runtime": "0.51.0"
+ },
+ "inputs": [
+  {
+   "file": "results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_cimp0.5_crop0.8_bal_fmp_o7_brickwall_i0.1_s0.json",
+   "sha256": "0b033312d967e15ccaede5587e4ee3814fff5ec0e2ae33bcbd9a0b5895bfde5e"
+  },
+  {
+   "file": "results/ibm_testset_pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_cimp0.5__L8/random/prereg.json",
+   "sha256": "07e5a472cceca0353917b43097480edb02bc1e7452249c5df5783a2ba3ecad5a"
+  },
+  {
+   "file": "results/ibm_testset_pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_cimp0.5__L8/random/states.npz",
+   "sha256": "8de05d6a40054f8648ca1b9c451280ecfb3e04a8ac2762986a3edd52c1ca1279"
+  }
+ ],
+ "transpile": {
+  "optimization_level": 3,
+  "seeds_tried": 8,
+  "per_circuit": [
+   {
+    "seed": 0,
+    "expected_fidelity": 0.696632585967614,
+    "seed0": 0.696632585967614
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6952674427004476,
+    "seed0": 0.6952674427004476
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6960701347344116,
+    "seed0": 0.6960701347344116
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6946822430808247,
+    "seed0": 0.6946822430808247
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.69871516052623,
+    "seed0": 0.69871516052623
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.696018080199327,
+    "seed0": 0.696018080199327
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6965010821525305,
+    "seed0": 0.6965010821525305
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6959307693476229,
+    "seed0": 0.6959307693476229
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.69871516052623,
+    "seed0": 0.69871516052623
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6960140957377338,
+    "seed0": 0.6960140957377338
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6962792856727572,
+    "seed0": 0.6962792856727572
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6970251043248623,
+    "seed0": 0.6970251043248623
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6960637642450593,
+    "seed0": 0.6960637642450593
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6955997959061422,
+    "seed0": 0.6955997959061422
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6946130407595218,
+    "seed0": 0.6946130407595218
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6958629003199626,
+    "seed0": 0.6958629003199626
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6972448981526348,
+    "seed0": 0.6972448981526348
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6958058928026237,
+    "seed0": 0.6958058928026237
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.696632756407734,
+    "seed0": 0.696632756407734
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6949318683399167,
+    "seed0": 0.6949318683399167
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6941832615327876,
+    "seed0": 0.6941832615327876
+   }
+  ]
+ },
+ "dynamical_decoupling": "XY4",
+ "circuits": [
+  {
+   "note": "2x2 map, picture 59, block 0 in, squared norm 0.23522",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 429,
+    "rz": 389,
+    "cz": 105,
+    "measure": 12,
+    "x": 3,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 0 out, squared norm 0.76478",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 389,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 0 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 398,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 1 in, squared norm 0.22425",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 435,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "x": 2,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 1 out, squared norm 0.77575",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 1 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 2 in, squared norm 0.25282",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 434,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "x": 1,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 2 out, squared norm 0.74718",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 2 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 389,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 3 in, squared norm 0.28770",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 439,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "x": 1,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 3 out, squared norm 0.71230",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 400,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, block 3 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 101,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 0 in, squared norm 0.25466",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 420,
+    "rz": 383,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 0 out, squared norm 0.74534",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 0 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 401,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 1 in, squared norm 0.23245",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 429,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "x": 5,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 1 out, squared norm 0.76755",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 1 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 397,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 2 in, squared norm 0.27417",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 428,
+    "rz": 381,
+    "cz": 105,
+    "measure": 12,
+    "x": 4,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 2 out, squared norm 0.72583",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 397,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 2 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 3 in, squared norm 0.23872",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 432,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "x": 2,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 3 out, squared norm 0.76128",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, block 3 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 101,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 0 in, squared norm 0.18965",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 420,
+    "rz": 377,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 0 out, squared norm 0.81035",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 398,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 0 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 401,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 1 in, squared norm 0.20467",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 430,
+    "rz": 383,
+    "cz": 105,
+    "measure": 12,
+    "x": 4,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 1 out, squared norm 0.79533",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 397,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 1 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 396,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 2 in, squared norm 0.31844",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 101,
+   "ops": {
+    "sx": 428,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "x": 5,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 2 out, squared norm 0.68156",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 2 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 3 in, squared norm 0.28724",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 426,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "x": 3,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 3 out, squared norm 0.71276",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, block 3 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 0 in, squared norm 0.23858",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 434,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 0 out, squared norm 0.76142",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 389,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 0 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 101,
+   "ops": {
+    "sx": 444,
+    "rz": 402,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 1 in, squared norm 0.24414",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 434,
+    "rz": 388,
+    "cz": 105,
+    "measure": 12,
+    "x": 3,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 1 out, squared norm 0.75586",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 1 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 2 in, squared norm 0.20587",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 441,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 2 out, squared norm 0.79413",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 101,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 2 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 3 in, squared norm 0.31140",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 428,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "x": 4,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 3 out, squared norm 0.68860",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, block 3 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 396,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 0 in, squared norm 0.27424",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 427,
+    "rz": 387,
+    "cz": 105,
+    "measure": 12,
+    "x": 1,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 0 out, squared norm 0.72576",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 390,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 0 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 390,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 1 in, squared norm 0.23907",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 432,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "x": 3,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 1 out, squared norm 0.76093",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 397,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 1 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 399,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 2 in, squared norm 0.20611",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 428,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "x": 4,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 2 out, squared norm 0.79389",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 2 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 3 in, squared norm 0.28057",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    117,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    90,
+    89
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 437,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "x": 1,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 3 out, squared norm 0.71943",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 389,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, block 3 flip, squared norm 1.00000",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 403,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 59, whole picture",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 62, whole picture",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 73, whole picture",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 387,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 77, whole picture",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 399,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "2x2 map, picture 94, whole picture",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    117
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  }
+ ],
+ "status": "done",
+ "job_id": "dbl43u5gg49c73dk0h60",
+ "created": "2026-11-03T20:20:09+00:00",
+ "finished": "2026-11-03T20:21:38+00:00",
+ "quantum_seconds": 71,
+ "ibm_metrics": {
+  "caller": "qiskit_ibm_runtime~sampler.py",
+  "qiskit_version": "qiskit_ibm_runtime-0.51.0,qiskit-2.6.1*,qiskit_aer-0.18.2",
+  "timestamps": {
+   "created": "2026-11-03T20:20:08.999292Z",
+   "finished": "2026-11-03T20:21:36.051187Z",
+   "running": "2026-11-03T20:20:10.22437Z"
+  },
+  "usage": {
+   "qpu_charge_time_seconds": 71,
+   "value": 1.173358,
+   "unit": "resource_units",
+   "status": "complete",
+   "details": [
+    {
+     "value": 1.173358,
+     "unit": "resource_units",
+     "metric": {
+      "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+      "value": 71
+     }
+    }
+   ]
+  },
+  "circuits_execution_time_ns": 68570056448
+ },
+ "result_metadata": {
+  "execution": {
+   "execution_spans": "ExecutionSpans([DoubleSliceSpan(<start='2026-11-03 20:20:18', stop='2026-11-03 20:21:27', size=260000>)])"
+  },
+  "version": 2
+ }
+}

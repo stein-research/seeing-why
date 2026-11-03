@@ -1,0 +1,36 @@
+{
+ "plates (row D)": {
+  "trained": {
+   "signed_vs_trained": 1.0,
+   "abs_vs_trained": 1.0,
+   "abs_vs_light": 0.5704240626507242
+  },
+  "top permuted": {
+   "signed_vs_trained": 0.062150681058221864,
+   "abs_vs_trained": 0.3453076831950504,
+   "abs_vs_light": 0.564560970786512
+  },
+  "all permuted": {
+   "signed_vs_trained": 0.002070991434804377,
+   "abs_vs_trained": 0.33108420579715325,
+   "abs_vs_light": 0.5421782865290488
+  }
+ },
+ "qubits (row D')": {
+  "trained": {
+   "signed_vs_trained": 1.0,
+   "abs_vs_trained": 1.0,
+   "abs_vs_light": 0.5550900100353106
+  },
+  "top permuted": {
+   "signed_vs_trained": 0.01900174790787497,
+   "abs_vs_trained": 0.34782790036478073,
+   "abs_vs_light": 0.5717972158728031
+  },
+  "all permuted": {
+   "signed_vs_trained": 0.0036001817198340605,
+   "abs_vs_trained": 0.34851434536156206,
+   "abs_vs_light": 0.595988835251656
+  }
+ }
+}

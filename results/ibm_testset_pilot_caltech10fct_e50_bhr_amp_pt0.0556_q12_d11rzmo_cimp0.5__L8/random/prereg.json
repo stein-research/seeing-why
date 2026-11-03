@@ -1,0 +1,55 @@
+{
+ "seed": 20261103,
+ "pictures_2x2": [
+  5,
+  8,
+  25,
+  40,
+  58,
+  59,
+  62,
+  73,
+  77,
+  94,
+  108,
+  117,
+  121,
+  127,
+  142,
+  153,
+  161,
+  179,
+  188,
+  192,
+  204,
+  230,
+  231,
+  232,
+  253,
+  254,
+  267,
+  276,
+  292,
+  297
+ ],
+ "pictures_4x4": [
+  121,
+  127,
+  142,
+  192
+ ],
+ "model": "pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_cimp0.5_crop0.8_bal_fmp_o7_brickwall_i0.1_s0.json",
+ "shots": 4000,
+ "cls": "true class",
+ "estimators": [
+  "standard",
+  "sign flip"
+ ],
+ "references": [
+  "exact",
+  "prep",
+  "noisy"
+ ],
+ "written": "2026-11-03T23:23:13+0700",
+ "note": "drawn with default_rng(seed): 3 per class with choice() over that class's test pictures in class order, then 4 of the 30 for 4x4 maps; nothing about the chip's answers was used"
+}

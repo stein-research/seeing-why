@@ -12,12 +12,17 @@ classified again), with the pixels ranked by:
                       (added 2026-11-03 after a referee review: it carries the amplitude factor the plain gradient
                       lacks; with the transmission held fixed it is exactly twice the evidence);
   grad x input, log p - the same with the gradient of the readout's log p-hat(true class), the trained output;
+  intensity  - the pixel's encoded light, the sum over the colour planes of its amplitude squared, highest first
+               (referees, second round: a ranking that knows nothing of the model);
   random     - three draws.
 Full optical model (row D) and qubit model (D'), seed 0, the 300 Caltech-10 test pictures.
 Run:  python src/deletion_baselines.py   -> numbers, results/deletion_baselines.json
+      python src/deletion_baselines.py --cheap   only the rankings that need no gradient or occlusion runs (evidence,
+                                             intensity, random), merged into the saved results
 """
 import json
 import pathlib
+import sys
 
 import numpy as np
 import torch
@@ -71,20 +76,23 @@ def model(run):
     return X, Y, enc, np.asarray(perm), probs, classify, readout
 
 
-def main():
-    out = {}
+def main(cheap=False):
+    path = HERE / "results" / "deletion_baselines.json"
+    out = json.loads(path.read_text()) if cheap and path.exists() else {}
     rng = np.random.default_rng(0)
     for name, f in RUNS.items():
         run = json.loads((HERE / "results" / f).read_text())
         X, Y, enc, pix_of_wire, probs, classify, readout = model(run)
         s2 = 1024
         ranks = {"evidence": pixel_maps(run, X, Y, signed=True)[2].reshape(len(X), -1)}
+        ranks["intensity"] = np.zeros((len(X), s2))
+        ranks["intensity"][:, pix_of_wire] = (enc[:, :3 * s2].reshape(len(X), 3, s2) ** 2).sum(1)
         grad = np.zeros((len(X), s2))
         gxi = np.zeros((len(X), s2))
         gxl = np.zeros((len(X), s2))
         occ = np.zeros((len(X), s2))
         yt = torch.tensor(Y, device=DEV)
-        for i in range(len(X)):
+        for i in range(0 if cheap else len(X)):
             e = torch.tensor(enc[i:i + 1], dtype=torch.float32, device=DEV, requires_grad=True)
             pg, _ = probs(e)
             pg[0, yt[i]].backward()
@@ -103,8 +111,9 @@ def main():
                     E[idx, c * s2 + idx] = 0.0                                   # row j deletes wire j of each plane
                 drop = np.concatenate([base - probs(E[j:j + 256])[0][:, yt[i]].cpu().numpy() for j in range(0, s2, 256)])
                 occ[i, pix_of_wire] = drop
-        ranks["gradient"], ranks["|gradient|"], ranks["occlusion"] = grad, np.abs(grad), occ
-        ranks["grad x input"], ranks["grad x input, log p"] = gxi, gxl
+        if not cheap:
+            ranks["gradient"], ranks["|gradient|"], ranks["occlusion"] = grad, np.abs(grad), occ
+            ranks["grad x input"], ranks["grad x input, log p"] = gxi, gxl
         res = {}
         base_acc = (classify(enc) == Y).mean()
         for kind in list(ranks) + ["random"]:
@@ -125,12 +134,12 @@ def main():
                     a += (classify(e) == Y).mean() / draws
                 accs.append(float(a))
             res[kind] = accs
-        out[name] = dict(fracs=FRACS, base=float(base_acc), **res)
+        out[name] = {**out.get(name, {}), **dict(fracs=FRACS, base=float(base_acc), **res)}
         print(f"{name} (accuracy {base_acc:.3f}), deleted " + " ".join(f"{100 * f:>4.0f}%" for f in FRACS))
         for kind, accs in res.items():
             print(f"  {kind:11s} " + " ".join(f"{100 * a:5.1f}" for a in accs))
-    (HERE / "results" / "deletion_baselines.json").write_text(json.dumps(out, indent=1))
+    path.write_text(json.dumps(out, indent=1))
 
 
 if __name__ == "__main__":
-    main()
+    main(cheap="--cheap" in sys.argv)

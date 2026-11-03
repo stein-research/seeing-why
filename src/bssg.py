@@ -33,7 +33,7 @@ import torch
 import torch.nn.functional as F
 
 READOUT_MODES = ("raw_renorm", "raw_group", "bss_renorm", "bss_group", "bss_group_ref", "bss_group_hr", "bssg_phi", "bhr",
-                 "bhr_single", "linear_head", "lss", "temp_group")
+                 "bhr_single", "linear_head", "lss", "temp_group", "fixtemp_group")
 
 
 def make_group_map(n, g):
@@ -155,11 +155,15 @@ class Readout(torch.nn.Module):
         elif mode in ("bssg_phi", "bhr", "bhr_single"):
             self.phi_head = BornHeadroomReadout(n_states, n_classes, pt_ratio,      # the pt_ratio argument carries phi here
                                                 class_groups(mode, n_states, n_classes))
-        elif mode == "temp_group":
+        elif mode in ("temp_group", "fixtemp_group"):
             # control for BHR (referee 2026-10-31): softmax of the class group sums with one learned temperature,
-            # the readout of diffractive classifiers; same groups as BHR, no anchor, no headroom units, no kink
+            # the readout of diffractive classifiers; same groups as BHR, no anchor, no headroom units, no kink.
+            # fixtemp_group (referee 2026-11-03): the same softmax with its slope fixed, carried by pt_ratio (BHR's 136)
             self.phi_head = BornHeadroomReadout(n_states, n_classes, 0.5, class_groups("bhr", n_states, n_classes))
-            self.log_tau = torch.nn.Parameter(torch.tensor(math.log(10.0)))
+            if mode == "temp_group":
+                self.log_tau = torch.nn.Parameter(torch.tensor(math.log(10.0)))
+            else:
+                self.register_buffer("log_tau", torch.tensor(math.log(pt_ratio)))
         elif mode == "bss_renorm":
             self.bss = BSS(n_states, pt_ratio, eps, leaky_slope)
         elif mode == "lss":
@@ -190,7 +194,7 @@ class Readout(torch.nn.Module):
             return F.softmax(self.head(probs * self.n), dim=-1)     # inputs scaled to ~1 per outcome
         if self.mode in ("bssg_phi", "bhr", "bhr_single"):
             return self.phi_head(probs)
-        if self.mode == "temp_group":
+        if self.mode in ("temp_group", "fixtemp_group"):
             h = self.phi_head
             pg = probs.new_zeros(*probs.shape[:-1], h.g + 1).scatter_add(
                 -1, h.group_of_basis.expand(*probs.shape[:-1], h.n), probs)[..., :h.g]

@@ -87,6 +87,9 @@ Each script prints its numbers and writes them to `results/`; the outputs alread
 | `python src/robustness.py results/<row E run>.json` | the bench tolerances (3.9) | an hour or more; a GPU helps |
 | `python src/optics_check_full.py results/<optical run>.json` | the same model rebuilt in LightPipes (3.8); `pip install LightPipes` first | minutes |
 | `python src/check_fastsim.py` | the simulator against PennyLane | minutes |
+| `python src/hw_mcnemar.py` | paired tests of the hardware accuracy steps (3.7) | seconds |
+| `python src/model_randomisation.py` | the maps of models with their trained values permuted (3.5) | minutes |
+| `bash src/readout_sweep.sh`, then `python src/readout_sweep_report.py` | BHR at five values of phi and a softmax at a fixed slope (3.2); the runs are already in `results/` | the sweep: about an hour on a GPU; the report: seconds |
 
 The row E run is
 `results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d0rzmo_cimp0.5_crop0.8_bal_opt4z32r2os2_fmLp_o7_brickwall_i0.1_s0.json`.
@@ -116,4 +119,5 @@ zipfile.ZipFile("data/caltech101/caltech-101.zip").extract("caltech-101/Annotati
 `src/ibm_*.py` sent the paper's jobs. Running them again needs your own IBM Quantum account, passed as a keys file
 (`--keys`); no account details are in this repository. Every job the paper used is recorded in
 [`ibm_jobs/`](../ibm_jobs/), with its circuits, calibration and raw counts, so the hardware numbers can be checked
-without an account: `src/map_errors.py`, `src/map_nulls.py` and `src/ibm_heatmaps.py report` read those records.
+without an account: `src/map_errors.py`, `src/map_nulls.py`, `src/ibm_heatmaps.py report` and
+`src/ibm_maps_random.py report` (the maps of 30 pictures drawn at random, 3.7) read those records.

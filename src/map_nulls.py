@@ -8,7 +8,9 @@ picture, and most exact blocks are positive. Here, for each chip run against the
   - within-picture permutation null: each chip map's four blocks permuted within the picture (10,000 draws), the
     pooled correlation with the exact maps, 95th percentile;
   - within-picture-centred correlation: each picture's mean block removed from both maps before correlating (the
-    spatial pattern alone; a drift of the shared whole-picture term shifts all four blocks equally and drops out).
+    spatial pattern alone; a drift of the shared whole-picture term shifts all four blocks equally and drops out);
+  - energy-weighted split (referee B, second round): each picture's exact P - b spread over its blocks in proportion
+    to their light ||psi_S||^2 (heat_g2.npz norms), pooled and centred.
 Run:  python src/map_nulls.py  -> numbers, results/map_nulls.json
 """
 import glob
@@ -29,7 +31,12 @@ def main():
     ex = np.array(m["exact"])
     out = {"sign_baseline": float((ex > 0).mean()),
            "uniform_split_corr": corr(np.repeat(ex.sum(1, keepdims=True) / 4, 4, 1), ex)}
-    print(f"exact blocks positive: {out['sign_baseline']:.3f}; uniform split vs exact: r = {out['uniform_split_corr']:.3f}")
+    h = np.load(glob.glob(str(HERE / "results" / "ibm_testset_*L8" / "heat_g2.npz"))[0])
+    en = h["norms"].reshape(len(ex), 4, 2)[:, :, 0] * ex.sum(1, keepdims=True)    # (in, out) per block
+    cen = lambda x: x - x.mean(1, keepdims=True)
+    out.update(energy_split_corr=corr(en, ex), energy_split_centred=corr(cen(en), cen(ex)))
+    print(f"exact blocks positive: {out['sign_baseline']:.3f}; uniform split vs exact: r = {out['uniform_split_corr']:.3f}; "
+          f"energy split r = {out['energy_split_corr']:.3f}, centred {out['energy_split_centred']:.3f}")
     rng = np.random.default_rng(0)
     for kind in [k for k in m if k.startswith("chip")]:
         ch = np.array(m[kind])
