@@ -7,6 +7,7 @@ repository-code: "https://github.com/stein-research/seeing-why"
 authors:
   - family-names: Tongloy
     given-names: Teerawat
+    orcid: "https://orcid.org/0009-0001-0670-3124"
     email: teerawat.to@kmitl.ac.th
     affiliation: "School of Integrated Innovative Technology, King Mongkut's Institute of Technology Ladkrabang"
   - family-names: Jomtarak
@@ -24,6 +25,17 @@ preferred-citation:
   authors:
     - family-names: Tongloy
       given-names: Teerawat
+      orcid: "https://orcid.org/0009-0001-0670-3124"
     - family-names: Jomtarak
       given-names: Rangsan
   year: 2026
+  journal: "arXiv preprint"
+  doi: "10.48550/arXiv.2611.01993"
+  url: "https://arxiv.org/abs/2611.01993"
+  identifiers:
+    - type: doi
+      value: "10.48550/arXiv.2611.01993"
+      description: "arXiv DOI"
+    - type: other
+      value: "arXiv:2611.01993"
+      description: "arXiv identifier"

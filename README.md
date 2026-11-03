@@ -6,7 +6,7 @@ Interactive companion to the paper by Teerawat Tongloy (KMITL) and Rangsan Jomta
 |---|---|
 | Try it: pick a picture and see why the model decides (CPU, no install) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/seeing-why/blob/main/demo/demo.ipynb) |
 | Train a model in the simulator (GPU) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/seeing-why/blob/main/demo/train.ipynb) |
-| Paper | arXiv link to follow |
+| Paper | [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) |
 
 ![The two classifiers, step by step: (a) all-optical, (b) qubit chip](docs/overview.png)
 
@@ -74,3 +74,16 @@ decisions and claims are the authors'.
 
 Code: MIT ([`LICENSE`](LICENSE)). Caltech-10 is derived from Caltech-101 (CC BY 4.0, see [`data/README.md`](data/README.md)).
 Please cite the paper ([`CITATION.cff`](CITATION.cff)).
+
+```bibtex
+@misc{tongloy2026seeingwhy,
+  title         = {Seeing Why: Exact Evidence Maps for Quantum and Optical Image Classifiers},
+  author        = {Tongloy, Teerawat and Jomtarak, Rangsan},
+  year          = {2026},
+  eprint        = {2611.01993},
+  archivePrefix = {arXiv},
+  primaryClass  = {quant-ph},
+  doi           = {10.48550/arXiv.2611.01993},
+  url           = {https://arxiv.org/abs/2611.01993}
+}
+```
