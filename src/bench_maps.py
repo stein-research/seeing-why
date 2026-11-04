@@ -99,6 +99,7 @@ def main():
     ap.add_argument("--leak", default="", help="amplitude an off modulator pixel still passes, comma-separated")
     ap.add_argument("--xtalk", default="", help="amplitude an edge pixel lends each off neighbour, comma-separated")
     ap.add_argument("--no_figure", action="store_true")
+    ap.add_argument("--json", default="", help="also write each picture's numbers to this file (results/...)")
     a = ap.parse_args()
     run = json.loads(open(a.run).read())
     pf.DATASET, pf.ORDER = run["dataset"], run.get("order", "morton")
@@ -123,7 +124,7 @@ def main():
     block = (pixel // s // (s // g)) * g + pixel % s // (s // g)
     photons = [float(v) for v in a.photons.split(",")] if a.photons else []
     rng = np.random.default_rng(0)
-    rows = []
+    rows, summary = [], []
     drifts = [float(v) for v in a.drift.split(",")] if a.drift else []
     leaks = [float(v) for v in a.leak.split(",")] if a.leak else []
     xtalks = [float(v) for v in a.xtalk.split(",")] if a.xtalk else []
@@ -194,6 +195,12 @@ def main():
             line += f" | {name}: corr {c:.4f} (with the flawless bench {cb:.4f}), max |diff| {np.abs(m - ex).max():.1e}, sum {m.sum():+.4f}"
         print(line, flush=True)
         rows.append((i, X[k], ex, out))
+        summary.append(dict(picture=i, label=names[Y[k]], exact_sum=float(ex.sum()), bench_own=float(own),
+                            **{name: dict(corr=float(np.corrcoef(m.ravel(), ex.ravel())[0, 1]),
+                                          corr_flawless=float(np.corrcoef(m.ravel(), out["bench"].ravel())[0, 1]),
+                                          sum=float(m.sum())) for name, m in out.items()}))
+        if a.json:
+            (HERE / a.json).write_text(json.dumps(summary, indent=1))
     if a.no_figure:
         return
     np.savez(HERE / "results" / f"bench_maps_g{g}.npz", pictures=np.array(pics), labels=Y,
