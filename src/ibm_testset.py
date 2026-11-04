@@ -340,12 +340,23 @@ def report(a):
         s = np.array(sorted(int(k) for k in st))
         steps[cj.stem] = (s, np.array([st[str(i)]["q"] for i in s]))
     chips = [k for k in steps if k.startswith("chip")]
-    for name in [k for k in steps if k.startswith("noisy")]:   # a partial simulation is shown on its own pictures
+    full = max((len(steps[k][0]) for k in chips), default=0)
+    partial = [k for k in steps if k.startswith("noisy")] + [k for k in chips if len(steps[k][0]) < full]
+    for name in partial:                                       # a partial simulation or repeat: on its own pictures
         s, q = steps[name]
-        if chips and len(s) < len(steps[chips[0]][0]):
+        if not len(s):
+            print(f"  {name}: no pictures yet")
+            del steps[name]
+        elif chips and len(s) < full:
             acc, auc, _ = scores(q, y[s])
             acc0, auc0, _ = scores(pz["q_exact"][s], y[s])
-            print(f"  {name} on its {len(s)} pictures: accuracy {acc:.3f} ROC-AUC {auc:.3f} (exact there {acc0:.3f} / {auc0:.3f})")
+            ref = next(k for k in chips if len(steps[k][0]) == full)           # a repeat beside the full run
+            there = ""
+            if name.startswith("chip") and set(s.tolist()) <= set(steps[ref][0].tolist()):
+                pos = {v: k for k, v in enumerate(steps[ref][0].tolist())}
+                acc1, auc1, _ = scores(steps[ref][1][[pos[i] for i in s]], y[s])
+                there = f", {ref} there {acc1:.3f} / {auc1:.3f}"
+            print(f"  {name} on its {len(s)} pictures: accuracy {acc:.3f} ROC-AUC {auc:.3f} (exact there {acc0:.3f} / {auc0:.3f}{there})")
             del steps[name]
     common = set(range(len(y)))
     for s, _ in steps.values():

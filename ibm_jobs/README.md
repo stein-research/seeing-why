@@ -13,3 +13,6 @@ Each folder (named by a key over the circuits, backend and shots) holds one job:
 
 Account details are not included. The counts here are the record; reading a job back from IBM needs the account
 that ran it.
+
+To check the paper's hardware numbers from these records, or to run the same circuits again with your own
+account: [`docs/check-and-repeat-ibm.md`](../docs/check-and-repeat-ibm.md).

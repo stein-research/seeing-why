@@ -128,3 +128,5 @@ zipfile.ZipFile("data/caltech101/caltech-101.zip").extract("caltech-101/Annotati
 [`ibm_jobs/`](../ibm_jobs/), with its circuits, calibration and raw counts, so the hardware numbers can be checked
 without an account: `src/map_errors.py`, `src/map_nulls.py`, `src/ibm_heatmaps.py report` and
 `src/ibm_maps_random.py report` (the maps of 30 pictures drawn at random, 3.7) read those records.
+Step by step, with the paper's number each command gives and how to repeat a job with your own account:
+[`check-and-repeat-ibm.md`](check-and-repeat-ibm.md).
