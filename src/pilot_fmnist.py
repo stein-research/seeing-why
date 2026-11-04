@@ -46,6 +46,7 @@ HERE = pathlib.Path(__file__).resolve().parent.parent                # the repos
 OUT = HERE / "results"
 N_QUBITS = 10          # overwritten by --n_qubits
 N_CLASSES = 10         # overwritten by --dataset
+DATA_NPZ = ""          # --data_npz: another file with the same arrays
 DATASET = "fmnist"     # fmnist / mnist: 28x28 grey, padded to 32x32 (10 qubits); imagenet10 / imagenette: 64x64 grey (12 qubits); imagenet32: 32x32x3 colour, channel-first,
                        # padded to 4096 amplitudes (12 qubits)
 PHOTONS = (16, 64, 256, 1024, 4096)
@@ -264,7 +265,7 @@ def sobel(x):
 def load(n_train, n_val, seed):
     rng = np.random.default_rng(seed)
     if DATASET in ("imagenet32", "cifar10", "cifar10c", "wmnistc", "caltech10c", "caltech10f", "caltech10fc", "caltech10fct", "flowers17c") + GREY64:
-        d = np.load(HERE / "data" / {"cifar10c": "cifar10.npz", "wmnistc": "wmnist.npz"}.get(DATASET, f"{DATASET}.npz"))
+        d = np.load(DATA_NPZ or HERE / "data" / {"cifar10c": "cifar10.npz", "wmnistc": "wmnist.npz"}.get(DATASET, f"{DATASET}.npz"))
         xtr_all, ytr_all = d["x_train"], d["y_train"]
         xte_raw, yte = d["x_val"], d["y_val"]                 # ImageNet validation images = our test set
     else:
@@ -592,7 +593,11 @@ def main():
     ap.add_argument("--checkpoint_every", type=int, default=0,
                     help="write results/checkpoint_<name>.json (best-so-far weights) every K epochs; removed at the end")
     ap.add_argument("--time_only", action="store_true")
+    ap.add_argument("--data_npz", default="", help="read the pictures from this .npz instead of data/<dataset>.npz "
+                    "(same arrays; roar.py: pictures with pixels deleted). Name the run with --tag")
     a = ap.parse_args()
+    global DATA_NPZ
+    DATA_NPZ = a.data_npz
     global N_QUBITS, INPUT, ENCODING, DATASET, N_CLASSES, ORDER, SIM, CENTER, CENTER_IMAGE, DC_ENERGY, MEAN_PLANE, FILTER, DOMAIN, HIER
     N_QUBITS, INPUT, ENCODING, DATASET, ORDER = a.n_qubits, a.input, a.encoding, a.dataset, a.order
     SIM = "pennylane" if a.reupload_levels else a.sim

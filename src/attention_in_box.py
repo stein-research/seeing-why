@@ -79,8 +79,12 @@ def test_regions(trim=0.0):
     return np.array(boxes), np.array(conts), np.array(crops)
 
 
-def maps(run, xte, yte, signed=False):
-    """light, attention and positive (signed: net) true-class evidence per pixel: (3, n, 32, 32)."""
+def maps(run, xte, yte, signed=False, planes=False, means=False):
+    """light, attention and positive (signed: net) true-class evidence per pixel: (3, n, 32, 32).
+    planes: instead, the signed true-class evidence summed over each plane of the encoding, (n, planes) - the colour
+    planes and, for --mean_plane runs, the means plane last; a row sums to P_g - b_g.
+    means: the per-pixel maps also add the means plane's amplitude at each pixel's place (as a bench block that shows
+    the same pixels in all four tiles does), so a map sums to P_g - b_g."""
     pf.DATASET, pf.ORDER = run["dataset"], run.get("order", "morton")
     fb = run.get("fourier_bank", 0) if run.get("fourier_bank", 0) > 1 else 0
     n_anc = int(np.log2(fb)) if fb else 0
@@ -125,7 +129,11 @@ def maps(run, xte, yte, signed=False):
     keep = keep.numpy().real
     att = x * z_all / keep
     ev = (x * z_true - b[yte, None] * x * z_all) / keep
+    if planes:
+        return ev.reshape(len(ev), -1, s * s).sum(-1)
     ev = ev if signed else np.maximum(ev, 0)
+
+    nc = 2 ** n // (s * s) if means else nc
 
     def per_pixel(v):
         g = np.empty((len(v), nc, s * s))
