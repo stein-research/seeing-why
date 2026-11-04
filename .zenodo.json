@@ -1,0 +1,19 @@
+{
+  "title": "Seeing Why: Exact Evidence Maps for Quantum and Optical Image Classifiers (code and data)",
+  "upload_type": "software",
+  "description": "<p>Code, trained models, Caltech-10 data and the IBM hardware record for the paper \"Seeing Why: Exact Evidence Maps for Quantum and Optical Image Classifiers\" (arXiv:2611.01993). Version 1.1 matches arXiv v3: the chip maps of 30 pictures drawn at random, and the checks of two review rounds.</p>",
+  "creators": [
+    {"name": "Tongloy, Teerawat", "affiliation": "King Mongkut's Institute of Technology Ladkrabang", "orcid": "0009-0001-0670-3124"},
+    {"name": "Jomtarak, Rangsan", "affiliation": "Suan Dusit University", "orcid": "0009-0009-5417-5571"}
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "language": "eng",
+  "version": "1.1",
+  "keywords": ["quantum machine learning", "optical computing", "diffractive neural networks", "explainable AI", "amplitude encoding"],
+  "related_identifiers": [
+    {"identifier": "arXiv:2611.01993", "relation": "isSupplementTo", "scheme": "arxiv", "resource_type": "publication-preprint"},
+    {"identifier": "10.5281/zenodo.23906357", "relation": "isNewVersionOf", "scheme": "doi", "resource_type": "software"},
+    {"identifier": "https://github.com/stein-research/seeing-why", "relation": "isSupplementTo", "scheme": "url"}
+  ]
+}
