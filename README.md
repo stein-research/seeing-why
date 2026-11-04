@@ -8,8 +8,7 @@ Interactive companion to the paper by Teerawat Tongloy (KMITL) and Rangsan Jomta
 | Train a model in the simulator (GPU) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/seeing-why/blob/main/demo/train.ipynb) |
 | Run it on your own computer, and the paper's analyses | [docs/run-locally.md](docs/run-locally.md) |
 | Paper | [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) |
-| Archived copy (v1.1, arXiv v3) | [doi:10.5281/zenodo.23938413](https://doi.org/10.5281/zenodo.23938413) |
-| Archived copy (v1.0, arXiv v1-v2) | [doi:10.5281/zenodo.23906357](https://doi.org/10.5281/zenodo.23906357) |
+| Archived copy (v1.1) | [doi:10.5281/zenodo.23938413](https://doi.org/10.5281/zenodo.23938413) |
 
 ![The two classifiers, step by step: (a) all-optical, (b) qubit chip](docs/overview.png)
 
