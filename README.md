@@ -67,6 +67,11 @@ below. The same quantity is measured on the hardware: on a qubit chip from three
 | [`data/`](data/) | Caltech-10 (32 x 32, from Caltech-101, CC BY 4.0); see [`data/README.md`](data/README.md) |
 | [`ibm_jobs/`](ibm_jobs/) | the record of every job run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed) |
 
+## Acknowledgements
+
+We acknowledge the use of IBM Quantum services for this work. The views expressed are those of the authors, and do
+not reflect the official policy or position of IBM or the IBM Quantum team.
+
 ## Use of AI tools
 
 An AI assistant (Claude, Anthropic) was used under the authors' direction to write and run simulation and analysis
