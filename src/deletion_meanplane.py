@@ -92,7 +92,7 @@ def main():
         print(f"  acc {o:8s} " + " ".join(f"{v:5.3f}" for v in r["acc"]))
     for o, r in res.items():
         print(f"  u   {o:8s} " + " ".join(f"{v:+5.3f}" for v in r["u"]))
-    (HERE / "results" / f"deletion_mp_{tag[:80]}.json").write_text(json.dumps(dict(fracs=FRACS, **res)))
+    (HERE / "results" / f"deletion_mp_{tag[:80]}.json").write_text(json.dumps(dict(fracs=FRACS, **res), indent=1))
 
 
 if __name__ == "__main__":

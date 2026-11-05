@@ -36,7 +36,7 @@ def metrics(m, ref, whole_ref, whole_own):
 
 
 def main():
-    f = pathlib.Path(glob.glob(str(HERE / "results" / "ibm_testset_*L8"))[0])
+    f = pathlib.Path(glob.glob(str(HERE / "results" / "ibm_testset_*cimp0.5__L8"))[0])
     run_path = HERE / "results" / "pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_cimp0.5_crop0.8_bal_fmp_o7_brickwall_i0.1_s0.json"
     _, _, Y, _, _, _, no, _, groups = setup(argparse.Namespace(run=str(run_path)))
     h = np.load(f / "heat_g2.npz")

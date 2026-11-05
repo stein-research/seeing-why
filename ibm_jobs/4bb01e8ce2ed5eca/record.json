@@ -1,0 +1,1034 @@
+{
+ "purpose": "test set (repeat 0): pictures [12, 42, 72, 102, 132, 162, 192, 222, 252, 282, 13, 43, 73, 103, 133, 163, 193, 223, 253, 283, 14, 44, 74, 104, 134, 164, 194, 224, 254, 284] of pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_crop0.8_bal_o7_brickwall_i0.1_s0.json, prep depth 8",
+ "backend": "ibm_kingston",
+ "shots": 4000,
+ "n_circuits": 30,
+ "repeat": 0,
+ "circuit_keys": [
+  "1474e1e4fea12420",
+  "ace896c5064738e0",
+  "06777b5639add0e6",
+  "07441f658e642f44",
+  "0c313f5d584fa2ae",
+  "946c21d8dfd55bb6",
+  "58e53c3a7ffcf520",
+  "80955567485763a8",
+  "65e92adda2ed6639",
+  "8b6ef548c6898053",
+  "bc93005d1d27e9c8",
+  "f38404d49565ddb9",
+  "9c31e2ae00067a01",
+  "d160cad052b883e3",
+  "9942f9d2686cc241",
+  "2b87b807f7a756e5",
+  "0b9ef0a23b6cb6a6",
+  "62a0b65001631414",
+  "76b8524f89182bf9",
+  "72ea2a62da84ef2d",
+  "672ab6643fedb650",
+  "7f6f64d88ef1cdf2",
+  "bb2879817bfebc08",
+  "01c109df1d060e13",
+  "77025cbd0f26f876",
+  "3a64bda3e87d087c",
+  "e8aa088021a568e1",
+  "6a1787e1fc54710a",
+  "191f7e458fc56871",
+  "1ff7477478f74206"
+ ],
+ "command": "ibm_testset.py chip results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_crop0.8_bal_o7_brickwall_i0.1_s0.json --keys <keys file> --accounts <n> --count 300 --chunk 30",
+ "code": {
+  "note": "run from the research repository this release was made from"
+ },
+ "versions": {
+  "python": "3.12.3",
+  "qiskit": "2.6.1",
+  "qiskit_ibm_runtime": "0.51.0"
+ },
+ "inputs": [
+  {
+   "file": "results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_crop0.8_bal_o7_brickwall_i0.1_s0.json",
+   "sha256": "3711d98f1008435154f827335ed2240df89e31e0525d9258ed848b941debedf7"
+  },
+  {
+   "file": "results/ibm_testset_pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_crop0.8__L8/preps.npz",
+   "sha256": "4161f49b824ad7bc55e3101af290d888b961a848ebd35596d1675815841eff26"
+  }
+ ],
+ "transpile": {
+  "optimization_level": 3,
+  "seeds_tried": 8,
+  "per_circuit": [
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   },
+   {
+    "seed": 0,
+    "expected_fidelity": 0.6832406973546008,
+    "seed0": 0.6832406973546008
+   }
+  ]
+ },
+ "dynamical_decoupling": "XY4",
+ "circuits": [
+  {
+   "note": "picture 12 (airplane), prep fidelity 0.950",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 388,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 42 (motorbike), prep fidelity 0.953",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 72 (face), prep fidelity 0.951",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 398,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 102 (watch), prep fidelity 0.980",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 101,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 132 (leopard), prep fidelity 0.973",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 101,
+   "ops": {
+    "sx": 444,
+    "rz": 404,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 162 (bonsai), prep fidelity 0.916",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 192 (car_side), prep fidelity 0.928",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 397,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 222 (ketch), prep fidelity 0.970",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 252 (chandelier), prep fidelity 0.893",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 390,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 282 (hawksbill), prep fidelity 0.936",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 396,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 13 (airplane), prep fidelity 0.976",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 43 (motorbike), prep fidelity 0.945",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 73 (face), prep fidelity 0.964",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 103 (watch), prep fidelity 0.914",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 402,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 133 (leopard), prep fidelity 0.970",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 163 (bonsai), prep fidelity 0.901",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 398,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 193 (car_side), prep fidelity 0.978",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 223 (ketch), prep fidelity 0.959",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 398,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 253 (chandelier), prep fidelity 0.946",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 283 (hawksbill), prep fidelity 0.955",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 14 (airplane), prep fidelity 0.973",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 44 (motorbike), prep fidelity 0.962",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 404,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 74 (face), prep fidelity 0.965",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 104 (watch), prep fidelity 0.971",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 134 (leopard), prep fidelity 0.896",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 394,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 164 (bonsai), prep fidelity 0.960",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 194 (car_side), prep fidelity 0.942",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 392,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 224 (ketch), prep fidelity 0.988",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 100,
+   "ops": {
+    "sx": 444,
+    "rz": 395,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 254 (chandelier), prep fidelity 0.948",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 98,
+   "ops": {
+    "sx": 444,
+    "rz": 391,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  },
+  {
+   "note": "picture 284 (hawksbill), prep fidelity 0.962",
+   "logical_qubits": 12,
+   "physical_qubits": [
+    128,
+    129,
+    118,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "depth": 99,
+   "ops": {
+    "sx": 444,
+    "rz": 393,
+    "cz": 105,
+    "measure": 12,
+    "barrier": 1
+   }
+  }
+ ],
+ "status": "done",
+ "job_id": "dblk17m74qds73dqkeng",
+ "created": "2026-11-04T14:26:38+00:00",
+ "finished": "2026-11-04T14:27:24+00:00",
+ "quantum_seconds": 34,
+ "ibm_metrics": {
+  "caller": "qiskit_ibm_runtime~sampler.py",
+  "qiskit_version": "qiskit_ibm_runtime-0.51.0,qiskit-2.6.1*,qiskit_aer-0.18.2",
+  "timestamps": {
+   "created": "2026-11-04T14:26:38.663367Z",
+   "finished": "2026-11-04T14:27:21.848266Z",
+   "running": "2026-11-04T14:26:40.182939Z"
+  },
+  "usage": {
+   "qpu_charge_time_seconds": 34,
+   "value": 0.556805,
+   "unit": "resource_units",
+   "status": "complete",
+   "details": [
+    {
+     "value": 0.556805,
+     "unit": "resource_units",
+     "metric": {
+      "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+      "value": 34
+     }
+    }
+   ]
+  },
+  "circuits_execution_time_ns": 31647576320
+ },
+ "result_metadata": {
+  "execution": {
+   "execution_spans": "ExecutionSpans([DoubleSliceSpan(<start='2026-11-04 14:26:44', stop='2026-11-04 14:27:17', size=120000>)])"
+  },
+  "version": 2
+ }
+}

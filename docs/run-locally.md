@@ -94,6 +94,7 @@ Each script prints its numbers and writes them to `results/`; the outputs alread
 | `python src/means_share.py` | the means plane's share of P - b, which pixel maps leave out (2.5) | a minute |
 | `python src/kernel_support.py` | how far the qubit model's Fourier-plane kernel reaches (3.7) | seconds |
 | `python src/shot_variance.py` | the shot noise of a measured block by each estimator, against a Hadamard test (2.6) | seconds |
+| `python src/fault_maps.py` | would a map measured on the chip see a deliberate fault in the circuit? 246 faults, simulated (3.7) | minutes |
 | `bash src/mean_plane_sweep.sh` | row D at other values of the means plane's energy share f (2.1); the runs are already in `results/` | about ten minutes on a GPU |
 | `python src/roar.py prepare`, `train`, then `report` | retraining on deleted pictures (ROAR), and what the deleted pixels' pattern alone gives away (3.4); the runs are already in `results/` | prepare: minutes; train: about 40 minutes on a GPU; report: minutes |
 | `python src/bench_maps.py results/<row E run>.json --grid 32 --pictures 10,135,239 --drift 0.001,0.01 --leak 0.01,0.03 --xtalk 0.02,0.05` | per-pixel maps measured on the simulated lens bench, and bench flaws (3.8); `pip install LightPipes` first; the ten further pictures: `--pictures 23,51,68,118,146,167,188,234,265,291 --no_figure --json results/bench_maps_more.json` | about 20 minutes a picture |

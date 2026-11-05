@@ -184,7 +184,7 @@ def main():
         dst = HERE / "results" / f"robustness_{tag}_extra.json"
         if dst.exists():
             dst = dst.with_name(f"robustness_{tag}_{'+'.join(only)}.json")
-        dst.write_text(json.dumps(out))
+        dst.write_text(json.dumps(out, indent=1))
         print(dst)
         return
     fig, ax = plt.subplots(2, 4, figsize=(16, 6.5))
@@ -203,7 +203,7 @@ def main():
     fig.suptitle(f"test accuracy under bench flaws (no retraining): {tag}", fontsize=10)
     fig.tight_layout()
     fig.savefig(HERE / "figures" / f"robustness_{tag}.png", dpi=110)
-    (HERE / "results" / f"robustness_{tag}.json").write_text(json.dumps(out))
+    (HERE / "results" / f"robustness_{tag}.json").write_text(json.dumps(out, indent=1))
     print(HERE / "figures" / f"robustness_{tag}.png")
 
 

@@ -173,7 +173,7 @@ def fit(a):
     np.savez(f / "preps.npz", ang=ang.numpy(), fid=fid.numpy(), y=Y, wc=wc.numpy(), q_exact=q_exact, q_prep=q_prep)
     (f / "fit.json").write_text(json.dumps(dict(run=a.run, prep_depth=a.prep_depth, steps=a.steps, n=len(Y),
                                                 fid_median=float(fid.median()), acc_exact=acc(q_exact),
-                                                acc_prep=acc(q_prep))))
+                                                acc_prep=acc(q_prep)), indent=1))
     print(f / "preps.npz")
 
 
@@ -222,7 +222,7 @@ def noisy(a):
     acc = float((q.argmax(1) == y).mean())
     print(f"noisy ({a.noise}, {a.shots} shots), {len(sel)} pictures: accuracy {acc:.3f}; on the same pictures exact "
           f"{(pz['q_exact'][sel].argmax(1) == y).mean():.3f}, prep {(pz['q_prep'][sel].argmax(1) == y).mean():.3f}")
-    np.savez(folder_for(a) / f"noisy_{a.noise}{'' if a.seeds == 1 else f'_s{a.seeds}'}.npz", sel=sel, q=q, outcomes=np.array(P), shots=a.shots)
+    np.savez(folder_for(a) / f"noisy_{a.noise}{'' if a.seeds == 1 else f'_s{a.seeds}'}{a.tag}.npz", sel=sel, q=q, outcomes=np.array(P), shots=a.shots)
 
 
 def chip(a):
@@ -391,6 +391,7 @@ def main():
     ps["noisy"].add_argument("--noise", default="FakeKingston")
     ps["noisy"].add_argument("--shots", type=int, default=4000)
     ps["noisy"].add_argument("--seeds", type=int, default=1, help="transpiler seeds tried, best by calibration kept")
+    ps["noisy"].add_argument("--tag", default="", help="appended to the file name, so a run never replaces another")
     c = ps["chip"]
     c.add_argument("--keys", required=True, help="keys file, one '<email> <token>' per line (outside git)")
     c.add_argument("--accounts", default="0", help="account lines used in turn, one job each, e.g. 0,1,2")

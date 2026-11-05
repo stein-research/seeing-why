@@ -27,11 +27,11 @@ def corr(a, b):
 
 
 def main():
-    m = json.load(open(glob.glob(str(HERE / "results" / "ibm_testset_*L8" / "heat_g2_maps.json"))[0]))
+    m = json.load(open(glob.glob(str(HERE / "results" / "ibm_testset_*cimp0.5__L8" / "heat_g2_maps.json"))[0]))
     ex = np.array(m["exact"])
     out = {"sign_baseline": float((ex > 0).mean()),
            "uniform_split_corr": corr(np.repeat(ex.sum(1, keepdims=True) / 4, 4, 1), ex)}
-    h = np.load(glob.glob(str(HERE / "results" / "ibm_testset_*L8" / "heat_g2.npz"))[0])
+    h = np.load(glob.glob(str(HERE / "results" / "ibm_testset_*cimp0.5__L8" / "heat_g2.npz"))[0])
     en = h["norms"].reshape(len(ex), 4, 2)[:, :, 0] * ex.sum(1, keepdims=True)    # (in, out) per block
     cen = lambda x: x - x.mean(1, keepdims=True)
     out.update(energy_split_corr=corr(en, ex), energy_split_centred=corr(cen(en), cen(ex)))

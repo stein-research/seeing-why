@@ -276,7 +276,8 @@ def stats(m, ref, whole, ref_whole):
     return dict(n=len(pics), corr=c(A, R), centred=c(A - A.mean(1, keepdims=True), R - R.mean(1, keepdims=True)),
                 slope=float((A * R).sum() / (R * R).sum()), mae=float(np.abs(A - R).mean()),
                 rel_mae=float(np.abs(A - R).mean() / np.abs(R).mean()), signs=float((np.sign(A) == np.sign(R)).mean()),
-                sum_vs_own_whole=float(np.mean([A[k].sum() - whole[i] for k, i in enumerate(pics)])),
+                sum_vs_own_whole=float(np.mean([A[k].sum() - whole[i] for k, i in enumerate(pics)])),          # signed
+                sum_vs_own_whole_abs=float(np.mean([abs(A[k].sum() - whole[i]) for k, i in enumerate(pics)])),
                 sum_vs_ref=float(np.mean([abs(A[k].sum() - ref_whole[i]) for k, i in enumerate(pics)])))
 
 

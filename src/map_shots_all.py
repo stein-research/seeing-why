@@ -29,7 +29,7 @@ RUN = HERE / "results" / "pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_ci
 def main():
     a = argparse.Namespace(run=str(RUN), prep_depth=8)
     run, b, Y, wc, depth, n, no, block, groups = setup(a)
-    f = pathlib.Path(glob.glob(str(HERE / "results" / "ibm_testset_*L8"))[0])
+    f = pathlib.Path(glob.glob(str(HERE / "results" / "ibm_testset_*cimp0.5__L8"))[0])
     pz = np.load(f / "preps.npz")
     wct = torch.tensor(pz["wc"])
     chip = json.loads((f / "chip_ibm_kingston_r0.json").read_text())

@@ -1,0 +1,2502 @@
+{
+ "pictures": [
+  5,
+  40,
+  62,
+  94,
+  121,
+  153,
+  188,
+  230,
+  253,
+  276
+ ],
+ "summary": {
+  "chip_error": 0.002527868098731436,
+  "accuracy_nominal": 0.5633333333333334,
+  "faults_tried": 246,
+  "faults_seen": 81,
+  "least_accuracy_cost_when_seen": {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 3,
+   "delta": 1.5,
+   "map_change": 0.0032376343693650287,
+   "accuracy": 0.4666666666666667,
+   "accuracy_cost": 0.0966666667
+  },
+  "largest_map_change_when_cost_at_most_5_points": {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 3,
+   "delta": 1.0,
+   "map_change": 0.002220274177231792,
+   "accuracy": 0.5133333333333333,
+   "accuracy_cost": 0.05
+  }
+ },
+ "faults": [
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": null,
+   "delta": 0.1,
+   "map_change": 0.0014502880986571685,
+   "accuracy": 0.52,
+   "accuracy_cost": 0.0433333333
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": null,
+   "delta": 0.2,
+   "map_change": 0.002732395344874539,
+   "accuracy": 0.44333333333333336,
+   "accuracy_cost": 0.12
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": null,
+   "delta": 0.3,
+   "map_change": 0.0038769817990446354,
+   "accuracy": 0.31333333333333335,
+   "accuracy_cost": 0.25
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": null,
+   "delta": 0.5,
+   "map_change": 0.005522140580146713,
+   "accuracy": 0.18,
+   "accuracy_cost": 0.3833333333
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": null,
+   "delta": 1.0,
+   "map_change": 0.00799817053906022,
+   "accuracy": 0.09666666666666666,
+   "accuracy_cost": 0.4666666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 5,
+   "qubit": null,
+   "delta": 0.1,
+   "map_change": 0.0010107949225646516,
+   "accuracy": 0.5466666666666666,
+   "accuracy_cost": 0.0166666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 5,
+   "qubit": null,
+   "delta": 0.2,
+   "map_change": 0.002037898097059261,
+   "accuracy": 0.4766666666666667,
+   "accuracy_cost": 0.0866666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 5,
+   "qubit": null,
+   "delta": 0.3,
+   "map_change": 0.002995493945679916,
+   "accuracy": 0.4033333333333333,
+   "accuracy_cost": 0.16
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 5,
+   "qubit": null,
+   "delta": 0.5,
+   "map_change": 0.004520419337887308,
+   "accuracy": 0.29,
+   "accuracy_cost": 0.2733333333
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 5,
+   "qubit": null,
+   "delta": 1.0,
+   "map_change": 0.006042801164353096,
+   "accuracy": 0.09666666666666666,
+   "accuracy_cost": 0.4666666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 11,
+   "qubit": null,
+   "delta": 0.1,
+   "map_change": 0.0004738087562778996,
+   "accuracy": 0.56,
+   "accuracy_cost": 0.0033333333
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 11,
+   "qubit": null,
+   "delta": 0.2,
+   "map_change": 0.0009389238383137467,
+   "accuracy": 0.5366666666666666,
+   "accuracy_cost": 0.0266666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 11,
+   "qubit": null,
+   "delta": 0.3,
+   "map_change": 0.0013953044220084436,
+   "accuracy": 0.52,
+   "accuracy_cost": 0.0433333333
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 11,
+   "qubit": null,
+   "delta": 0.5,
+   "map_change": 0.002410153086814262,
+   "accuracy": 0.43666666666666665,
+   "accuracy_cost": 0.1266666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RY",
+   "layer": 11,
+   "qubit": null,
+   "delta": 1.0,
+   "map_change": 0.00491174813384912,
+   "accuracy": 0.2633333333333333,
+   "accuracy_cost": 0.3
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 0,
+   "qubit": null,
+   "delta": 0.1,
+   "map_change": 0.0006533008169077494,
+   "accuracy": 0.56,
+   "accuracy_cost": 0.0033333333
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 0,
+   "qubit": null,
+   "delta": 0.2,
+   "map_change": 0.0012973765165032076,
+   "accuracy": 0.48333333333333334,
+   "accuracy_cost": 0.08
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 0,
+   "qubit": null,
+   "delta": 0.3,
+   "map_change": 0.0019643965718238285,
+   "accuracy": 0.37333333333333335,
+   "accuracy_cost": 0.19
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 0,
+   "qubit": null,
+   "delta": 0.5,
+   "map_change": 0.0033018945663382503,
+   "accuracy": 0.27,
+   "accuracy_cost": 0.2933333333
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 0,
+   "qubit": null,
+   "delta": 1.0,
+   "map_change": 0.004924927920577654,
+   "accuracy": 0.14333333333333334,
+   "accuracy_cost": 0.42
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 5,
+   "qubit": null,
+   "delta": 0.1,
+   "map_change": 0.0006035102895420594,
+   "accuracy": 0.5433333333333333,
+   "accuracy_cost": 0.02
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 5,
+   "qubit": null,
+   "delta": 0.2,
+   "map_change": 0.0012820508709463076,
+   "accuracy": 0.5066666666666667,
+   "accuracy_cost": 0.0566666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 5,
+   "qubit": null,
+   "delta": 0.3,
+   "map_change": 0.0020293304199078036,
+   "accuracy": 0.44666666666666666,
+   "accuracy_cost": 0.1166666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 5,
+   "qubit": null,
+   "delta": 0.5,
+   "map_change": 0.003464205153065214,
+   "accuracy": 0.30333333333333334,
+   "accuracy_cost": 0.26
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 5,
+   "qubit": null,
+   "delta": 1.0,
+   "map_change": 0.006044130298523988,
+   "accuracy": 0.14666666666666667,
+   "accuracy_cost": 0.4166666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 11,
+   "qubit": null,
+   "delta": 0.1,
+   "map_change": 0.000255749910697898,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 11,
+   "qubit": null,
+   "delta": 0.2,
+   "map_change": 0.0005276718991349877,
+   "accuracy": 0.5633333333333334,
+   "accuracy_cost": 0.0
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 11,
+   "qubit": null,
+   "delta": 0.3,
+   "map_change": 0.0008141586258740133,
+   "accuracy": 0.5433333333333333,
+   "accuracy_cost": 0.02
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 11,
+   "qubit": null,
+   "delta": 0.5,
+   "map_change": 0.0014410301343570817,
+   "accuracy": 0.49666666666666665,
+   "accuracy_cost": 0.0666666667
+  },
+  {
+   "kind": "layer",
+   "rot": "RZ",
+   "layer": 11,
+   "qubit": null,
+   "delta": 1.0,
+   "map_change": 0.002984684060245691,
+   "accuracy": 0.41,
+   "accuracy_cost": 0.1533333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 0,
+   "delta": 0.5,
+   "map_change": 0.0023602439668288172,
+   "accuracy": 0.44333333333333336,
+   "accuracy_cost": 0.12
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 0,
+   "delta": 1.0,
+   "map_change": 0.004001303660299401,
+   "accuracy": 0.2866666666666667,
+   "accuracy_cost": 0.2766666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 0,
+   "delta": 1.5,
+   "map_change": 0.004935873181240641,
+   "accuracy": 0.18666666666666668,
+   "accuracy_cost": 0.3766666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 0,
+   "delta": 0.5,
+   "map_change": 0.0023005359487993263,
+   "accuracy": 0.33666666666666667,
+   "accuracy_cost": 0.2266666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 0,
+   "delta": 1.0,
+   "map_change": 0.004414804248932941,
+   "accuracy": 0.16666666666666666,
+   "accuracy_cost": 0.3966666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 0,
+   "delta": 1.5,
+   "map_change": 0.005936806246351789,
+   "accuracy": 0.13,
+   "accuracy_cost": 0.4333333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 1,
+   "delta": 0.5,
+   "map_change": 0.0021988231808063655,
+   "accuracy": 0.4666666666666667,
+   "accuracy_cost": 0.0966666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 1,
+   "delta": 1.0,
+   "map_change": 0.004079347721781884,
+   "accuracy": 0.31333333333333335,
+   "accuracy_cost": 0.25
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 1,
+   "delta": 1.5,
+   "map_change": 0.005344029089377885,
+   "accuracy": 0.21,
+   "accuracy_cost": 0.3533333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 1,
+   "delta": 0.5,
+   "map_change": 0.0020558442675431563,
+   "accuracy": 0.4066666666666667,
+   "accuracy_cost": 0.1566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 1,
+   "delta": 1.0,
+   "map_change": 0.0038796826098606192,
+   "accuracy": 0.26,
+   "accuracy_cost": 0.3033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 1,
+   "delta": 1.5,
+   "map_change": 0.0050580705499019465,
+   "accuracy": 0.16666666666666666,
+   "accuracy_cost": 0.3966666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 2,
+   "delta": 0.5,
+   "map_change": 0.0020708346242386383,
+   "accuracy": 0.4033333333333333,
+   "accuracy_cost": 0.16
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 2,
+   "delta": 1.0,
+   "map_change": 0.0041736041874931955,
+   "accuracy": 0.19333333333333333,
+   "accuracy_cost": 0.37
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 2,
+   "delta": 1.5,
+   "map_change": 0.006208865781039392,
+   "accuracy": 0.12666666666666668,
+   "accuracy_cost": 0.4366666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 2,
+   "delta": 0.5,
+   "map_change": 0.0013582173400850505,
+   "accuracy": 0.5166666666666667,
+   "accuracy_cost": 0.0466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 2,
+   "delta": 1.0,
+   "map_change": 0.00281046889342369,
+   "accuracy": 0.42,
+   "accuracy_cost": 0.1433333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 2,
+   "delta": 1.5,
+   "map_change": 0.004607796690869427,
+   "accuracy": 0.28,
+   "accuracy_cost": 0.2833333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 3,
+   "delta": 0.5,
+   "map_change": 0.002060306393400991,
+   "accuracy": 0.5233333333333333,
+   "accuracy_cost": 0.04
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 3,
+   "delta": 1.0,
+   "map_change": 0.003956482429696134,
+   "accuracy": 0.38666666666666666,
+   "accuracy_cost": 0.1766666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 3,
+   "delta": 1.5,
+   "map_change": 0.005621810572677439,
+   "accuracy": 0.24,
+   "accuracy_cost": 0.3233333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 3,
+   "delta": 0.5,
+   "map_change": 0.0010387684056566715,
+   "accuracy": 0.5366666666666666,
+   "accuracy_cost": 0.0266666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 3,
+   "delta": 1.0,
+   "map_change": 0.002220274177231792,
+   "accuracy": 0.5133333333333333,
+   "accuracy_cost": 0.05
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 3,
+   "delta": 1.5,
+   "map_change": 0.0034622844606069896,
+   "accuracy": 0.42,
+   "accuracy_cost": 0.1433333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 4,
+   "delta": 0.5,
+   "map_change": 0.0015745306102169585,
+   "accuracy": 0.48333333333333334,
+   "accuracy_cost": 0.08
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 4,
+   "delta": 1.0,
+   "map_change": 0.0030889360427823085,
+   "accuracy": 0.35,
+   "accuracy_cost": 0.2133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 4,
+   "delta": 1.5,
+   "map_change": 0.004462491838656111,
+   "accuracy": 0.2,
+   "accuracy_cost": 0.3633333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 4,
+   "delta": 0.5,
+   "map_change": 0.0009871298993300174,
+   "accuracy": 0.49666666666666665,
+   "accuracy_cost": 0.0666666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 4,
+   "delta": 1.0,
+   "map_change": 0.0018155432606908133,
+   "accuracy": 0.42,
+   "accuracy_cost": 0.1433333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 4,
+   "delta": 1.5,
+   "map_change": 0.0025035291247616277,
+   "accuracy": 0.29333333333333333,
+   "accuracy_cost": 0.27
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 5,
+   "delta": 0.5,
+   "map_change": 0.0009022672704705609,
+   "accuracy": 0.5166666666666667,
+   "accuracy_cost": 0.0466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 5,
+   "delta": 1.0,
+   "map_change": 0.0017605514048526587,
+   "accuracy": 0.43666666666666665,
+   "accuracy_cost": 0.1266666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 5,
+   "delta": 1.5,
+   "map_change": 0.0026159761926244267,
+   "accuracy": 0.33666666666666667,
+   "accuracy_cost": 0.2266666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 5,
+   "delta": 0.5,
+   "map_change": 0.0006039450032926068,
+   "accuracy": 0.5533333333333333,
+   "accuracy_cost": 0.01
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 5,
+   "delta": 1.0,
+   "map_change": 0.0011026511644959356,
+   "accuracy": 0.5233333333333333,
+   "accuracy_cost": 0.04
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 5,
+   "delta": 1.5,
+   "map_change": 0.0014679712003109163,
+   "accuracy": 0.48,
+   "accuracy_cost": 0.0833333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 6,
+   "delta": 0.5,
+   "map_change": 0.0011941250228814054,
+   "accuracy": 0.5133333333333333,
+   "accuracy_cost": 0.05
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 6,
+   "delta": 1.0,
+   "map_change": 0.0022241978191524145,
+   "accuracy": 0.4066666666666667,
+   "accuracy_cost": 0.1566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 6,
+   "delta": 1.5,
+   "map_change": 0.003139105658956666,
+   "accuracy": 0.28,
+   "accuracy_cost": 0.2833333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 6,
+   "delta": 0.5,
+   "map_change": 0.0005496826952261335,
+   "accuracy": 0.55,
+   "accuracy_cost": 0.0133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 6,
+   "delta": 1.0,
+   "map_change": 0.0011937706361255813,
+   "accuracy": 0.5066666666666667,
+   "accuracy_cost": 0.0566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 6,
+   "delta": 1.5,
+   "map_change": 0.001924810673758027,
+   "accuracy": 0.45,
+   "accuracy_cost": 0.1133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 7,
+   "delta": 0.5,
+   "map_change": 0.0006996227889101993,
+   "accuracy": 0.53,
+   "accuracy_cost": 0.0333333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 7,
+   "delta": 1.0,
+   "map_change": 0.0013597009422201376,
+   "accuracy": 0.46,
+   "accuracy_cost": 0.1033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 7,
+   "delta": 1.5,
+   "map_change": 0.0023375477530529543,
+   "accuracy": 0.33666666666666667,
+   "accuracy_cost": 0.2266666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 7,
+   "delta": 0.5,
+   "map_change": 0.0005735170391767761,
+   "accuracy": 0.55,
+   "accuracy_cost": 0.0133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 7,
+   "delta": 1.0,
+   "map_change": 0.0011748132487011031,
+   "accuracy": 0.51,
+   "accuracy_cost": 0.0533333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 7,
+   "delta": 1.5,
+   "map_change": 0.001714371437822801,
+   "accuracy": 0.49333333333333335,
+   "accuracy_cost": 0.07
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 8,
+   "delta": 0.5,
+   "map_change": 0.0010200398409043504,
+   "accuracy": 0.49333333333333335,
+   "accuracy_cost": 0.07
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 8,
+   "delta": 1.0,
+   "map_change": 0.001769163782535939,
+   "accuracy": 0.43333333333333335,
+   "accuracy_cost": 0.13
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 8,
+   "delta": 1.5,
+   "map_change": 0.0022619331997967354,
+   "accuracy": 0.36,
+   "accuracy_cost": 0.2033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 8,
+   "delta": 0.5,
+   "map_change": 0.0004466865718916659,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 8,
+   "delta": 1.0,
+   "map_change": 0.0008104580373886649,
+   "accuracy": 0.5266666666666666,
+   "accuracy_cost": 0.0366666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 8,
+   "delta": 1.5,
+   "map_change": 0.0010790492516441004,
+   "accuracy": 0.53,
+   "accuracy_cost": 0.0333333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 9,
+   "delta": 0.5,
+   "map_change": 0.0004744601477453318,
+   "accuracy": 0.5366666666666666,
+   "accuracy_cost": 0.0266666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 9,
+   "delta": 1.0,
+   "map_change": 0.0012044664901143063,
+   "accuracy": 0.5033333333333333,
+   "accuracy_cost": 0.06
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 9,
+   "delta": 1.5,
+   "map_change": 0.0021242643626549497,
+   "accuracy": 0.3333333333333333,
+   "accuracy_cost": 0.23
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 9,
+   "delta": 0.5,
+   "map_change": 0.00012244319334944715,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 9,
+   "delta": 1.0,
+   "map_change": 0.00022887004462896025,
+   "accuracy": 0.5733333333333334,
+   "accuracy_cost": -0.01
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 9,
+   "delta": 1.5,
+   "map_change": 0.00031863625413919137,
+   "accuracy": 0.5666666666666667,
+   "accuracy_cost": -0.0033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 10,
+   "delta": 0.5,
+   "map_change": 0.0009218573863296005,
+   "accuracy": 0.5,
+   "accuracy_cost": 0.0633333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 10,
+   "delta": 1.0,
+   "map_change": 0.0019637585799049404,
+   "accuracy": 0.39666666666666667,
+   "accuracy_cost": 0.1666666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 10,
+   "delta": 1.5,
+   "map_change": 0.0028706098309643074,
+   "accuracy": 0.2866666666666667,
+   "accuracy_cost": 0.2766666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 10,
+   "delta": 0.5,
+   "map_change": 0.0002791945621595267,
+   "accuracy": 0.5633333333333334,
+   "accuracy_cost": 0.0
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 10,
+   "delta": 1.0,
+   "map_change": 0.0005334710873874674,
+   "accuracy": 0.5633333333333334,
+   "accuracy_cost": 0.0
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 10,
+   "delta": 1.5,
+   "map_change": 0.0007529476796564029,
+   "accuracy": 0.5366666666666666,
+   "accuracy_cost": 0.0266666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 11,
+   "delta": 0.5,
+   "map_change": 0.0005036317893883085,
+   "accuracy": 0.55,
+   "accuracy_cost": 0.0133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 11,
+   "delta": 1.0,
+   "map_change": 0.0012323049950152846,
+   "accuracy": 0.49666666666666665,
+   "accuracy_cost": 0.0666666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 0,
+   "qubit": 11,
+   "delta": 1.5,
+   "map_change": 0.002054868791633717,
+   "accuracy": 0.39666666666666667,
+   "accuracy_cost": 0.1666666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 11,
+   "delta": 0.5,
+   "map_change": 0.00014874436729660727,
+   "accuracy": 0.5733333333333334,
+   "accuracy_cost": -0.01
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 11,
+   "delta": 1.0,
+   "map_change": 0.0002875447060541444,
+   "accuracy": 0.5533333333333333,
+   "accuracy_cost": 0.01
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 0,
+   "qubit": 11,
+   "delta": 1.5,
+   "map_change": 0.00039440457240577014,
+   "accuracy": 0.54,
+   "accuracy_cost": 0.0233333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 0,
+   "delta": 0.5,
+   "map_change": 0.0019866863143681865,
+   "accuracy": 0.44333333333333336,
+   "accuracy_cost": 0.12
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 0,
+   "delta": 1.0,
+   "map_change": 0.003532511103001734,
+   "accuracy": 0.3233333333333333,
+   "accuracy_cost": 0.24
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 0,
+   "delta": 1.5,
+   "map_change": 0.004473434105218127,
+   "accuracy": 0.24333333333333335,
+   "accuracy_cost": 0.32
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 0,
+   "delta": 0.5,
+   "map_change": 0.0018035330633886654,
+   "accuracy": 0.43666666666666665,
+   "accuracy_cost": 0.1266666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 0,
+   "delta": 1.0,
+   "map_change": 0.003449029145362934,
+   "accuracy": 0.3,
+   "accuracy_cost": 0.2633333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 0,
+   "delta": 1.5,
+   "map_change": 0.004909807534222425,
+   "accuracy": 0.24,
+   "accuracy_cost": 0.3233333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 1,
+   "delta": 0.5,
+   "map_change": 0.0028760034404668434,
+   "accuracy": 0.36,
+   "accuracy_cost": 0.2033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 1,
+   "delta": 1.0,
+   "map_change": 0.005110747930837911,
+   "accuracy": 0.26666666666666666,
+   "accuracy_cost": 0.2966666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 1,
+   "delta": 1.5,
+   "map_change": 0.0062728121880529465,
+   "accuracy": 0.20333333333333334,
+   "accuracy_cost": 0.36
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 1,
+   "delta": 0.5,
+   "map_change": 0.0019865343224155824,
+   "accuracy": 0.4166666666666667,
+   "accuracy_cost": 0.1466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 1,
+   "delta": 1.0,
+   "map_change": 0.0037291512033820417,
+   "accuracy": 0.26666666666666666,
+   "accuracy_cost": 0.2966666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 1,
+   "delta": 1.5,
+   "map_change": 0.004860590483082444,
+   "accuracy": 0.18,
+   "accuracy_cost": 0.3833333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 2,
+   "delta": 0.5,
+   "map_change": 0.0018907403504159245,
+   "accuracy": 0.4066666666666667,
+   "accuracy_cost": 0.1566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 2,
+   "delta": 1.0,
+   "map_change": 0.003759834127209624,
+   "accuracy": 0.25,
+   "accuracy_cost": 0.3133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 2,
+   "delta": 1.5,
+   "map_change": 0.005489304396885627,
+   "accuracy": 0.16,
+   "accuracy_cost": 0.4033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 2,
+   "delta": 0.5,
+   "map_change": 0.001671105175452807,
+   "accuracy": 0.5166666666666667,
+   "accuracy_cost": 0.0466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 2,
+   "delta": 1.0,
+   "map_change": 0.0032828231723631765,
+   "accuracy": 0.41,
+   "accuracy_cost": 0.1533333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 2,
+   "delta": 1.5,
+   "map_change": 0.004866291425620059,
+   "accuracy": 0.2733333333333333,
+   "accuracy_cost": 0.29
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 3,
+   "delta": 0.5,
+   "map_change": 0.0016067750055564864,
+   "accuracy": 0.4633333333333333,
+   "accuracy_cost": 0.1
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 3,
+   "delta": 1.0,
+   "map_change": 0.0028936410175864026,
+   "accuracy": 0.34,
+   "accuracy_cost": 0.2233333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 3,
+   "delta": 1.5,
+   "map_change": 0.00402704734323126,
+   "accuracy": 0.24333333333333335,
+   "accuracy_cost": 0.32
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 3,
+   "delta": 0.5,
+   "map_change": 0.0010203692547475936,
+   "accuracy": 0.53,
+   "accuracy_cost": 0.0333333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 3,
+   "delta": 1.0,
+   "map_change": 0.0021258998205466997,
+   "accuracy": 0.5166666666666667,
+   "accuracy_cost": 0.0466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 3,
+   "delta": 1.5,
+   "map_change": 0.0032376343693650287,
+   "accuracy": 0.4666666666666667,
+   "accuracy_cost": 0.0966666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 4,
+   "delta": 0.5,
+   "map_change": 0.0017014037503055711,
+   "accuracy": 0.4633333333333333,
+   "accuracy_cost": 0.1
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 4,
+   "delta": 1.0,
+   "map_change": 0.003155692207755127,
+   "accuracy": 0.3466666666666667,
+   "accuracy_cost": 0.2166666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 4,
+   "delta": 1.5,
+   "map_change": 0.004251969364400538,
+   "accuracy": 0.25333333333333335,
+   "accuracy_cost": 0.31
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 4,
+   "delta": 0.5,
+   "map_change": 0.0011027311268498937,
+   "accuracy": 0.5066666666666667,
+   "accuracy_cost": 0.0566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 4,
+   "delta": 1.0,
+   "map_change": 0.002006836331726545,
+   "accuracy": 0.43333333333333335,
+   "accuracy_cost": 0.13
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 4,
+   "delta": 1.5,
+   "map_change": 0.0027459113049955602,
+   "accuracy": 0.3566666666666667,
+   "accuracy_cost": 0.2066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 5,
+   "delta": 0.5,
+   "map_change": 0.0008720123100323383,
+   "accuracy": 0.5433333333333333,
+   "accuracy_cost": 0.02
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 5,
+   "delta": 1.0,
+   "map_change": 0.0018313387383145246,
+   "accuracy": 0.44333333333333336,
+   "accuracy_cost": 0.12
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 5,
+   "delta": 1.5,
+   "map_change": 0.002947159085690433,
+   "accuracy": 0.31,
+   "accuracy_cost": 0.2533333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 5,
+   "delta": 0.5,
+   "map_change": 0.0006255185819381275,
+   "accuracy": 0.5566666666666666,
+   "accuracy_cost": 0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 5,
+   "delta": 1.0,
+   "map_change": 0.001087503061423151,
+   "accuracy": 0.5133333333333333,
+   "accuracy_cost": 0.05
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 5,
+   "delta": 1.5,
+   "map_change": 0.0014737875056819768,
+   "accuracy": 0.46,
+   "accuracy_cost": 0.1033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 6,
+   "delta": 0.5,
+   "map_change": 0.0010783581204146177,
+   "accuracy": 0.5266666666666666,
+   "accuracy_cost": 0.0366666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 6,
+   "delta": 1.0,
+   "map_change": 0.0019385963415250868,
+   "accuracy": 0.39,
+   "accuracy_cost": 0.1733333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 6,
+   "delta": 1.5,
+   "map_change": 0.0029811389165166646,
+   "accuracy": 0.25666666666666665,
+   "accuracy_cost": 0.3066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 6,
+   "delta": 0.5,
+   "map_change": 0.0006480580120829287,
+   "accuracy": 0.5566666666666666,
+   "accuracy_cost": 0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 6,
+   "delta": 1.0,
+   "map_change": 0.0012168125212218702,
+   "accuracy": 0.5033333333333333,
+   "accuracy_cost": 0.06
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 6,
+   "delta": 1.5,
+   "map_change": 0.001676274206791032,
+   "accuracy": 0.45666666666666667,
+   "accuracy_cost": 0.1066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 7,
+   "delta": 0.5,
+   "map_change": 0.0010972301115528926,
+   "accuracy": 0.5233333333333333,
+   "accuracy_cost": 0.04
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 7,
+   "delta": 1.0,
+   "map_change": 0.002406900034689713,
+   "accuracy": 0.38,
+   "accuracy_cost": 0.1833333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 7,
+   "delta": 1.5,
+   "map_change": 0.003681334061132295,
+   "accuracy": 0.25,
+   "accuracy_cost": 0.3133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 7,
+   "delta": 0.5,
+   "map_change": 0.0008642372390217673,
+   "accuracy": 0.5433333333333333,
+   "accuracy_cost": 0.02
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 7,
+   "delta": 1.0,
+   "map_change": 0.0014978461278618703,
+   "accuracy": 0.5,
+   "accuracy_cost": 0.0633333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 7,
+   "delta": 1.5,
+   "map_change": 0.0017713892728071668,
+   "accuracy": 0.44,
+   "accuracy_cost": 0.1233333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 8,
+   "delta": 0.5,
+   "map_change": 0.000942814162522439,
+   "accuracy": 0.5066666666666667,
+   "accuracy_cost": 0.0566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 8,
+   "delta": 1.0,
+   "map_change": 0.001707836590350661,
+   "accuracy": 0.45,
+   "accuracy_cost": 0.1133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 8,
+   "delta": 1.5,
+   "map_change": 0.0023028161653506317,
+   "accuracy": 0.41333333333333333,
+   "accuracy_cost": 0.15
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 8,
+   "delta": 0.5,
+   "map_change": 0.0007023536640837533,
+   "accuracy": 0.5633333333333334,
+   "accuracy_cost": 0.0
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 8,
+   "delta": 1.0,
+   "map_change": 0.0013631943939362,
+   "accuracy": 0.54,
+   "accuracy_cost": 0.0233333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 8,
+   "delta": 1.5,
+   "map_change": 0.0018729428080034374,
+   "accuracy": 0.5066666666666667,
+   "accuracy_cost": 0.0566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 9,
+   "delta": 0.5,
+   "map_change": 0.0006247928932883126,
+   "accuracy": 0.55,
+   "accuracy_cost": 0.0133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 9,
+   "delta": 1.0,
+   "map_change": 0.0014913666115784212,
+   "accuracy": 0.5166666666666667,
+   "accuracy_cost": 0.0466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 9,
+   "delta": 1.5,
+   "map_change": 0.002389417575884905,
+   "accuracy": 0.41,
+   "accuracy_cost": 0.1533333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 9,
+   "delta": 0.5,
+   "map_change": 0.00010812701814717288,
+   "accuracy": 0.5733333333333334,
+   "accuracy_cost": -0.01
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 9,
+   "delta": 1.0,
+   "map_change": 0.00021205906688047003,
+   "accuracy": 0.5733333333333334,
+   "accuracy_cost": -0.01
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 9,
+   "delta": 1.5,
+   "map_change": 0.00030655091558337783,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 10,
+   "delta": 0.5,
+   "map_change": 0.0010759465971038455,
+   "accuracy": 0.5233333333333333,
+   "accuracy_cost": 0.04
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 10,
+   "delta": 1.0,
+   "map_change": 0.002235770452751179,
+   "accuracy": 0.42333333333333334,
+   "accuracy_cost": 0.14
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 10,
+   "delta": 1.5,
+   "map_change": 0.0032191749028974417,
+   "accuracy": 0.32,
+   "accuracy_cost": 0.2433333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 10,
+   "delta": 0.5,
+   "map_change": 7.89205990057479e-05,
+   "accuracy": 0.5666666666666667,
+   "accuracy_cost": -0.0033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 10,
+   "delta": 1.0,
+   "map_change": 0.00015817385009256934,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 10,
+   "delta": 1.5,
+   "map_change": 0.00023457415149389098,
+   "accuracy": 0.5666666666666667,
+   "accuracy_cost": -0.0033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 11,
+   "delta": 0.5,
+   "map_change": 0.0009927577530336623,
+   "accuracy": 0.49,
+   "accuracy_cost": 0.0733333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 11,
+   "delta": 1.0,
+   "map_change": 0.0021378508982585866,
+   "accuracy": 0.35,
+   "accuracy_cost": 0.2133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 1,
+   "qubit": 11,
+   "delta": 1.5,
+   "map_change": 0.0031560056256217128,
+   "accuracy": 0.25,
+   "accuracy_cost": 0.3133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 11,
+   "delta": 0.5,
+   "map_change": 3.9022239501898545e-05,
+   "accuracy": 0.5566666666666666,
+   "accuracy_cost": 0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 11,
+   "delta": 1.0,
+   "map_change": 6.93909603870961e-05,
+   "accuracy": 0.5633333333333334,
+   "accuracy_cost": 0.0
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 1,
+   "qubit": 11,
+   "delta": 1.5,
+   "map_change": 0.00010637432113236021,
+   "accuracy": 0.5633333333333334,
+   "accuracy_cost": 0.0
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 0,
+   "delta": 0.5,
+   "map_change": 0.0020808396859692464,
+   "accuracy": 0.44333333333333336,
+   "accuracy_cost": 0.12
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 0,
+   "delta": 1.0,
+   "map_change": 0.0036572066736552645,
+   "accuracy": 0.31666666666666665,
+   "accuracy_cost": 0.2466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 0,
+   "delta": 1.5,
+   "map_change": 0.004606462724632608,
+   "accuracy": 0.24666666666666667,
+   "accuracy_cost": 0.3166666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 0,
+   "delta": 0.5,
+   "map_change": 0.0017073113983093829,
+   "accuracy": 0.4633333333333333,
+   "accuracy_cost": 0.1
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 0,
+   "delta": 1.0,
+   "map_change": 0.003264547345494112,
+   "accuracy": 0.34,
+   "accuracy_cost": 0.2233333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 0,
+   "delta": 1.5,
+   "map_change": 0.004726676570159656,
+   "accuracy": 0.2633333333333333,
+   "accuracy_cost": 0.3
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 1,
+   "delta": 0.5,
+   "map_change": 0.002312213889488328,
+   "accuracy": 0.38333333333333336,
+   "accuracy_cost": 0.18
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 1,
+   "delta": 1.0,
+   "map_change": 0.004072156777158093,
+   "accuracy": 0.26666666666666666,
+   "accuracy_cost": 0.2966666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 1,
+   "delta": 1.5,
+   "map_change": 0.005285468628912283,
+   "accuracy": 0.20333333333333334,
+   "accuracy_cost": 0.36
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 1,
+   "delta": 0.5,
+   "map_change": 0.0022514226601497863,
+   "accuracy": 0.36333333333333334,
+   "accuracy_cost": 0.2
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 1,
+   "delta": 1.0,
+   "map_change": 0.004101076080759425,
+   "accuracy": 0.25,
+   "accuracy_cost": 0.3133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 1,
+   "delta": 1.5,
+   "map_change": 0.005492629069291365,
+   "accuracy": 0.20333333333333334,
+   "accuracy_cost": 0.36
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 2,
+   "delta": 0.5,
+   "map_change": 0.0021435640144944652,
+   "accuracy": 0.4166666666666667,
+   "accuracy_cost": 0.1466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 2,
+   "delta": 1.0,
+   "map_change": 0.0038733181587762644,
+   "accuracy": 0.27,
+   "accuracy_cost": 0.2933333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 2,
+   "delta": 1.5,
+   "map_change": 0.0053195158471308875,
+   "accuracy": 0.20333333333333334,
+   "accuracy_cost": 0.36
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 2,
+   "delta": 0.5,
+   "map_change": 0.0016305770470901155,
+   "accuracy": 0.5166666666666667,
+   "accuracy_cost": 0.0466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 2,
+   "delta": 1.0,
+   "map_change": 0.003241440189821683,
+   "accuracy": 0.39,
+   "accuracy_cost": 0.1733333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 2,
+   "delta": 1.5,
+   "map_change": 0.004879149197917204,
+   "accuracy": 0.23,
+   "accuracy_cost": 0.3333333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 3,
+   "delta": 0.5,
+   "map_change": 0.0014748671876738295,
+   "accuracy": 0.44333333333333336,
+   "accuracy_cost": 0.12
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 3,
+   "delta": 1.0,
+   "map_change": 0.00281634001930925,
+   "accuracy": 0.3433333333333333,
+   "accuracy_cost": 0.22
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 3,
+   "delta": 1.5,
+   "map_change": 0.003981620635731068,
+   "accuracy": 0.2,
+   "accuracy_cost": 0.3633333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 3,
+   "delta": 0.5,
+   "map_change": 0.0014849545125019356,
+   "accuracy": 0.4866666666666667,
+   "accuracy_cost": 0.0766666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 3,
+   "delta": 1.0,
+   "map_change": 0.002997692673001888,
+   "accuracy": 0.4033333333333333,
+   "accuracy_cost": 0.16
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 3,
+   "delta": 1.5,
+   "map_change": 0.0043252146533835885,
+   "accuracy": 0.30666666666666664,
+   "accuracy_cost": 0.2566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 4,
+   "delta": 0.5,
+   "map_change": 0.001729087065744902,
+   "accuracy": 0.5033333333333333,
+   "accuracy_cost": 0.06
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 4,
+   "delta": 1.0,
+   "map_change": 0.0034845123723093287,
+   "accuracy": 0.36333333333333334,
+   "accuracy_cost": 0.2
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 4,
+   "delta": 1.5,
+   "map_change": 0.004903657125357845,
+   "accuracy": 0.2833333333333333,
+   "accuracy_cost": 0.28
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 4,
+   "delta": 0.5,
+   "map_change": 0.0011026111007738902,
+   "accuracy": 0.5233333333333333,
+   "accuracy_cost": 0.04
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 4,
+   "delta": 1.0,
+   "map_change": 0.0021069007778594566,
+   "accuracy": 0.4266666666666667,
+   "accuracy_cost": 0.1366666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 4,
+   "delta": 1.5,
+   "map_change": 0.002896427302562489,
+   "accuracy": 0.3433333333333333,
+   "accuracy_cost": 0.22
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 5,
+   "delta": 0.5,
+   "map_change": 0.0008086184550040454,
+   "accuracy": 0.5066666666666667,
+   "accuracy_cost": 0.0566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 5,
+   "delta": 1.0,
+   "map_change": 0.0018265273871359191,
+   "accuracy": 0.4033333333333333,
+   "accuracy_cost": 0.16
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 5,
+   "delta": 1.5,
+   "map_change": 0.003132171142328268,
+   "accuracy": 0.30666666666666664,
+   "accuracy_cost": 0.2566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 5,
+   "delta": 0.5,
+   "map_change": 0.0006553795712918316,
+   "accuracy": 0.54,
+   "accuracy_cost": 0.0233333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 5,
+   "delta": 1.0,
+   "map_change": 0.0013966746497497732,
+   "accuracy": 0.48,
+   "accuracy_cost": 0.0833333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 5,
+   "delta": 1.5,
+   "map_change": 0.0021629114232585294,
+   "accuracy": 0.4266666666666667,
+   "accuracy_cost": 0.1366666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 6,
+   "delta": 0.5,
+   "map_change": 0.0008841981654842384,
+   "accuracy": 0.5166666666666667,
+   "accuracy_cost": 0.0466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 6,
+   "delta": 1.0,
+   "map_change": 0.0018847815618527708,
+   "accuracy": 0.37666666666666665,
+   "accuracy_cost": 0.1866666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 6,
+   "delta": 1.5,
+   "map_change": 0.0029936543574391,
+   "accuracy": 0.25666666666666665,
+   "accuracy_cost": 0.3066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 6,
+   "delta": 0.5,
+   "map_change": 0.0006568346228692062,
+   "accuracy": 0.5533333333333333,
+   "accuracy_cost": 0.01
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 6,
+   "delta": 1.0,
+   "map_change": 0.001216225254160637,
+   "accuracy": 0.5033333333333333,
+   "accuracy_cost": 0.06
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 6,
+   "delta": 1.5,
+   "map_change": 0.0016248249713116288,
+   "accuracy": 0.44666666666666666,
+   "accuracy_cost": 0.1166666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 7,
+   "delta": 0.5,
+   "map_change": 0.001349542673244965,
+   "accuracy": 0.47333333333333333,
+   "accuracy_cost": 0.09
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 7,
+   "delta": 1.0,
+   "map_change": 0.0026528199860547017,
+   "accuracy": 0.2866666666666667,
+   "accuracy_cost": 0.2766666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 7,
+   "delta": 1.5,
+   "map_change": 0.0036941378502212386,
+   "accuracy": 0.22666666666666666,
+   "accuracy_cost": 0.3366666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 7,
+   "delta": 0.5,
+   "map_change": 0.0005809609312842472,
+   "accuracy": 0.5433333333333333,
+   "accuracy_cost": 0.02
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 7,
+   "delta": 1.0,
+   "map_change": 0.0010652205628379889,
+   "accuracy": 0.52,
+   "accuracy_cost": 0.0433333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 7,
+   "delta": 1.5,
+   "map_change": 0.001556412628386488,
+   "accuracy": 0.4533333333333333,
+   "accuracy_cost": 0.11
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 8,
+   "delta": 0.5,
+   "map_change": 0.0006966138596169865,
+   "accuracy": 0.5333333333333333,
+   "accuracy_cost": 0.03
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 8,
+   "delta": 1.0,
+   "map_change": 0.0014357318002972935,
+   "accuracy": 0.46,
+   "accuracy_cost": 0.1033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 8,
+   "delta": 1.5,
+   "map_change": 0.0021598246233519975,
+   "accuracy": 0.3566666666666667,
+   "accuracy_cost": 0.2066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 8,
+   "delta": 0.5,
+   "map_change": 0.000591367331635298,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 8,
+   "delta": 1.0,
+   "map_change": 0.0011865815265750146,
+   "accuracy": 0.5533333333333333,
+   "accuracy_cost": 0.01
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 8,
+   "delta": 1.5,
+   "map_change": 0.001656276289539655,
+   "accuracy": 0.5233333333333333,
+   "accuracy_cost": 0.04
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 9,
+   "delta": 0.5,
+   "map_change": 0.0005719680742868417,
+   "accuracy": 0.56,
+   "accuracy_cost": 0.0033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 9,
+   "delta": 1.0,
+   "map_change": 0.0013744720471589012,
+   "accuracy": 0.51,
+   "accuracy_cost": 0.0533333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 9,
+   "delta": 1.5,
+   "map_change": 0.0022759287348227074,
+   "accuracy": 0.4066666666666667,
+   "accuracy_cost": 0.1566666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 9,
+   "delta": 0.5,
+   "map_change": 8.163492803668381e-05,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 9,
+   "delta": 1.0,
+   "map_change": 0.0001592613927336498,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 9,
+   "delta": 1.5,
+   "map_change": 0.00023307658312915068,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 10,
+   "delta": 0.5,
+   "map_change": 0.0002628989486338595,
+   "accuracy": 0.5666666666666667,
+   "accuracy_cost": -0.0033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 10,
+   "delta": 1.0,
+   "map_change": 0.0008574831306546972,
+   "accuracy": 0.5166666666666667,
+   "accuracy_cost": 0.0466666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 10,
+   "delta": 1.5,
+   "map_change": 0.0017321331204028898,
+   "accuracy": 0.4033333333333333,
+   "accuracy_cost": 0.16
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 10,
+   "delta": 0.5,
+   "map_change": 7.395612106181103e-05,
+   "accuracy": 0.5666666666666667,
+   "accuracy_cost": -0.0033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 10,
+   "delta": 1.0,
+   "map_change": 0.00014974965613361038,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 10,
+   "delta": 1.5,
+   "map_change": 0.00022158908595181626,
+   "accuracy": 0.57,
+   "accuracy_cost": -0.0066666667
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 11,
+   "delta": 0.5,
+   "map_change": 0.000995269823547967,
+   "accuracy": 0.49,
+   "accuracy_cost": 0.0733333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 11,
+   "delta": 1.0,
+   "map_change": 0.0021445291771871955,
+   "accuracy": 0.35,
+   "accuracy_cost": 0.2133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RY",
+   "layer": 2,
+   "qubit": 11,
+   "delta": 1.5,
+   "map_change": 0.003170691556478711,
+   "accuracy": 0.25,
+   "accuracy_cost": 0.3133333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 11,
+   "delta": 0.5,
+   "map_change": 6.658525045885046e-06,
+   "accuracy": 0.56,
+   "accuracy_cost": 0.0033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 11,
+   "delta": 1.0,
+   "map_change": 1.353728065426311e-05,
+   "accuracy": 0.56,
+   "accuracy_cost": 0.0033333333
+  },
+  {
+   "kind": "gate",
+   "rot": "RX",
+   "layer": 2,
+   "qubit": 11,
+   "delta": 1.5,
+   "map_change": 1.926333630205355e-05,
+   "accuracy": 0.5633333333333334,
+   "accuracy_cost": 0.0
+  }
+ ]
+}

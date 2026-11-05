@@ -8,6 +8,7 @@
   "rel_mae": 0.43161743492917365,
   "signs": 0.8416666666666667,
   "sum_vs_own_whole": -0.0006070531939073968,
+  "sum_vs_own_whole_abs": 0.004475601518041155,
   "sum_vs_ref": 0.00885325804714642
  },
  "2x2, standard, noisy_FakeKingston vs exact": {
@@ -19,6 +20,7 @@
   "rel_mae": 0.36351022420642726,
   "signs": 0.8666666666666667,
   "sum_vs_own_whole": -0.00043596971684900705,
+  "sum_vs_own_whole_abs": 0.0034394327873383482,
   "sum_vs_ref": 0.007548178006462477
  },
  "2x2, standard, noisy_FakeKingston vs exact, chip right": {
@@ -30,6 +32,7 @@
   "rel_mae": 0.3230628292919874,
   "signs": 0.8461538461538461,
   "sum_vs_own_whole": -6.406431240059701e-05,
+  "sum_vs_own_whole_abs": 0.003542891310420656,
   "sum_vs_ref": 0.00773660833596527
  },
  "2x2, standard, noisy_FakeKingston vs exact, chip wrong": {
@@ -41,6 +44,7 @@
   "rel_mae": 0.3998487124321435,
   "signs": 0.8823529411764706,
   "sum_vs_own_whole": -0.0007203679673095559,
+  "sum_vs_own_whole_abs": 0.0033603174461577607,
   "sum_vs_ref": 0.0074040842250779875
  },
  "2x2, standard, chip_ibm_kingston vs exact": {
@@ -52,6 +56,7 @@
   "rel_mae": 0.5302981825676085,
   "signs": 0.8416666666666667,
   "sum_vs_own_whole": 0.00144502540132409,
+  "sum_vs_own_whole_abs": 0.005393478696911408,
   "sum_vs_ref": 0.010454400168640986,
   "corr_ci": [
    0.7564975290387149,
@@ -82,6 +87,7 @@
   "rel_mae": 0.4788987137791576,
   "signs": 0.8076923076923077,
   "sum_vs_own_whole": 0.0022450972767485543,
+  "sum_vs_own_whole_abs": 0.005194163884949259,
   "sum_vs_ref": 0.010666923406644373
  },
  "2x2, standard, chip_ibm_kingston vs exact, chip wrong": {
@@ -93,6 +99,7 @@
   "rel_mae": 0.5764761625173233,
   "signs": 0.8676470588235294,
   "sum_vs_own_whole": 0.0008332057318818516,
+  "sum_vs_own_whole_abs": 0.005545895906058933,
   "sum_vs_ref": 0.010291882398403101
  },
  "2x2, standard, noisy_FakeKingston, 4000 shots vs exact": {
@@ -104,6 +111,7 @@
   "rel_mae": 0.5850742054914677,
   "signs": 0.7916666666666666,
   "sum_vs_own_whole": -0.0007244909275145045,
+  "sum_vs_own_whole_abs": 0.007047884880160007,
   "sum_vs_ref": 0.013569271822964123
  },
  "2x2, standard, noisy_FakeKingston, 4000 shots vs exact, chip right": {
@@ -115,6 +123,7 @@
   "rel_mae": 0.5172585629904868,
   "signs": 0.8269230769230769,
   "sum_vs_own_whole": -0.0008009535608144582,
+  "sum_vs_own_whole_abs": 0.007155070896171464,
   "sum_vs_ref": 0.012791232862714526
  },
  "2x2, standard, noisy_FakeKingston, 4000 shots vs exact, chip wrong": {
@@ -126,6 +135,7 @@
   "rel_mae": 0.646000698575983,
   "signs": 0.7647058823529411,
   "sum_vs_own_whole": -0.0006660195020498342,
+  "sum_vs_own_whole_abs": 0.006965919103210069,
   "sum_vs_ref": 0.01416424279256675
  },
  "2x2, sign flip, prep vs exact": {
@@ -137,6 +147,7 @@
   "rel_mae": 0.3523571952155208,
   "signs": 0.8666666666666667,
   "sum_vs_own_whole": 0.0004824961423495124,
+  "sum_vs_own_whole_abs": 0.0020529423836844244,
   "sum_vs_ref": 0.005959211911060158
  },
  "2x2, sign flip, noisy_FakeKingston vs exact": {
@@ -148,6 +159,7 @@
   "rel_mae": 0.2900313349647885,
   "signs": 0.8916666666666667,
   "sum_vs_own_whole": 0.0003899758497426543,
+  "sum_vs_own_whole_abs": 0.001663477691474221,
   "sum_vs_ref": 0.005463436112054166
  },
  "2x2, sign flip, noisy_FakeKingston vs exact, chip right": {
@@ -159,6 +171,7 @@
   "rel_mae": 0.2557128466167786,
   "signs": 0.8846153846153846,
   "sum_vs_own_whole": 0.00043739655701409164,
+  "sum_vs_own_whole_abs": 0.0015634762727776285,
   "sum_vs_ref": 0.005002298628714629
  },
  "2x2, sign flip, noisy_FakeKingston vs exact, chip wrong": {
@@ -170,6 +183,7 @@
   "rel_mae": 0.3208635303978083,
   "signs": 0.8970588235294118,
   "sum_vs_own_whole": 0.000353712955946849,
+  "sum_vs_own_whole_abs": 0.0017399493645951444,
   "sum_vs_ref": 0.005816070658137343
  },
  "2x2, sign flip, chip_ibm_kingston vs exact": {
@@ -181,6 +195,7 @@
   "rel_mae": 0.406640095261715,
   "signs": 0.8833333333333333,
   "sum_vs_own_whole": -0.000286044670216966,
+  "sum_vs_own_whole_abs": 0.003525449782316322,
   "sum_vs_ref": 0.007124086981393262,
   "corr_ci": [
    0.8412748428430559,
@@ -211,6 +226,7 @@
   "rel_mae": 0.37528252020589054,
   "signs": 0.8461538461538461,
   "sum_vs_own_whole": -0.00022312231648934303,
+  "sum_vs_own_whole_abs": 0.0026614802386431065,
   "sum_vs_ref": 0.007117196055965956
  },
  "2x2, sign flip, chip_ibm_kingston vs exact, chip wrong": {
@@ -222,6 +238,7 @@
   "rel_mae": 0.4348121660307596,
   "signs": 0.9117647058823529,
   "sum_vs_own_whole": -0.00033416176424397185,
+  "sum_vs_own_whole_abs": 0.004186132374537015,
   "sum_vs_ref": 0.00712935651260238
  },
  "2x2, sign flip, noisy_FakeKingston, 4000 shots vs exact": {
@@ -233,6 +250,7 @@
   "rel_mae": 0.3947682390712268,
   "signs": 0.8166666666666667,
   "sum_vs_own_whole": 0.0010767328702247535,
+  "sum_vs_own_whole_abs": 0.002996330574479017,
   "sum_vs_ref": 0.007755691688206587
  },
  "2x2, sign flip, noisy_FakeKingston, 4000 shots vs exact, chip right": {
@@ -244,6 +262,7 @@
   "rel_mae": 0.32707010352545474,
   "signs": 0.7884615384615384,
   "sum_vs_own_whole": 0.0025434647736137404,
+  "sum_vs_own_whole_abs": 0.003231016852365122,
   "sum_vs_ref": 0.006337567845589567
  },
  "2x2, sign flip, noisy_FakeKingston, 4000 shots vs exact, chip wrong": {
@@ -255,6 +274,7 @@
   "rel_mae": 0.45558916231330066,
   "signs": 0.8382352941176471,
   "sum_vs_own_whole": -4.488564413153046e-05,
+  "sum_vs_own_whole_abs": 0.0028168645972719945,
   "sum_vs_ref": 0.00884013933256078
  },
  "4x4, sign flip, prep vs exact": {
@@ -266,6 +286,7 @@
   "rel_mae": 0.8172119478695387,
   "signs": 0.8125,
   "sum_vs_own_whole": 0.0020786710428121477,
+  "sum_vs_own_whole_abs": 0.011273612009670649,
   "sum_vs_ref": 0.01483029293280055
  },
  "4x4, sign flip, noisy_FakeKingston vs exact": {
@@ -277,6 +298,7 @@
   "rel_mae": 0.6169488955646422,
   "signs": 0.828125,
   "sum_vs_own_whole": 0.0026363521112390082,
+  "sum_vs_own_whole_abs": 0.009598048909047897,
   "sum_vs_ref": 0.010238789118635856
  },
  "4x4, sign flip, chip_ibm_kingston vs exact": {
@@ -288,6 +310,7 @@
   "rel_mae": 1.601166993585733,
   "signs": 0.7291666666666666,
   "sum_vs_own_whole": 0.02669169414182287,
+  "sum_vs_own_whole_abs": 0.02669169414182287,
   "sum_vs_ref": 0.03812174208401264,
   "corr_ci": [
    0.5361310939083912,
@@ -318,6 +341,7 @@
   "rel_mae": 0.9250550243394592,
   "signs": 0.734375,
   "sum_vs_own_whole": -0.00825666930393287,
+  "sum_vs_own_whole_abs": 0.00825666930393287,
   "sum_vs_ref": 0.01325084494398428
  }
 }

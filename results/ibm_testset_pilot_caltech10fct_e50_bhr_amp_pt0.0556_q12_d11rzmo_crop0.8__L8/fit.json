@@ -1,0 +1,9 @@
+{
+ "run": "results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_crop0.8_bal_o7_brickwall_i0.1_s0.json",
+ "prep_depth": 8,
+ "steps": 3000,
+ "n": 300,
+ "fid_median": 0.9593614062093714,
+ "acc_exact": 0.5133333333333333,
+ "acc_prep": 0.5466666666666666
+}

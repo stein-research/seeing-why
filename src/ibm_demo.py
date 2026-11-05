@@ -310,7 +310,7 @@ def block_heatmap(a):
     hw = "_hw" if a.keys else ""
     out = HERE / "results" / f"ibm_heatmap_{pathlib.Path(a.run).stem[:40]}_p{a.picture}_g{g}_L{a.prep_depth}{hw}.json"
     out.write_text(json.dumps(dict(run=a.run, picture=a.picture, grid=g, prep_depth=a.prep_depth, shots=a.shots,
-                                   measured_on=source, ledger=ledger, fidelities=fids, maps={k: v.tolist() for k, v in maps.items()})))
+                                   measured_on=source, ledger=ledger, fidelities=fids, maps={k: v.tolist() for k, v in maps.items()}), indent=1))
     print(out)
 
 
