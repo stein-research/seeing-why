@@ -9,7 +9,7 @@ Interactive companion to the paper by Teerawat Tongloy (KMITL) and Rangsan Jomta
 | Run it on your own computer, and the paper's analyses | [docs/run-locally.md](docs/run-locally.md) |
 | Check the IBM jobs from their records, or run them again | [docs/check-and-repeat-ibm.md](docs/check-and-repeat-ibm.md) |
 | Paper | [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) |
-| Archived copy (v1.1) | [doi:10.5281/zenodo.23938413](https://doi.org/10.5281/zenodo.23938413) |
+| Archived copy (v1.2) | [doi:10.5281/zenodo.23984169](https://doi.org/10.5281/zenodo.23984169) |
 
 ![The two classifiers, step by step: (a) all-optical, (b) qubit chip](docs/overview.png)
 
