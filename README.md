@@ -1,6 +1,9 @@
 # Seeing Why: Exact Evidence Maps for Quantum and Optical Image Classifiers
 
-Interactive companion to the paper by Teerawat Tongloy (KMITL) and Rangsan Jomtarak (Suan Dusit University).
+Interactive companion to the paper by Teerawat Tongloy<sup>1</sup> and Rangsan Jomtarak<sup>2</sup>.
+
+<sup>1</sup> School of Integrated Innovative Technology, King Mongkut's Institute of Technology Ladkrabang (KMITL), Bangkok, Thailand<br>
+<sup>2</sup> Faculty of Science and Technology, Suan Dusit University, Bangkok, Thailand
 
 | | |
 |---|---|
