@@ -102,3 +102,7 @@ Please cite the paper ([`CITATION.cff`](CITATION.cff)).
   url           = {https://arxiv.org/abs/2611.01993}
 }
 ```
+
+## Contact
+
+Teerawat Tongloy, teerawat.to@kmitl.ac.th
