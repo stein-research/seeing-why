@@ -10,7 +10,7 @@ top. Compared with optnet / fastsim, which sample each pixel at its centre: dete
 --continuous hands the 4f output to the plates as it is (band-limited, smooth), not re-made into square pixels.
 --propagator fresnel uses LightPipes' convolution propagator instead of the spectral Forvard between the plates.
 --thick N makes each plate a surface-relief glass plate (n = 1.457, depth up to lambda/(n-1)) crossed in N layers by
-LightPipes' finite-difference Steps, instead of a thin phase mask (2026-11-01: the owner, LightPipes as the reference).
+LightPipes' finite-difference Steps, instead of a thin phase mask (LightPipes as the reference).
 
 Run:  python src/optics_check_full.py results/<optical run>.json [--pictures 10] [--os 2]
 """

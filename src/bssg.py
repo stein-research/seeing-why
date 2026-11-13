@@ -1,7 +1,6 @@
 """BornScaledSoftmax (BSS) and its grouped form (BSSG) — parameter-free Born readouts.
 
-Re-implemented for this project from the owner's definitions (BSS manuscript and the BSSG design used in
-his RL work). Nothing here is imported or copied from the PhD folder.
+Implemented for this project from the definitions of BSS and of its grouped form BSSG.
 
 BSS   (N basis states, classes = basis states):
     z_b = P_b - 1/N;  z~ = LeakyReLU_alpha(z);  p_hat = softmax(kappa z~)
@@ -12,7 +11,7 @@ BSSG  (N basis states marginalised onto G groups S_g, contiguous, larger groups 
     kappa = ln[(1 - eps)(G - 1)/eps] / (r - 1)
     With G = N it equals BSS exactly (both are N(P - 1/N) up to the factor that kappa absorbs).
 
-Readout modes (two independent axes, as in the owner's RL v1.9):
+Readout modes (two independent axes):
     raw_renorm  keep the first C basis states, renormalise           (no BSS)
     raw_group   marginalise onto C groups                             (no BSS)
     bss_renorm  BSS over all N states (dummies in the denominator), output restricted to the first C
@@ -167,7 +166,7 @@ class Readout(torch.nn.Module):
         elif mode == "bss_renorm":
             self.bss = BSS(n_states, pt_ratio, eps, leaky_slope)
         elif mode == "lss":
-            # Leaky Scaled Softmax on Pauli-Z expectations (the owner's LSS): class c reads <Z_c> on measured wire c,
+            # Leaky Scaled Softmax on Pauli-Z expectations (LSS): class c reads <Z_c> on measured wire c,
             # anchor 0 (maximally mixed state), ceiling 1; pt_ratio carries the effective maximum z_eff, the <Z> at
             # which the class reaches probability 1 - eps against C - 1 classes at 0
             n_wires = n_states.bit_length() - 1

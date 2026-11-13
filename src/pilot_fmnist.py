@@ -345,7 +345,7 @@ def entangle(layer, kind):
         start = layer % 2
         for i in range(start, N_QUBITS - 1, 2):
             qml.CNOT(wires=[i, i + 1])
-    else:                                            # owner's chain, direction alternating per layer
+    else:                                            # chain, direction alternating per layer
         if layer % 2:
             for i in range(N_QUBITS - 1):
                 qml.CNOT(wires=[i, i + 1])
@@ -487,7 +487,7 @@ def main():
     ap.add_argument("--dataset", default="fmnist", choices=["fmnist", "mnist", "imagenet32", "imagenet10", "imagenette", "animals10", "cifar10", "cifar10c", "wmnistc", "caltech10c", "caltech10f", "caltech10fc", "caltech10fct", "flowers17c"])
     ap.add_argument("--full_eval", action="store_true",
                     help="also test shifted / tilted / scaled pictures, photon budgets and the direct-imaging baseline "
-                         "(off by default since 2026-10-30: the owner wants only accuracy, and they doubled the test time)")
+                         "(off by default: they double the test time)")
     ap.add_argument("--lr_floor", type=float, default=0.0,
                     help="cosine schedule ends at this fraction of lr instead of 0 (owner 2026-10-30: long runs, 0.3)")
     ap.add_argument("--warmup_epochs", type=int, default=1)
