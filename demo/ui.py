@@ -429,7 +429,7 @@ RECIPES = {                                                    # the paper's row
 
 
 def train_command(recipe, epochs, seed, device):
-    return (f"{sys.executable} -u -W ignore src/pilot_fmnist.py {COMMON} {CAL} --epochs {epochs} --seed {seed} "
+    return (f"{sys.executable} -u -W ignore src/core/pilot_fmnist.py {COMMON} {CAL} --epochs {epochs} --seed {seed} "
             f"--device {device} {RECIPES[recipe]}").split()
 
 

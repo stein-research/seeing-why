@@ -61,7 +61,7 @@ q = sw.delete(run, x[:1], e[None], 0.05)[0]     # the answer after deleting the 
 The command the training notebook runs, here for the phase plates of row D (50 epochs: a few minutes on a GPU):
 
 ```bash
-python src/pilot_fmnist.py --mode bhr --pt_ratio 0.0556 --rot rzryrx --order morton --n_out 7 --sim fast \
+python src/core/pilot_fmnist.py --mode bhr --pt_ratio 0.0556 --rot rzryrx --order morton --n_out 7 --sim fast \
   --ent brickwall --dataset caltech10fct --n_qubits 12 --n_train 2644 --balanced --aug_crop 0.8 \
   --epochs 50 --seed 3 --device cuda --optical 4 --center_image --mean_plane 0.5 --fourier_mask \
   --fourier_linear --fourier_phase
@@ -77,27 +77,27 @@ Each script prints its numbers and writes them to `results/`; the outputs alread
 
 | script | what it gives (paper section) | rough time on a CPU |
 |---|---|---|
-| `python src/map_nulls.py` | baselines for the chip's 2 x 2 maps (3.7) | seconds |
-| `python src/map_errors.py` | the chip maps' error, slope and sum rule against the shot-noise floor (3.7) | seconds |
-| `python src/map_shots_all.py` | the map measurement simulated on all 300 test pictures (3.7) | a few minutes |
-| `python src/deletion_baselines.py` | the deletion test, every ranking (3.4) | tens of minutes |
-| `python src/deletion_predicted.py` | the deletion test by the model's own answer (3.4) | tens of minutes |
-| `python src/classical_refs.py` | logistic regression and a small CNN on the same pictures (3.2) | minutes |
-| `python src/quad_baseline.py 0 1 2` | the unconstrained quadratic model, row Q (3.2) | long; use a GPU |
-| `python src/robustness.py results/<row E run>.json` | the bench tolerances (3.9) | an hour or more; a GPU helps |
-| `python src/optics_check_full.py results/<optical run>.json` | the same model rebuilt in LightPipes (3.8); `pip install LightPipes` first | minutes |
-| `python src/check_fastsim.py` | the simulator against PennyLane | minutes |
-| `python src/hw_mcnemar.py` | paired tests of the hardware accuracy steps (3.7) | seconds |
-| `python src/model_randomisation.py` | the maps of models with their trained values permuted (3.5) | minutes |
-| `bash src/readout_sweep.sh`, then `python src/readout_sweep_report.py` | BHR at five values of phi and a softmax at a fixed slope (3.2); the runs are already in `results/` | the sweep: about an hour on a GPU; the report: seconds |
-| `python src/calibration.py` | the readouts' calibration (ECE), with temperature scaling of BHR (3.2) | a minute |
-| `python src/means_share.py` | the means plane's share of P - b, which pixel maps leave out (2.5) | a minute |
-| `python src/kernel_support.py` | how far the qubit model's Fourier-plane kernel reaches (3.7) | seconds |
-| `python src/shot_variance.py` | the shot noise of a measured block by each estimator, against a Hadamard test (2.6) | seconds |
-| `python src/fault_maps.py` | would a map measured on the chip see a deliberate fault in the circuit? 246 faults, simulated (3.7) | minutes |
-| `bash src/mean_plane_sweep.sh` | row D at other values of the means plane's energy share f (2.1); the runs are already in `results/` | about ten minutes on a GPU |
-| `python src/roar.py prepare`, `train`, then `report` | retraining on deleted pictures (ROAR), and what the deleted pixels' pattern alone gives away (3.4); the runs are already in `results/` | prepare: minutes; train: about 40 minutes on a GPU; report: minutes |
-| `python src/bench_maps.py results/<row E run>.json --grid 32 --pictures 10,135,239 --drift 0.001,0.01 --leak 0.01,0.03 --xtalk 0.02,0.05` | per-pixel maps measured on the simulated lens bench, and bench flaws (3.8); `pip install LightPipes` first; the ten further pictures: `--pictures 23,51,68,118,146,167,188,234,265,291 --no_figure --json results/bench_maps_more.json` | about 20 minutes a picture |
+| `python src/hardware/map_nulls.py` | baselines for the chip's 2 x 2 maps (3.7) | seconds |
+| `python src/hardware/map_errors.py` | the chip maps' error, slope and sum rule against the shot-noise floor (3.7) | seconds |
+| `python src/hardware/map_shots_all.py` | the map measurement simulated on all 300 test pictures (3.7) | a few minutes |
+| `python src/evaluation/deletion_baselines.py` | the deletion test, every ranking (3.4) | tens of minutes |
+| `python src/evaluation/deletion_predicted.py` | the deletion test by the model's own answer (3.4) | tens of minutes |
+| `python src/evaluation/classical_refs.py` | logistic regression and a small CNN on the same pictures (3.2) | minutes |
+| `python src/evaluation/quad_baseline.py 0 1 2` | the unconstrained quadratic model, row Q (3.2) | long; use a GPU |
+| `python src/optics/robustness.py results/<row E run>.json` | the bench tolerances (3.9) | an hour or more; a GPU helps |
+| `python src/optics/optics_check_full.py results/<optical run>.json` | the same model rebuilt in LightPipes (3.8); `pip install LightPipes` first | minutes |
+| `python src/evaluation/check_fastsim.py` | the simulator against PennyLane | minutes |
+| `python src/hardware/hw_mcnemar.py` | paired tests of the hardware accuracy steps (3.7) | seconds |
+| `python src/evaluation/model_randomisation.py` | the maps of models with their trained values permuted (3.5) | minutes |
+| `bash src/evaluation/readout_sweep.sh`, then `python src/evaluation/readout_sweep_report.py` | BHR at five values of phi and a softmax at a fixed slope (3.2); the runs are already in `results/` | the sweep: about an hour on a GPU; the report: seconds |
+| `python src/evaluation/calibration.py` | the readouts' calibration (ECE), with temperature scaling of BHR (3.2) | a minute |
+| `python src/evaluation/means_share.py` | the means plane's share of P - b, which pixel maps leave out (2.5) | a minute |
+| `python src/evaluation/kernel_support.py` | how far the qubit model's Fourier-plane kernel reaches (3.7) | seconds |
+| `python src/hardware/shot_variance.py` | the shot noise of a measured block by each estimator, against a Hadamard test (2.6) | seconds |
+| `python src/hardware/fault_maps.py` | would a map measured on the chip see a deliberate fault in the circuit? 246 faults, simulated (3.7) | minutes |
+| `bash src/evaluation/mean_plane_sweep.sh` | row D at other values of the means plane's energy share f (2.1); the runs are already in `results/` | about ten minutes on a GPU |
+| `python src/evaluation/roar.py prepare`, `train`, then `report` | retraining on deleted pictures (ROAR), and what the deleted pixels' pattern alone gives away (3.4); the runs are already in `results/` | prepare: minutes; train: about 40 minutes on a GPU; report: minutes |
+| `python src/optics/bench_maps.py results/<row E run>.json --grid 32 --pictures 10,135,239 --drift 0.001,0.01 --leak 0.01,0.03 --xtalk 0.02,0.05` | per-pixel maps measured on the simulated lens bench, and bench flaws (3.8); `pip install LightPipes` first; the ten further pictures: `--pictures 23,51,68,118,146,167,188,234,265,291 --no_figure --json results/bench_maps_more.json` | about 20 minutes a picture |
 
 The row E run is
 `results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d0rzmo_cimp0.5_crop0.8_bal_opt4z32r2os2_fmLp_o7_brickwall_i0.1_s0.json`.
@@ -115,7 +115,7 @@ sw.prepare_caltech10()        # downloads Caltech-101, rebuilds Caltech-10 and c
 ```
 
 The hand-drawn object outlines also come with the archive. To measure where the maps sit against them (3.5), take
-them out once, then run `src/attention_in_box.py`:
+them out once, then run `src/evaluation/attention_in_box.py`:
 
 ```python
 import zipfile
@@ -127,7 +127,7 @@ zipfile.ZipFile("data/caltech101/caltech-101.zip").extract("caltech-101/Annotati
 `src/ibm_*.py` sent the paper's jobs. Running them again needs your own IBM Quantum account, passed as a keys file
 (`--keys`); no account details are in this repository. Every job the paper used is recorded in
 [`ibm_jobs/`](../ibm_jobs/), with its circuits, calibration and raw counts, so the hardware numbers can be checked
-without an account: `src/map_errors.py`, `src/map_nulls.py`, `src/ibm_heatmaps.py report` and
-`src/ibm_maps_random.py report` (the maps of 30 pictures drawn at random, 3.7) read those records.
+without an account: `src/hardware/map_errors.py`, `src/hardware/map_nulls.py`, `src/hardware/ibm_heatmaps.py report` and
+`src/hardware/ibm_maps_random.py report` (the maps of 30 pictures drawn at random, 3.7) read those records.
 Step by step, with the paper's number each command gives and how to repeat a job with your own account:
 [`check-and-repeat-ibm.md`](check-and-repeat-ibm.md).

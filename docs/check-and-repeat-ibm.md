@@ -23,13 +23,13 @@ These read only the files in the repository and send nothing. Each takes seconds
 
 | in the paper | command | prints |
 |---|---|---|
-| the test set on the chip (3.7): 56.3 % exact, 41.3 % with the fitted loading, 37.7 % on ibm_kingston | `python src/ibm_testset.py report $RUN` | the three accuracies, ROC-AUC, the chip's confusion matrix |
-| model A', no mask, on the chip (3.7): 51.3 % exact, 54.7 % with the fitted loading, 32.3 % on ibm_kingston | `python src/ibm_testset.py report results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_crop0.8_bal_o7_brickwall_i0.1_s0.json` | the same, for A' |
-| the paired tests of these steps, and D' against A' | `python src/hw_mcnemar.py` | exact McNemar tests |
-| maps of the 30 pictures drawn at random (3.7): 0.88 sign flip, 0.82 standard, 4x4 0.60 | `python src/ibm_maps_random.py report` | every estimator and step against the exact maps, with intervals and nulls |
-| the earlier maps of ten chosen pictures: 0.63 and 0.77 (two runs) | `python src/ibm_heatmaps.py report $RUN --no_figure` | each step against the exact maps |
-| their errors and nulls | `python src/map_errors.py`, `python src/map_nulls.py` | errors, intervals; permutation nulls |
-| the shot floor over all 300 pictures (simulation) | `python src/map_shots_all.py` | maps at 4,000 / 16,000 / 64,000 shots |
+| the test set on the chip (3.7): 56.3 % exact, 41.3 % with the fitted loading, 37.7 % on ibm_kingston | `python src/hardware/ibm_testset.py report $RUN` | the three accuracies, ROC-AUC, the chip's confusion matrix |
+| model A', no mask, on the chip (3.7): 51.3 % exact, 54.7 % with the fitted loading, 32.3 % on ibm_kingston | `python src/hardware/ibm_testset.py report results/pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_crop0.8_bal_o7_brickwall_i0.1_s0.json` | the same, for A' |
+| the paired tests of these steps, and D' against A' | `python src/hardware/hw_mcnemar.py` | exact McNemar tests |
+| maps of the 30 pictures drawn at random (3.7): 0.88 sign flip, 0.82 standard, 4x4 0.60 | `python src/hardware/ibm_maps_random.py report` | every estimator and step against the exact maps, with intervals and nulls |
+| the earlier maps of ten chosen pictures: 0.63 and 0.77 (two runs) | `python src/hardware/ibm_heatmaps.py report $RUN --no_figure` | each step against the exact maps |
+| their errors and nulls | `python src/hardware/map_errors.py`, `python src/hardware/map_nulls.py` | errors, intervals; permutation nulls |
+| the shot floor over all 300 pictures (simulation) | `python src/hardware/map_shots_all.py` | maps at 4,000 / 16,000 / 64,000 shots |
 
 The reports read the class probabilities kept beside the results (for the test set,
 `results/ibm_testset_*/chip_ibm_kingston_r0.json`). To rebuild those from the raw counts themselves: move the file
@@ -40,8 +40,8 @@ nothing (`--keys` is required but not read then):
 ```bash
 D=results/ibm_testset_pilot_caltech10fct_e50_bhr_amp_pt0.0556_q12_d11rzmo_cimp0.5__L8
 mv $D/chip_ibm_kingston_r0.json /tmp/chip_r0_kept.json
-python src/ibm_testset.py chip $RUN --keys none --count 300 --dry_run     # "all already measured ... nothing to send"
-python src/ibm_testset.py report $RUN                                        # 37.7 % again, from the counts
+python src/hardware/ibm_testset.py chip $RUN --keys none --count 300 --dry_run     # "all already measured ... nothing to send"
+python src/hardware/ibm_testset.py report $RUN                                        # 37.7 % again, from the counts
 ```
 
 The rebuilt class probabilities equal the kept ones exactly (`git diff` shows only the `ledger` field, which then says
@@ -56,7 +56,7 @@ commit: one account per line, `<name> <API key>` (the name is only a label, an e
 spaces). The examples below call it `~/ibm_keys.txt` and use its first line, `--accounts 0`.
 
 ```bash
-python src/ibm_jobs.py check --keys ~/ibm_keys.txt     # logs in (sends no job): usable or not, quota left
+python src/hardware/ibm_jobs.py check --keys ~/ibm_keys.txt     # logs in (sends no job): usable or not, quota left
 ```
 
 `check` writes `ibmq_accounts_status.json` next to the keys file, never into the repository, and keeps no key in it.
@@ -78,9 +78,9 @@ calibration and writes the job folder in `ibm_jobs/` (status "prepared"), but se
 without `--dry_run` sends it. Ten test pictures, about 12 quantum seconds:
 
 ```bash
-python src/ibm_testset.py chip $RUN --keys ~/ibm_keys.txt --accounts 0 --count 10 --chunk 10 --repeat 1 --dry_run
-python src/ibm_testset.py chip $RUN --keys ~/ibm_keys.txt --accounts 0 --count 10 --chunk 10 --repeat 1
-python src/ibm_testset.py report $RUN
+python src/hardware/ibm_testset.py chip $RUN --keys ~/ibm_keys.txt --accounts 0 --count 10 --chunk 10 --repeat 1 --dry_run
+python src/hardware/ibm_testset.py chip $RUN --keys ~/ibm_keys.txt --accounts 0 --count 10 --chunk 10 --repeat 1
+python src/hardware/ibm_testset.py report $RUN
 ```
 
 The report then shows your repeat on its own pictures beside ours on the same pictures, for example
@@ -90,9 +90,9 @@ The report then shows your repeat on its own pictures beside ours on the same pi
 The ten-picture maps again (90 circuits in one job, about 1.5 minutes):
 
 ```bash
-python src/ibm_heatmaps.py chip $RUN --keys ~/ibm_keys.txt --accounts 0 --repeat 2 --dry_run
-python src/ibm_heatmaps.py chip $RUN --keys ~/ibm_keys.txt --accounts 0 --repeat 2
-python src/ibm_heatmaps.py report $RUN --no_figure
+python src/hardware/ibm_heatmaps.py chip $RUN --keys ~/ibm_keys.txt --accounts 0 --repeat 2 --dry_run
+python src/hardware/ibm_heatmaps.py chip $RUN --keys ~/ibm_keys.txt --accounts 0 --repeat 2
+python src/hardware/ibm_heatmaps.py report $RUN --no_figure
 ```
 
 The scripts stop before sending when the account has too little quota left for the job. A job that was sent but whose
@@ -101,7 +101,7 @@ command runs.
 
 ### Another machine
 
-`python src/ibm_testset.py backends $RUN --keys ~/ibm_keys.txt` lists the machines your account can use (it only
+`python src/hardware/ibm_testset.py backends $RUN --keys ~/ibm_keys.txt` lists the machines your account can use (it only
 reads). `--backend <name>` on the chip commands sends there instead; a different backend is a different key, so the
 circuits are transpiled anew for it and nothing of ours is reused.
 
@@ -111,7 +111,7 @@ A repeat will not give our numbers to the digit. The chip's errors change from d
 `properties.json` in your job folder (qubit T1/T2, gate and readout errors when it was sent) with ours, and the
 qubits each circuit ran on (`record.json`). Our own two runs of the ten-picture maps correlated with the exact maps
 at 0.63 and 0.77, which gives an idea of the run-to-run spread. To add your job to a copy of this repository, commit
-its `ibm_jobs/<key>/` folder and the results file; `python src/ibm_jobs.py list` rewrites `ibm_jobs/index.md`. Your
+its `ibm_jobs/<key>/` folder and the results file; `python src/hardware/ibm_jobs.py list` rewrites `ibm_jobs/index.md`. Your
 folder records which of your keys file's lines sent the job, and a fingerprint of the key (the first 12 hex digits
 of its SHA-256), never the key itself.
 
@@ -137,6 +137,6 @@ yours = [r.join_data().get_counts() for r in job.result()]
 ```
 
 `yours[i]` and `ours[i]` are then the counts of the same circuit, bit strings with qubit 0 rightmost. To turn counts
-into class probabilities, use `outcome_probs` and `class_probs` in `src/ibm_demo.py`, as the scripts do.
+into class probabilities, use `outcome_probs` and `class_probs` in `src/hardware/ibm_demo.py`, as the scripts do.
 This is written for qiskit-ibm-runtime 0.51, which the paper used; it warns that `SamplerV2` will be renamed in a
 later release.

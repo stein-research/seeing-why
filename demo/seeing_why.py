@@ -16,7 +16,7 @@ import torch
 from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "src"))
+sys.path[:0] = sorted(str(p) for p in (ROOT / "src").iterdir() if p.is_dir() and p.name != "__pycache__")   # src/'s folders
 
 import attention_in_box as aib                                 # noqa: E402
 import fastsim                                                 # noqa: E402
@@ -272,7 +272,7 @@ def prepare_caltech10(zip_path=None):
             tf.extractall(x, filter="data") if sys.version_info >= (3, 12) else tf.extractall(x)
     f = ROOT / "data" / "caltech10fct.npz"
     ship = {k: v for k, v in np.load(f).items()} if f.exists() else None
-    subprocess.run([sys.executable, "-I", "src/prepare_caltech101.py", "--all", "--crop", "--trim", "0.04"], cwd=ROOT,
+    subprocess.run([sys.executable, "-I", "src/core/prepare_caltech101.py", "--all", "--crop", "--trim", "0.04"], cwd=ROOT,
                    check=True, capture_output=True)
     new = np.load(f)
     same = ship is not None and all(np.array_equal(new[k], ship[k]) for k in ("x_train", "y_train", "x_val", "y_val"))
