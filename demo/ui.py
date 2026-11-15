@@ -817,31 +817,35 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
         A.set_title(f"{k}  brickwall circuit", loc="left", fontsize=9)
         A.text(0.5, -0.04, f"12 qubits, depth {run.get('depth', 11)}\n\u2192 128 outcomes", transform=A.transAxes,
                ha="center", va="top", fontsize=7.5, color=MUTED, linespacing=1.2)
-    # the answer and the evidence over the colour picture
-    unsure = p[pred] < 0.3      # on test pictures the plates' answers below 0.3 are right about one time in ten
-    _ranking(fig.add_subplot(gs[rows, 0:2]), p, true, f"BHR answer: {sw.NAMES[pred]} ({p[pred]:.2f})"
-             + ("" if true is None or pred == true else "   (wrong)"), bold=True)
-    if unsure:
-        fig.text(0.13, 0.005, "not sure: the answer has less than 0.30 - such answers are seldom right, "
-                 "and the picture may show none of the ten classes", fontsize=9, color="#c0392b")
+    # the answer and the evidence over the colour picture, in a row of their own: the answer, one map per class shown,
+    # the attention, then the answer after deletion; each chart twice a picture's width, so its class names have room
     if cls is not None:
         shown = [int(cls)]
     else:
         shown = ([true] if true is not None else []) + ([pred] if true is None or pred != true else [])
-    col = 2
+    ratios = [2] + [1] * (len(shown) + 1) + ([2] if frac else [])
+    row = gs[rows, :].subgridspec(1, len(ratios), width_ratios=ratios, wspace=0.25)
+    unsure = p[pred] < 0.3      # on test pictures the plates' answers below 0.3 are right about one time in ten
+    _ranking(fig.add_subplot(row[0, 0]), p, true, f"BHR answer: {sw.NAMES[pred]} ({p[pred]:.2f})"
+             + ("" if true is None or pred == true else "   (wrong)"), bold=True)
+    if unsure:
+        fig.text(0.13, 0.005, "not sure: the answer has less than 0.30 - such answers are seldom right, "
+                 "and the picture may show none of the ten classes", fontsize=9, color="#c0392b")
+    col = 1
     for c in shown:
         e = sw.evidence(run, x[None], [c])[0]
-        A = fig.add_subplot(gs[rows, col])
+        A = fig.add_subplot(row[0, col])
         _evidence(A, x, e, side_by_side)
         A.set_xticks([])
         A.set_yticks([])
-        A.set_title(f"evidence: {sw.NAMES[c]}" + (" (answer)" if true is not None and c == pred and c != true else ""), loc="left", fontsize=9)
+        A.set_title(f"evidence: {sw.NAMES[c]}" + ("\n(answer)" if true is not None and c == pred and c != true else ""),
+                    loc="left", fontsize=9)
         col += 1
     att = sw.aib.maps(run, x[None], np.array([pred]), signed=True)[1][0]   # each pixel's share of the light
     att = np.clip(att / max(np.percentile(att, 99), 1e-12), 0, 1)
     rgba = plt.cm.magma(att)
     rgba[..., 3] = np.clip(1.5 * (att - 0.15), 0, 0.9)
-    A = fig.add_subplot(gs[rows, col])
+    A = fig.add_subplot(row[0, col])
     A.imshow(x)
     A.imshow(rgba)
     A.set_xticks([])
@@ -850,7 +854,14 @@ def inside(run, x, true=None, cls=None, frac=0.0, side_by_side=False):
     if frac:                                                         # delete the pixels that most support the first map
         e = sw.evidence(run, x[None], [shown[0]])[0]
         q = sw.delete(run, x[None], e[None], frac)[0]
-        _ranking(fig.add_subplot(gs[rows, col + 1:]), q, true,
-                 f"after deleting the top {100 * frac:.0f} % for {sw.NAMES[shown[0]]}")
+        R = fig.add_subplot(row[0, col + 1])
+        _ranking(R, q, true, f"after deleting the top {100 * frac:.0f} % for {sw.NAMES[shown[0]]}")
+        # its class names sit left of the bars, over the gap to the picture: move the bars right by their width
+        r = fig.canvas.get_renderer()
+        names = max(t.get_window_extent(r).width for t in R.get_yticklabels()) + 16      # pixels, with a gap
+        b = R.get_position()
+        d = names / fig.bbox.width - (b.x0 - A.get_position().x1)
+        if d > 0:
+            R.set_position([b.x0 + d, b.y0, b.width - d, b.height])
     fig.text(0.37, 0.02, "evidence: red for the class, blue against it", fontsize=8, color=MUTED)
     return fig
